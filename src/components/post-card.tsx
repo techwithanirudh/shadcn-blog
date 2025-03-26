@@ -1,6 +1,6 @@
-import type React from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
+import type React from 'react';
 
 interface PostCardProps {
   title: string;
@@ -24,7 +24,9 @@ export const PostCard: React.FC<PostCardProps> = ({
     >
       <div className='max-w-full flex flex-col gap-3 h-full order-2 md:order-1'>
         <div className='flex-1'>
-          <h2 className='mt-2 text-lg md:text-xl lg:text-2xl font-medium'>{title}</h2>
+          <h2 className='mt-2 text-lg md:text-xl lg:text-2xl font-medium'>
+            {title}
+          </h2>
           <p className='overflow-hidden text-ellipsis line-clamp-2 md:whitespace-nowrap text-medium text-fd-muted-foreground'>
             {description}
           </p>
