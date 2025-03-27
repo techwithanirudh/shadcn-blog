@@ -80,6 +80,7 @@ export default async function Page(props: {
                 <PostCard
                   title={post.data.title}
                   description={post.data.description ?? ''}
+                  image={post.data.image}
                   url={post.url}
                   date={date}
                   key={post.url}
@@ -89,7 +90,7 @@ export default async function Page(props: {
           </div>
         </div>
       </div>
-      {pageCount > 1 && (<Pagination pageIndex={pageIndex} />)}
+      {pageCount > 1 && <Pagination pageIndex={pageIndex} />}
     </>
   );
 }
