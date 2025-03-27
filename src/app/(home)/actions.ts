@@ -1,11 +1,13 @@
 'use server';
 
-import { actionClient, ActionError } from '@/lib/safe-action';
+import { ActionError, actionClient } from '@/lib/safe-action';
 import { NewsletterSchema } from '@/lib/validators';
 import { Resend } from 'resend';
 
 if (!process.env.RESEND_API_KEY) {
-  throw new Error('Missing RESEND_API_KEY environment variable. Please set it in your .env file, or disable the newsletter feature.');
+  throw new Error(
+    'Missing RESEND_API_KEY environment variable. Please set it in your .env file, or disable the newsletter feature.',
+  );
 }
 
 const resend = new Resend(process.env.RESEND_API_KEY);

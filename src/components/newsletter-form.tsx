@@ -2,7 +2,6 @@
 
 import { useAction } from 'next-safe-action/hooks';
 
-import type { Newsletter } from '@/lib/validators';
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -11,13 +10,19 @@ import {
   FormItem,
   FormMessage,
 } from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import type { Newsletter } from '@/lib/validators';
+import { NewsletterSchema } from '@/lib/validators';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { Input } from '@/components/ui/input';
-import { NewsletterSchema } from '@/lib/validators';
 
-import { CircleCheckIcon, SendHorizontalIcon, SendIcon, TriangleAlertIcon } from 'lucide-react';
 import { Alert, AlertTitle } from '@/components/ui/alert';
+import {
+  CircleCheckIcon,
+  SendHorizontalIcon,
+  SendIcon,
+  TriangleAlertIcon,
+} from 'lucide-react';
 
 import { subscribeUser } from '@/app/(home)/actions';
 import { LoaderIcon } from 'lucide-react';
