@@ -16,7 +16,7 @@ import { useForm } from 'react-hook-form';
 import { Input } from '@/components/ui/input';
 import { NewsletterSchema } from '@/lib/validators';
 
-import { CircleCheckIcon, SendIcon, TriangleAlertIcon } from 'lucide-react';
+import { CircleCheckIcon, SendHorizontalIcon, SendIcon, TriangleAlertIcon } from 'lucide-react';
 import { Alert, AlertTitle } from '@/components/ui/alert';
 
 import { subscribeUser } from '@/app/(home)/actions';
@@ -68,15 +68,15 @@ export const NewsletterForm = () => {
             className='rounded-md rounded-l-none px-3 size-auto'
           >
             {status === 'executing' ? (
-              <LoaderIcon className='size-4 animate-spin mr-0.5' />
+              <LoaderIcon className='size-4 animate-spin' />
             ) : (
-              <SendIcon className='size-4 mr-0.5' />
+              <SendHorizontalIcon className='size-4' />
             )}
           </Button>
         </div>
 
         {status === 'hasSucceeded' && (
-          <Alert className='bg-emerald-500/15 text-emerald-500 p-3 border-emerald-500/15 rounded-full'>
+          <Alert className='bg-emerald-500/15 text-emerald-500 p-3 border-emerald-500/15 py-2 px-3 has-[>svg]:gap-x-1.5'>
             <CircleCheckIcon size={16} />
             <AlertTitle className='mb-0 leading-normal'>
               You are now subscribed to our newsletter!
@@ -84,7 +84,7 @@ export const NewsletterForm = () => {
           </Alert>
         )}
         {result.serverError && (
-          <Alert className='bg-destructive/15 text-destructive dark:bg-destructive dark:text-destructive-foreground p-3 border-destructive/15 dark:border-destructive rounded-full'>
+          <Alert className='bg-destructive/15 text-destructive dark:bg-destructive dark:text-destructive-foreground p-3 border-destructive/15 dark:border-destructive py-2 px-3 has-[>svg]:gap-x-1.5'>
             <TriangleAlertIcon className='size-4' />
             <AlertTitle className='mb-0 leading-normal'>
               {result.serverError}

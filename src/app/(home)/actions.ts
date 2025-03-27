@@ -20,7 +20,6 @@ export const subscribeUser = actionClient
       });
 
       if (!data || error) {
-        console.log(data, error)
         throw new ActionError('Failed to subscribe');
       }
 
