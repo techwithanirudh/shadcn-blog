@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/pagination';
 import { usePagination } from '@/hooks/use-pagination';
 import { cn } from '@/lib/utils';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Icons } from "@/components/ui/icons";
 
 type NumberedPaginationProps = {
   currentPage: number;
@@ -53,7 +53,7 @@ function NumberedPagination({
             aria-label='Go to previous page'
             aria-disabled={currentPage === 1}
           >
-            <ChevronLeft size={16} strokeWidth={2} aria-hidden='true' />
+            <Icons.chevronLeft size={16} strokeWidth={2} aria-hidden='true' />
           </PaginationLink>
         </PaginationItem>
 
@@ -121,7 +121,7 @@ function NumberedPagination({
             aria-label='Go to next page'
             aria-disabled={currentPage === totalPages}
           >
-            <ChevronRight size={16} strokeWidth={2} aria-hidden='true' />
+            <Icons.chevronRight size={16} strokeWidth={2} aria-hidden='true' />
           </PaginationLink>
         </PaginationItem>
       </PaginationContent>

@@ -17,15 +17,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 
 import { Alert, AlertTitle } from '@/components/ui/alert';
-import {
-  CircleCheckIcon,
-  SendHorizontalIcon,
-  SendIcon,
-  TriangleAlertIcon,
-} from 'lucide-react';
 
 import { subscribeUser } from '@/app/(home)/actions';
-import { LoaderIcon } from 'lucide-react';
+import { Icons } from "@/components/ui/icons";
 
 export const NewsletterForm = () => {
   const form = useForm({
@@ -74,16 +68,16 @@ export const NewsletterForm = () => {
             className='size-auto rounded-md rounded-l-none px-3'
           >
             {status === 'executing' ? (
-              <LoaderIcon className='size-4 animate-spin' />
+              <Icons.spinner className='size-4 animate-spin' />
             ) : (
-              <SendHorizontalIcon className='size-4' />
+              <Icons.send className='size-4' />
             )}
           </Button>
         </div>
 
         {status === 'hasSucceeded' && (
           <Alert className='border-emerald-500/15 bg-emerald-500/15 p-3 px-3 py-2 text-emerald-500 has-[>svg]:gap-x-1.5'>
-            <CircleCheckIcon size={16} />
+            <Icons.success size={16} />
             <AlertTitle className='mb-0 leading-normal'>
               You are now subscribed to our newsletter!
             </AlertTitle>
@@ -91,7 +85,7 @@ export const NewsletterForm = () => {
         )}
         {result.serverError && (
           <Alert className='border-destructive/15 bg-destructive/15 p-3 px-3 py-2 text-destructive has-[>svg]:gap-x-1.5 dark:border-destructive dark:bg-destructive dark:text-destructive-foreground'>
-            <TriangleAlertIcon className='size-4' />
+            <Icons.warning className='size-4' />
             <AlertTitle className='mb-0 leading-normal'>
               {result.serverError}
             </AlertTitle>

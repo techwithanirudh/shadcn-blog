@@ -1,6 +1,6 @@
 import type { LinkItemType } from 'fumadocs-ui/layouts/links';
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
-import { Info, Mail, Newspaper, Rss, Tags, User } from 'lucide-react';
+import { Icons } from "@/components/ui/icons";
 
 export const title = 'Blog';
 export const description =
@@ -16,19 +16,19 @@ export const baseOptions: BaseLayoutProps = {
 
 export const linkItems: LinkItemType[] = [
   {
-    icon: <Info />,
+    icon: <Icons.info />,
     text: 'About',
     url: '/about',
     active: 'url',
   },
   {
-    icon: <Newspaper />,
+    icon: <Icons.posts />,
     text: 'Posts',
     url: '/posts',
     active: 'url',
   },
   {
-    icon: <Tags />,
+    icon: <Icons.tags />,
     text: 'Tags',
     url: '/tags',
     active: 'url',
@@ -36,7 +36,7 @@ export const linkItems: LinkItemType[] = [
   {
     type: 'icon',
     label: 'rss',
-    icon: <Rss />,
+    icon: <Icons.rss />,
     text: 'RSS',
     url: '/api/rss.xml',
   },

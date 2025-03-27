@@ -6,7 +6,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from '@radix-ui/react-tooltip';
-import { Share } from 'lucide-react';
+import { Icons } from "@/components/ui/icons";
 import { useState } from 'react';
 
 export function Control({ url }: { url: string }): React.ReactElement {
@@ -24,7 +24,7 @@ export function Control({ url }: { url: string }): React.ReactElement {
         )}
         onClick={onClick}
       >
-        <Share className='size-4' />
+        <Icons.share className='size-4' />
         Share Post
       </TooltipTrigger>
       <TooltipContent className='rounded-lg border bg-fd-popover p-2 text-fd-popover-foreground text-sm'>

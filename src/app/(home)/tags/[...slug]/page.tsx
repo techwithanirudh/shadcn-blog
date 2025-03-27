@@ -5,7 +5,7 @@ import PageHeader from '@/components/page-header';
 import { PostCard } from '@/components/post-card';
 import { createMetadata } from '@/lib/metadata';
 import { getPostsByTag, getTags } from '@/lib/source';
-import { TagIcon } from 'lucide-react';
+import { Icons } from "@/components/ui/icons";
 import type { Metadata, ResolvingMetadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 
@@ -46,7 +46,7 @@ const Header = ({
 }) => (
   <PageHeader>
     <div className='flex items-center gap-2'>
-      <TagIcon size={20} className='text-muted-foreground' />
+      <Icons.tag size={20} className='text-muted-foreground' />
       <h1 className='font-bold text-3xl leading-tight tracking-tighter md:text-4xl'>
         {tag} <span className='text-muted-foreground'>Posts</span>{' '}
         <CurrentPostsCount

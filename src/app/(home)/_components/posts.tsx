@@ -1,7 +1,7 @@
 import { PostCard } from '@/components/post-card';
 import { buttonVariants } from '@/components/ui/button';
 import type { Page } from '@/lib/source';
-import { ArrowLeftIcon, ArrowUpRightIcon, Gamepad2 } from 'lucide-react';
+import { Icons } from "@/components/ui/icons";
 import Link from 'next/link';
 
 export default function Posts({ posts }: { posts: Page[] }) {
@@ -30,7 +30,7 @@ export default function Posts({ posts }: { posts: Page[] }) {
             })}
           >
             View More
-            <ArrowUpRightIcon className='group-hover:-rotate-12 ml-2 size-5 transition-transform' />
+            <Icons.arrowUpRight className='group-hover:-rotate-12 ml-2 size-5 transition-transform' />
           </Link>
         </div>
       </div>

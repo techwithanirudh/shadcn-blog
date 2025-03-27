@@ -1,6 +1,6 @@
 import { getPostsByTag } from '@/lib/source';
 import { cn } from '@/lib/utils';
-import { TagIcon } from 'lucide-react';
+import { Icons } from "@/components/ui/icons";
 import Link from 'next/link';
 
 export const TagCard = ({
@@ -22,7 +22,7 @@ export const TagCard = ({
         className,
       )}
     >
-      <TagIcon size={18} className='my-auto text-fd-muted-foreground' />
+      <Icons.tag size={18} className='my-auto text-fd-muted-foreground' />
       <span className='text-fd-card-foreground'>{name}</span>
       {displayCount && (
         <span className='ml-auto text-fd-muted-foreground'>

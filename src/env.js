@@ -7,9 +7,23 @@ export const env = createEnv({
    * isn't built with invalid env vars.
    */
   server: {
+	// Database
     DATABASE_URL: z.string().url(),
+	// Resend
     RESEND_API_KEY: z.string().min(1).startsWith('re_'),
     RESEND_AUDIENCE_ID: z.string().min(1),
+	// Authentication
+    BETTER_AUTH_SECRET:
+      process.env.NODE_ENV === "production"
+        ? z.string().min(1)
+        : z.string().min(1).optional(),
+    BETTER_AUTH_URL: z.string().min(1).optional(),
+	// Google
+	GOOGLE_CLIENT_ID: z.string().min(1),
+    GOOGLE_CLIENT_SECRET: z.string().min(1),
+	// Github
+    GITHUB_CLIENT_ID: z.string().min(1),
+    GITHUB_CLIENT_SECRET: z.string().min(1),
     NODE_ENV: z
       .enum(['development', 'test', 'production'])
       .default('development'),

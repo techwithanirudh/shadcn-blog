@@ -3,7 +3,7 @@ import Posts from '@/app/(home)/_components/posts';
 import PageHeader from '@/components/page-header';
 import Separator from '@/components/separator';
 import { getSortedByDatePosts } from '@/lib/source';
-import { NewspaperIcon } from 'lucide-react';
+import { Icons } from "@/components/ui/icons";
 import { CTA } from './_components/call-to-action';
 
 export default function Home() {
@@ -17,7 +17,7 @@ export default function Home() {
           <h2 className='text-center font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl'>
             <span className='inline-flex items-center gap-3'>
               Posts{' '}
-              <NewspaperIcon className='size-10 fill-fd-primary/30 text-fd-primary transition-transform hover:rotate-12 hover:scale-125' />
+              <Icons.posts className='size-10 fill-fd-primary/30 text-fd-primary transition-transform hover:rotate-12 hover:scale-125' />
             </span>
           </h2>
         </div>
