@@ -20,6 +20,7 @@ export function CTA(): React.ReactElement {
           </div>
 
           <div className='flex items-center w-full'>
+            
             <NewsletterForm />
           </div>
         </div>

@@ -16,11 +16,7 @@ import { useForm } from 'react-hook-form';
 import { Input } from '@/components/ui/input';
 import { NewsletterSchema } from '@/lib/validators';
 
-import {
-    CircleCheckIcon,
-  SendIcon,
-  TriangleAlertIcon,
-} from 'lucide-react';
+import { CircleCheckIcon, SendIcon, TriangleAlertIcon } from 'lucide-react';
 import { Alert, AlertTitle } from '@/components/ui/alert';
 
 import { subscribeUser } from '@/app/(home)/actions';
@@ -72,9 +68,9 @@ export const NewsletterForm = () => {
             className='rounded-md rounded-l-none px-3 size-auto'
           >
             {status === 'executing' ? (
-              <LoaderIcon className='size-4 animate-spin mr-1' />
+              <LoaderIcon className='size-4 animate-spin mr-0.5' />
             ) : (
-              <SendIcon className='size-4 mr-1' />
+              <SendIcon className='size-4 mr-0.5' />
             )}
           </Button>
         </div>
