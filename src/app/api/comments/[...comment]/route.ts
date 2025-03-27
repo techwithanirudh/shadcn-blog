@@ -1,5 +1,5 @@
-import { NextComment } from "@fuma-comment/server/next";
-import { auth, storage } from "@/server/comments/config";
+import { auth, storage } from '@/server/comments/config';
+import { NextComment } from '@fuma-comment/server/next';
 
 export const { GET, DELETE, PATCH, POST } = NextComment({
   // role: 'database', todo use role in auth

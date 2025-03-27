@@ -36,7 +36,10 @@ export function Share({ url }: { url: string }): React.ReactElement {
   );
 }
 
-export function PostComments({ slug, className }: { slug: string; className?: string }) {
+export function PostComments({
+  slug,
+  className,
+}: { slug: string; className?: string }) {
   return (
     <Comments
       page={slug}
