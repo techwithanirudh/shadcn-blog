@@ -2,6 +2,7 @@
   "name": "blog",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "postinstall": "fumadocs-mdx",
     "build": "next build",
@@ -61,5 +62,8 @@
     "tailwindcss": "4.0.4",
     "typescript": "5.7.3"
   },
-  "packageManager": "pnpm@10.5.2"
+  "ct3aMetadata": {
+    "initVersion": "7.39.0"
+  },
+  "packageManager": "pnpm@10.7.0"
 }

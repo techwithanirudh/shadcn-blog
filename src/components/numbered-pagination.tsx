@@ -39,7 +39,7 @@ function NumberedPagination({
 
   return (
     <Pagination>
-      <PaginationContent className='inline-flex gap-0 -space-x-px rtl:space-x-reverse w-full'>
+      <PaginationContent className='-space-x-px inline-flex w-full gap-0 rtl:space-x-reverse'>
         <PaginationItem>
           <PaginationLink
             className={cn(
@@ -57,7 +57,7 @@ function NumberedPagination({
           </PaginationLink>
         </PaginationItem>
 
-        <div className='w-full inline-flex justify-center '>
+        <div className='inline-flex w-full justify-center '>
           {showLeftEllipsis && (
             <PaginationItem>
               <PaginationLink

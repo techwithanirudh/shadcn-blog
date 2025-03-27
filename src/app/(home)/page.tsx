@@ -14,10 +14,10 @@ export default function Home() {
       <Hero />
       <PageHeader className=' py-8 sm:py-16'>
         <div className='relative'>
-          <h2 className='text-center text-2xl font-semibold sm:text-3xl md:text-4xl lg:text-5xl'>
+          <h2 className='text-center font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-5xl'>
             <span className='inline-flex items-center gap-3'>
               Posts{' '}
-              <NewspaperIcon className='fill-fd-primary/30 text-fd-primary size-10 transition-transform hover:scale-125 hover:rotate-12' />
+              <NewspaperIcon className='size-10 fill-fd-primary/30 text-fd-primary transition-transform hover:rotate-12 hover:scale-125' />
             </span>
           </h2>
         </div>

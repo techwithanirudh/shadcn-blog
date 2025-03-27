@@ -8,7 +8,7 @@ export default function Posts({ posts }: { posts: Page[] }) {
   return (
     <section className='border-grid border-b'>
       <div className='container-wrapper'>
-        <div className='grid divide-y divide-dashed divide-border/70 dark:divide-border text-left'>
+        <div className='grid divide-y divide-dashed divide-border/70 text-left dark:divide-border'>
           {posts.map((post) => {
             const date = new Date(post.data.date).toDateString();
             return (
@@ -30,7 +30,7 @@ export default function Posts({ posts }: { posts: Page[] }) {
             })}
           >
             View More
-            <ArrowUpRightIcon className='ml-2 size-5 transition-transform group-hover:-rotate-12' />
+            <ArrowUpRightIcon className='group-hover:-rotate-12 ml-2 size-5 transition-transform' />
           </Link>
         </div>
       </div>
