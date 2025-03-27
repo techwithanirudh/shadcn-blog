@@ -1,4 +1,4 @@
-import { Control } from '@/app/(home)/posts/[slug]/page.client';
+import { PostComments, Share } from '@/app/(home)/posts/[slug]/page.client';
 import { PostJsonLd } from '@/components/json-ld';
 import PageHeader from '@/components/page-header';
 import { TagCard } from '@/components/tag-card';
@@ -57,13 +57,13 @@ export default async function Page(props: {
       <Header page={page} tags={tags} />
 
       <div className='container-wrapper flex-1'>
-        <article className='container flex min-h-full flex-col px-4 lg:flex-row'>
+        <article className='flex min-h-full flex-col lg:flex-row'>
           <div className='flex flex-1 flex-col gap-4'>
             <InlineTOC
               items={toc}
-              className='-ml-4 -mr-4 xl:-ml-6 rounded-none border-0 border-border/70 border-b border-dashed lg:mr-0 xl:px-2 dark:border-border'
+              className='rounded-none border-0 border-border/70 border-b border-dashed dark:border-border'
             />
-            <div className='prose min-w-0 flex-1 pr-4'>
+            <div className='prose min-w-0 flex-1 px-4'>
               <Mdx
                 components={{
                   ...defaultMdxComponents,
@@ -75,6 +75,7 @@ export default async function Page(props: {
                 }}
               />
             </div>
+            <PostComments slug={params.slug} className='rounded-none border-0 border-border/70 border-t border-dashed dark:border-border [&_form>div]:!rounded-none' />
           </div>
           <div className='flex flex-col gap-4 p-4 text-sm lg:sticky lg:top-[4rem] lg:h-[calc(100vh-4rem)] lg:w-[250px] lg:self-start lg:overflow-y-auto lg:border-border/70 lg:border-l lg:border-dashed lg:dark:border-border'>
             <div>
@@ -97,7 +98,7 @@ export default async function Page(props: {
                 <p className='font-medium'>{lastUpdate.toDateString()}</p>
               </div>
             )}
-            <Control url={page.url} />
+            <Share url={page.url} />
           </div>
         </article>
       </div>

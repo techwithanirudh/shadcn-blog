@@ -54,7 +54,7 @@ export default async function Page(props: {
 }) {
   const searchParams = await props.searchParams;
   const pageIndex = searchParams.page
-    ? Number.parseInt(searchParams.page[0] ?? "", 10) - 1
+    ? Number.parseInt(searchParams.page[0] ?? '', 10) - 1
     : 0;
   if (pageIndex < 0 || pageIndex >= pageCount) notFound();
 
