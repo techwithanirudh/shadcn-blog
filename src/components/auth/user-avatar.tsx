@@ -39,7 +39,7 @@ export function UserAvatar({
       />
 
       <AvatarFallback
-        className={cn('rounded-md uppercase', classNames?.fallback)}
+        className={cn('rounded-md uppercase bg-transparent', classNames?.fallback)}
         delayMs={src ? 200 : 0}
       >
         {firstTwoCharacters(name) ?? (
