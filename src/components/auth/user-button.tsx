@@ -41,10 +41,8 @@ export interface UserButtonProps {
 }
 
 export function UserButton({ className, classNames }: UserButtonProps) {
-  const { data: sessionData, isPending: sessionPending } = useSession();
-  const user = sessionData?.user as User | null;
-
-  const isPending = sessionPending;
+  const { data: sessionData, isPending } = useSession();
+  const user = sessionData?.user ?? null;
 
   return (
     <DropdownMenu>
