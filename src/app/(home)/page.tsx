@@ -2,8 +2,8 @@ import Hero from '@/app/(home)/_components/hero';
 import Posts from '@/app/(home)/_components/posts';
 import PageHeader from '@/components/page-header';
 import Separator from '@/components/separator';
+import { Icons } from '@/components/ui/icons';
 import { getSortedByDatePosts } from '@/lib/source';
-import { Icons } from "@/components/ui/icons";
 import { CTA } from './_components/call-to-action';
 
 export default function Home() {

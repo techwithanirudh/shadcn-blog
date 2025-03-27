@@ -1,12 +1,12 @@
 'use client';
 import { buttonVariants } from '@/components/ui/button';
+import { Icons } from '@/components/ui/icons';
 import { cn } from '@/lib/utils';
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from '@radix-ui/react-tooltip';
-import { Icons } from "@/components/ui/icons";
 import { useState } from 'react';
 
 export function Control({ url }: { url: string }): React.ReactElement {

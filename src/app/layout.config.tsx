@@ -1,6 +1,6 @@
+import { Icons } from '@/components/ui/icons';
 import type { LinkItemType } from 'fumadocs-ui/layouts/links';
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
-import { Icons } from "@/components/ui/icons";
 
 export const title = 'Blog';
 export const description =

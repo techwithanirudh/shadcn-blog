@@ -1,41 +1,41 @@
-"use client";
+'use client';
 
-import { signIn } from "@/lib/auth-client";
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Icons } from "@/components/ui/icons";
+} from '@/components/ui/card';
+import { Icons } from '@/components/ui/icons';
+import { signIn } from '@/lib/auth-client';
+import { cn } from '@/lib/utils';
 
 function SignInCard() {
   return (
-    <Card className="w-full max-w-xl">
+    <Card className='w-full max-w-xl'>
       <CardHeader>
-        <CardTitle className="text-lg md:text-xl">Sign In</CardTitle>
-        <CardDescription className="text-xs md:text-sm">
+        <CardTitle className='text-lg md:text-xl'>Sign In</CardTitle>
+        <CardDescription className='text-xs md:text-sm'>
           Sign in with your account
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="grid gap-4">
+        <div className='grid gap-4'>
           <div
             className={cn(
-              "flex w-full items-center gap-2",
-              "flex-col justify-between",
+              'flex w-full items-center gap-2',
+              'flex-col justify-between',
             )}
           >
             <Button
-              variant="outline"
-              className={cn("w-full gap-2")}
+              variant='outline'
+              className={cn('w-full gap-2')}
               onClick={async () => {
                 await signIn.social({
-                  provider: "google",
-                  callbackURL: "/",
+                  provider: 'google',
+                  callbackURL: '/',
                 });
               }}
             >
@@ -43,12 +43,12 @@ function SignInCard() {
               Sign in with Google
             </Button>
             <Button
-              variant="outline"
-              className={cn("w-full gap-2")}
+              variant='outline'
+              className={cn('w-full gap-2')}
               onClick={async () => {
                 await signIn.social({
-                  provider: "github",
-                  callbackURL: "/",
+                  provider: 'github',
+                  callbackURL: '/',
                 });
               }}
             >
@@ -64,7 +64,7 @@ function SignInCard() {
 
 export default function LoginPage() {
   return (
-    <main className="flex min-h-dvh flex-1 items-center justify-center px-4 sm:px-8 md:px-12 lg:px-16 2xl:px-24">
+    <main className='flex min-h-dvh flex-1 items-center justify-center px-4 sm:px-8 md:px-12 lg:px-16 2xl:px-24'>
       <SignInCard />
     </main>
   );

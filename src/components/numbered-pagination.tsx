@@ -1,5 +1,6 @@
 'use client';
 import { buttonVariants } from '@/components/ui/button';
+import { Icons } from '@/components/ui/icons';
 import {
   Pagination,
   PaginationContent,
@@ -9,7 +10,6 @@ import {
 } from '@/components/ui/pagination';
 import { usePagination } from '@/hooks/use-pagination';
 import { cn } from '@/lib/utils';
-import { Icons } from "@/components/ui/icons";
 
 type NumberedPaginationProps = {
   currentPage: number;

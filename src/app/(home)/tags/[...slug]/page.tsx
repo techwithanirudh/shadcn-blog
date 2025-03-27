@@ -3,9 +3,9 @@ import { TagJsonLd } from '@/components/json-ld';
 import { NumberedPagination } from '@/components/numbered-pagination';
 import PageHeader from '@/components/page-header';
 import { PostCard } from '@/components/post-card';
+import { Icons } from '@/components/ui/icons';
 import { createMetadata } from '@/lib/metadata';
 import { getPostsByTag, getTags } from '@/lib/source';
-import { Icons } from "@/components/ui/icons";
 import type { Metadata, ResolvingMetadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 
