@@ -53,15 +53,14 @@ export function UserButton({ className, classNames }: UserButtonProps) {
         asChild
       >
         <Button
-          variant='outline'
-          size='icon'
-          className='rounded-md border-none bg-transparent p-1.5 hover:bg-accent max-lg:hidden [&_svg]:size-5'
+          variant='ghost'
+          className='size-auto rounded-md border-none bg-transparent p-1.5 hover:bg-accent dark:hover:bg-accent'
           disabled={isPending}
         >
           {isPending ? (
             <Skeleton
               className={cn(
-                'size-full rounded-md',
+                'size-5 rounded-md',
                 className,
                 classNames?.base,
                 classNames?.skeleton,
@@ -70,7 +69,7 @@ export function UserButton({ className, classNames }: UserButtonProps) {
             />
           ) : (
             <UserAvatar
-              className={cn('size-full', className, classNames?.base)}
+              className={cn('size-5', className, classNames?.base)}
               classNames={classNames?.trigger?.avatar}
               user={user}
             />
