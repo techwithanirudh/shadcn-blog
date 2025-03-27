@@ -1,5 +1,7 @@
 'use client';
 
+import { baseOptions, linkItems } from '@/app/layout.config';
+import { Header } from '@/components/header';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -11,10 +13,8 @@ import {
 import { Icons } from '@/components/ui/icons';
 import { signIn } from '@/lib/auth-client';
 import { cn } from '@/lib/utils';
-import { Header } from '@/components/header';
 import { HomeLayout } from 'fumadocs-ui/layouts/home';
 import { getLinks } from 'fumadocs-ui/layouts/shared';
-import { baseOptions, linkItems } from '@/app/layout.config';
 import { PlusIcon } from 'lucide-react';
 
 const Cross = () => (
@@ -51,7 +51,7 @@ function SignInCard() {
             <Button
               variant='outline'
               className={cn(
-                'w-full gap-2 border border-border/70 border-dashed dark:border-border rounded-none',
+                'w-full gap-2 rounded-none border border-border/70 border-dashed dark:border-border',
               )}
               onClick={async () => {
                 await signIn.social({
@@ -66,7 +66,7 @@ function SignInCard() {
             <Button
               variant='outline'
               className={cn(
-                'w-full gap-2 border border-border/70 border-dashed dark:border-border rounded-none',
+                'w-full gap-2 rounded-none border border-border/70 border-dashed dark:border-border',
               )}
               onClick={async () => {
                 await signIn.social({
@@ -106,7 +106,7 @@ export default function LoginPage() {
       }}
       className='border-grid pt-0'
     >
-      <main className='flex flex-1 items-center justify-center px-4 sm:px-8 md:px-12 lg:px-16 2xl:px-24 container-wrapper'>
+      <main className='container-wrapper flex flex-1 items-center justify-center px-4 sm:px-8 md:px-12 lg:px-16 2xl:px-24'>
         <SignInCard />
       </main>
     </HomeLayout>
