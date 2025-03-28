@@ -1,24 +1,21 @@
-import { title } from '@/app/layout.config';
-import type { ImageResponseOptions } from 'next/dist/compiled/@vercel/og/types';
 import { ImageResponse } from 'next/og';
-import type { ReactElement, ReactNode } from 'react';
+import type { ReactElement } from 'react';
+import type { ImageResponseOptions } from 'next/dist/compiled/@vercel/og/types';
 
 interface GenerateProps {
-  title: ReactNode;
-  description?: ReactNode;
-  primaryTextColor?: string;
+  title: string;
+  description?: string;
 }
 
 export function generateOGImage(
   options: GenerateProps & ImageResponseOptions,
 ): ImageResponse {
-  const { title, description, primaryTextColor, ...rest } = options;
+  const { title, description, ...rest } = options;
 
   return new ImageResponse(
     generate({
       title,
-      description,
-      primaryTextColor,
+      description
     }),
     {
       width: 1200,
@@ -29,134 +26,42 @@ export function generateOGImage(
 }
 
 export function generate({
-  primaryTextColor = 'rgb(255,150,255)',
-  ...props
+  title,
+  description = "Learn more about this post by visiting the website.",
 }: GenerateProps): ReactElement {
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        width: '100%',
-        height: '100%',
-        color: 'white',
-        background:
-          'linear-gradient(to bottom, rgb(30, 30, 30), rgb(10, 10, 10), rgb(0, 0, 0))',
-        fontFamily: 'Inter, sans-serif',
-        overflow: 'hidden',
-        position: 'relative',
-      }}
-    >
+    (
       <div
-        style={{
-          position: 'absolute',
-          width: '100%',
-          height: '100%',
-          backgroundImage:
-            'linear-gradient(to right, #80808012 1px, transparent 1px), linear-gradient(to bottom, #80808012 1px, transparent 1px)',
-          backgroundSize: '24px 24px',
-          top: '0px',
-          right: '0px',
-          zIndex: '0',
-        }}
-      />
-
-      <div
-        style={{
-          position: 'absolute',
-          width: '500px',
-          height: '500px',
-          borderRadius: '50%',
-          background: `radial-gradient(circle, ${primaryTextColor}22, transparent 70%)`,
-          top: '-100px',
-          right: '-100px',
-          zIndex: '0',
-        }}
-      />
-
-      <div
-        style={{
-          position: 'absolute',
-          width: '300px',
-          height: '300px',
-          borderRadius: '50%',
-          background: `radial-gradient(circle, ${primaryTextColor}15, transparent 70%)`,
-          bottom: '-50px',
-          left: '-50px',
-          zIndex: '0',
-        }}
-      />
-
-      {/* Header */}
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          alignItems: 'center',
-          padding: '2rem 4rem 0',
-          color: primaryTextColor,
-          zIndex: '1',
-        }}
+        tw="flex h-full w-full bg-black text-white"
+        style={{ fontFamily: "Geist Sans" }}
       >
-        <p
-          style={{
-            fontSize: '46px',
-            fontWeight: 600,
-            fontFamily: 'Bricolage_Grotesque, sans-serif',
-          }}
-        >
-          {title}
-        </p>
+        <div tw="flex border absolute border-stone-900 border-dashed inset-y-0 left-16 w-[1px]" />
+        <div tw="flex border absolute border-stone-900 border-dashed inset-y-0 right-16 w-[1px]" />
+        <div tw="flex border absolute border-stone-900 inset-x-0 h-[1px] top-16" />
+        <div tw="flex border absolute border-stone-900 inset-x-0 h-[1px] bottom-16" />
+        <div tw="flex flex-col absolute w-[896px] justify-center inset-32">
+          <div
+            tw="tracking-tight flex-grow-1 flex flex-col justify-center leading-[1.1]"
+            style={{
+              textWrap: "balance",
+              fontWeight: 600,
+              fontSize: title && title.length > 20 ? 64 : 80,
+              letterSpacing: "-0.04em",
+            }}
+          >
+            {title}
+          </div>
+          <div
+            tw="text-[40px] leading-[1.5] flex-grow-1 text-stone-400"
+            style={{
+              fontWeight: 500,
+              textWrap: "balance",
+            }}
+          >
+            {description}
+          </div>
+        </div>
       </div>
-
-      {/* Content */}
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          width: '100%',
-          height: '100%',
-          padding: '0 4rem 4rem',
-          zIndex: '1',
-        }}
-      >
-        <p
-          style={{
-            fontWeight: 800,
-            fontSize: '80px',
-            lineHeight: 1.2,
-            margin: '0 0 24px 0',
-            background: `linear-gradient(to right, white, ${primaryTextColor})`,
-            backgroundClip: 'text',
-            color: 'transparent',
-          }}
-        >
-          {props.title}
-        </p>
-        <p
-          style={{
-            fontSize: '38px',
-            color: 'rgba(240,240,240,0.8)',
-            maxWidth: '880px',
-            lineHeight: 1.3,
-          }}
-        >
-          {props.description}
-        </p>
-
-        {/* Bottom accent line */}
-        <div
-          style={{
-            position: 'absolute',
-            bottom: '0',
-            left: '0',
-            width: '100%',
-            height: '8px',
-            background: `linear-gradient(to right, transparent, ${primaryTextColor}, transparent)`,
-          }}
-        />
-      </div>
-    </div>
-  );
+    )
+  )
 }

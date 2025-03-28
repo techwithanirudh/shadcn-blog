@@ -3,25 +3,19 @@ import type { ReactElement } from 'react';
 import type { ImageResponseOptions } from 'next/dist/compiled/@vercel/og/types';
 
 interface GenerateProps {
-  primaryTextColor?: string;
   title?: string;
   subtitle?: string;
-  features?: Array<{
-    name: string;
-    color: string;
-  }>;
 }
 
 export function generateOGImage(
   options: GenerateProps & ImageResponseOptions,
 ): ImageResponse {
-  const { title, subtitle, features, ...rest } = options;
+  const { title, subtitle, ...rest } = options;
 
   return new ImageResponse(
     generate({
       title,
-      subtitle,
-      features,
+      subtitle
     }),
     {
       width: 1200,
@@ -32,151 +26,32 @@ export function generateOGImage(
 }
 
 export function generate({
-  primaryTextColor,
-  title = 'Ready-made blog template',
-  subtitle = '',
-  features = [
-    { name: 'Comments', color: '#FF7A45' },
-    { name: 'Authentication', color: '#597EF7' },
-    { name: 'Fumadocs', color: '#A0D911' },
-    { name: 'Newsletter', color: '#13C2C2' },
-  ],
+  title = 'John Doe'
 }: GenerateProps): ReactElement {
   return (
-    <div
-      style={{
-        display: 'flex',
-        width: '100%',
-        height: '100%',
-        color: 'white',
-        background:
-          'linear-gradient(to bottom, rgb(30, 30, 30), rgb(10, 10, 10), rgb(0, 0, 0))',
-        fontFamily: 'Inter, sans-serif',
-        overflow: 'hidden',
-        position: 'relative',
-      }}
-    >
+    (
       <div
-        style={{
-          position: 'absolute',
-          width: '100%',
-          height: '100%',
-          backgroundImage:
-            'linear-gradient(to right, #80808012 1px, transparent 1px), linear-gradient(to bottom, #80808012 1px, transparent 1px)',
-          backgroundSize: '24px 24px',
-          top: '0px',
-          right: '0px',
-          zIndex: '0',
-        }}
-      />
-
-      <div
-        style={{
-          position: 'absolute',
-          width: '500px',
-          height: '500px',
-          borderRadius: '50%',
-          background: `radial-gradient(circle, ${primaryTextColor}22, transparent 70%)`,
-          top: '-100px',
-          right: '-100px',
-          zIndex: '0',
-        }}
-      />
-
-      <div
-        style={{
-          position: 'absolute',
-          width: '300px',
-          height: '300px',
-          borderRadius: '50%',
-          background: `radial-gradient(circle, ${primaryTextColor}15, transparent 70%)`,
-          bottom: '-50px',
-          left: '-50px',
-          zIndex: '0',
-        }}
-      />
-
-      {/* Content container */}
-      <div
-        style={{
-          display: 'flex',
-          width: '100%',
-          zIndex: '1',
-          justifyContent: 'space-between',
-          padding: '60px',
-        }}
+        tw="flex h-full w-full bg-black text-white"
+        style={{ fontFamily: "Geist Sans" }}
       >
-        {/* Left side - Title */}
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            width: '50%',
-          }}
-        >
-          <h1
+        <div tw="flex border absolute border-stone-900 border-dashed inset-y-0 left-16 w-[1px]" />
+        <div tw="flex border absolute border-stone-900 border-dashed inset-y-0 right-16 w-[1px]" />
+        <div tw="flex border absolute border-stone-900 inset-x-0 h-[1px] top-16" />
+        <div tw="flex border absolute border-stone-900 inset-x-0 h-[1px] bottom-16" />
+        <div tw="flex items-center absolute w-[896px] justify-center inset-32">
+          <div
+            tw="tracking-tight flex-grow-1 flex flex-col justify-center items-center leading-[1.1]"
             style={{
-              fontSize: '80px',
-              fontWeight: 700,
-              lineHeight: 1.1,
-              margin: '0',
-              maxWidth: '600px',
+              textWrap: "balance",
+              fontWeight: 600,
+              fontSize: title && title.length > 20 ? 64 : 80,
+              letterSpacing: "-0.04em",
             }}
           >
             {title}
-          </h1>
-          {subtitle && (
-            <p
-              style={{
-                fontSize: '32px',
-                color: 'rgba(255, 255, 255, 0.8)',
-                margin: '24px 0 0 0',
-              }}
-            >
-              {subtitle}
-            </p>
-          )}
-        </div>
-
-        {/* Right side - Features */}
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            gap: '32px',
-          }}
-        >
-          {features.map((feature, i) => (
-            <div
-              key={i}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '16px',
-              }}
-            >
-              <div
-                style={{
-                  width: '32px',
-                  height: '32px',
-                  borderRadius: '6px',
-                  backgroundColor: feature.color,
-                }}
-              />
-              <span
-                style={{
-                  fontSize: '36px',
-                  fontWeight: 500,
-                }}
-              >
-                {feature.name}
-              </span>
-            </div>
-          ))}
+          </div>
         </div>
       </div>
-    </div>
-  );
+    )
+  )
 }

@@ -3,42 +3,48 @@ import { generateOGImage } from '@/app/og/[...slug]/og';
 import { metadataImage } from '@/lib/metadata-image';
 import type { ImageResponse } from 'next/og';
 
-const font = readFileSync('./src/app/og/[...slug]/fonts/Inter-Regular.ttf');
-const fontSemiBold = readFileSync(
-  './src/app/og/[...slug]/fonts/Inter-SemiBold.ttf',
-);
-const fontBold = readFileSync('./src/app/og/[...slug]/fonts/Inter-Bold.ttf');
-const headingFont = readFileSync(
-  './src/app/og/[...slug]/fonts/BricolageGrotesque-Regular.ttf',
-);
+async function loadAssets(): Promise<
+  { name: string; data: Buffer; weight: 400 | 600; style: "normal" }[]
+> {
+  const [
+    { base64Font: normal },
+    { base64Font: mono },
+    { base64Font: semibold },
+  ] = await Promise.all([
+    import("./fonts/geist-regular-otf.json").then((mod) => mod.default || mod),
+    import("./fonts/geistmono-regular-otf.json").then((mod) => mod.default || mod),
+    import("./fonts/geist-semibold-otf.json").then((mod) => mod.default || mod),
+  ])
 
-export const GET = metadataImage.createAPI((page): ImageResponse => {
+  return [
+    {
+      name: "Geist",
+      data: Buffer.from(normal, "base64"),
+      weight: 400 as const,
+      style: "normal" as const,
+    },
+    {
+      name: "Geist Mono",
+      data: Buffer.from(mono, "base64"),
+      weight: 400 as const,
+      style: "normal" as const,
+    },
+    {
+      name: "Geist",
+      data: Buffer.from(semibold, "base64"),
+      weight: 600 as const,
+      style: "normal" as const,
+    },
+  ]
+}
+
+export const GET = metadataImage.createAPI(async (page): Promise<ImageResponse> => {
+  const [fonts] = await Promise.all([loadAssets()])
+
   return generateOGImage({
-    primaryTextColor: 'rgb(240,240,240)',
     title: page.data.title,
     description: page.data.description,
-    fonts: [
-      {
-        name: 'Inter',
-        data: font,
-        weight: 400,
-      },
-      {
-        name: 'Inter',
-        data: fontSemiBold,
-        weight: 600,
-      },
-      {
-        name: 'Inter',
-        data: fontBold,
-        weight: 700,
-      },
-      {
-        name: 'Bricolage_Grotesque',
-        data: headingFont,
-        weight: 400,
-      },
-    ],
+    fonts,
   });
 });
 

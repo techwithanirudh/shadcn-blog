@@ -1,47 +1,47 @@
 import { readFileSync } from 'node:fs';
 import { generateOGImage } from '@/app/banner.png/og';
 
-const font = readFileSync('./src/app/og/[...slug]/fonts/Inter-Regular.ttf');
-const fontSemiBold = readFileSync(
-  './src/app/og/[...slug]/fonts/Inter-SemiBold.ttf',
-);
-const fontBold = readFileSync('./src/app/og/[...slug]/fonts/Inter-Bold.ttf');
-const headingFont = readFileSync(
-  './src/app/og/[...slug]/fonts/BricolageGrotesque-Regular.ttf',
-);
+async function loadAssets(): Promise<
+  { name: string; data: Buffer; weight: 400 | 600; style: "normal" }[]
+> {
+  const [
+    { base64Font: normal },
+    { base64Font: mono },
+    { base64Font: semibold },
+  ] = await Promise.all([
+    import("./fonts/geist-regular-otf.json").then((mod) => mod.default || mod),
+    import("./fonts/geistmono-regular-otf.json").then((mod) => mod.default || mod),
+    import("./fonts/geist-semibold-otf.json").then((mod) => mod.default || mod),
+  ])
+
+  return [
+    {
+      name: "Geist",
+      data: Buffer.from(normal, "base64"),
+      weight: 400 as const,
+      style: "normal" as const,
+    },
+    {
+      name: "Geist Mono",
+      data: Buffer.from(mono, "base64"),
+      weight: 400 as const,
+      style: "normal" as const,
+    },
+    {
+      name: "Geist",
+      data: Buffer.from(semibold, "base64"),
+      weight: 600 as const,
+      style: "normal" as const,
+    },
+  ]
+}
 
 export async function GET() {
+  const [fonts] = await Promise.all([loadAssets()])
+
   return generateOGImage({
-    primaryTextColor: 'rgb(240,240,240)',
-    title: 'Ready-made blog template',
-    subtitle: '',
-    features: [
-      { name: 'Comments', color: '#FF7A45' },
-      { name: 'Authentication', color: '#597EF7' },
-      { name: 'Fumadocs', color: '#A0D911' },
-      { name: 'Newsletter', color: '#13C2C2' },
-    ],
-    fonts: [
-      {
-        name: 'Inter',
-        data: font,
-        weight: 400,
-      },
-      {
-        name: 'Inter',
-        data: fontSemiBold,
-        weight: 600,
-      },
-      {
-        name: 'Inter',
-        data: fontBold,
-        weight: 700,
-      },
-      {
-        name: 'Bricolage_Grotesque',
-        data: headingFont,
-        weight: 400,
-      },
-    ],
+    title: 'John Doe',
+    subtitle: 'Software Engineer',
+    fonts
   });
 }
