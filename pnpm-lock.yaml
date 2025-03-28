@@ -113,9 +113,15 @@ importers:
       rehype-katex:
         specifier: 7.0.1
         version: 7.0.1
+      remark:
+        specifier: ^15.0.1
+        version: 15.0.1
       remark-math:
         specifier: 6.0.0
         version: 6.0.0
+      remark-mdx:
+        specifier: ^3.1.0
+        version: 3.1.0
       resend:
         specifier: ^4.2.0
         version: 4.2.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -159,12 +165,24 @@ importers:
       drizzle-kit:
         specifier: ^0.30.6
         version: 0.30.6
+      fast-glob:
+        specifier: ^3.3.3
+        version: 3.3.3
+      gray-matter:
+        specifier: ^4.0.3
+        version: 4.0.3
+      next-validate-link:
+        specifier: ^1.5.2
+        version: 1.5.2
       postcss:
         specifier: 8.5.1
         version: 8.5.1
       tailwindcss:
         specifier: 4.0.4
         version: 4.0.4
+      tsx:
+        specifier: ^4.19.3
+        version: 4.19.3
       typescript:
         specifier: 5.7.3
         version: 5.7.3
@@ -2565,6 +2583,11 @@ packages:
       react-dom:
         optional: true
 
+  fsevents@2.3.3:
+    resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
+    engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
+    os: [darwin]
+
   fumadocs-core@15.1.2:
     resolution: {integrity: sha512-KbDZ2euvyXQ0M+ch6p4ZlrQzw6MqRBp7Z/2LbQC8fW+FYJUI9zKy/ThS04p2tTiz+6DN1Pi4nIuoOn7F2iCpbQ==}
     peerDependencies:
@@ -3213,6 +3236,9 @@ packages:
       react: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
       react-dom: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
 
+  next-validate-link@1.5.2:
+    resolution: {integrity: sha512-BMGyo0qJqscSJw0gSCUy3gDrF7LEID6qkVhHtLSIdPPtOYONq0+fidWvLteUzEUqHeKz1GBI9QN3bpfT6Me42A==}
+
   next@15.1.2:
     resolution: {integrity: sha512-nLJDV7peNy+0oHlmY2JZjzMfJ8Aj0/dd3jCwSZS8ZiO5nkQfcZRqDrRN3U5rJtqVTQneIOGZzb6LCNrk7trMCQ==}
     engines: {node: ^18.18.0 || ^19.8.0 || >= 20.0.0}
@@ -3777,6 +3803,11 @@ packages:
 
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
+
+  tsx@4.19.3:
+    resolution: {integrity: sha512-4H8vUNGNjQ4V2EOoGw005+c+dGuPSnhpPBPHBtsZdGZBk/iJb4kguGlPWaZTZ3q5nMtFOEsY0nRDlh9PJyd6SQ==}
+    engines: {node: '>=18.0.0'}
+    hasBin: true
 
   twoslash-protocol@0.3.1:
     resolution: {integrity: sha512-BMePTL9OkuNISSyyMclBBhV2s9++DiOCyhhCoV5Kaht6eaWLwVjCCUJHY33eZJPsyKeZYS8Wzz0h+XI01VohVw==}
@@ -6056,6 +6087,9 @@ snapshots:
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
 
+  fsevents@2.3.3:
+    optional: true
+
   fumadocs-core@15.1.2(@types/react@19.0.8)(next@15.2.3(@babel/core@7.24.5)(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
       '@formatjs/intl-localematcher': 0.6.1
@@ -7038,6 +7072,17 @@ snapshots:
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
 
+  next-validate-link@1.5.2:
+    dependencies:
+      fast-glob: 3.3.3
+      gray-matter: 4.0.3
+      picocolors: 1.1.1
+      remark: 15.0.1
+      remark-gfm: 4.0.1
+      unist-util-visit: 5.0.0
+    transitivePeerDependencies:
+      - supports-color
+
   next@15.1.2(@babel/core@7.24.5)(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
       '@next/env': 15.1.2
@@ -7769,6 +7814,13 @@ snapshots:
   trough@2.2.0: {}
 
   tslib@2.8.1: {}
+
+  tsx@4.19.3:
+    dependencies:
+      esbuild: 0.25.1
+      get-tsconfig: 4.10.0
+    optionalDependencies:
+      fsevents: 2.3.3
 
   twoslash-protocol@0.3.1: {}
 
