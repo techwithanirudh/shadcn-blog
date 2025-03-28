@@ -27,7 +27,6 @@ async function sendWelcomeEmail({
     throw new Error('Missing required fields');
   }
 
-  console.log(posts);
   const { data: res, error } = await resend.emails.send({
     from: EMAIL_FROM,
     to: to,
@@ -36,6 +35,7 @@ async function sendWelcomeEmail({
       name: name,
       posts: posts.map((post) => ({
         ...post.data,
+        image: `${process.env.VERCEL_PROJECT_PRODUCTION_URL}${post.data.image}`,
         url: `${process.env.VERCEL_PROJECT_PRODUCTION_URL}${post.url}`,
       })),
     }),
