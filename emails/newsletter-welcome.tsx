@@ -18,11 +18,11 @@ import {
 } from '@react-email/components';
 
 interface NewsletterWelcomeEmailProps {
-  userFirstname: string;
+  name: string;
   posts: {
     title: string;
     description?: string;
-    date: string;
+    date: Date;
     tags?: string[];
     image?: string;
     author: string;
@@ -70,7 +70,7 @@ function PostCard({
 }
 
 export default function NewsletterWelcomeEmail({
-  userFirstname,
+  name,
   posts,
 }: NewsletterWelcomeEmailProps) {
   return (
@@ -110,7 +110,7 @@ export default function NewsletterWelcomeEmail({
               <Heading className='my-4 font-medium text-4xl leading-tight'>
                 Welcome!
               </Heading>
-              <Text className='text-lg leading-8'>Hey {userFirstname},</Text>
+              <Text className='text-lg leading-8'>Hey {name},</Text>
               <Text className='text-lg leading-8'>
                 Thanks for subscribing to my newsletter! I&apos;m excited to
                 share my thoughts and ideas with you. You can expect an email
@@ -153,13 +153,13 @@ export default function NewsletterWelcomeEmail({
 }
 
 NewsletterWelcomeEmail.PreviewProps = {
-  userFirstname: 'Jane',
+  name: 'Jane',
   posts: [
     {
       title: 'How to build a website with Next.js',
       description:
         'Learn how to build a website using Next.js, a popular React framework.',
-      date: '2023-09-01',
+      date: new Date('2023-09-01'),
       tags: ['Next.js', 'React', 'Web Development'],
       image: 'https://misc-assets.raycast.com/wallpapers/autumnal-peach.png',
       author: 'John Doe',
@@ -169,7 +169,7 @@ NewsletterWelcomeEmail.PreviewProps = {
       title: 'Understanding React Hooks',
       description:
         'A deep dive into React Hooks and how to use them effectively in your projects.',
-      date: '2023-08-15',
+      date: new Date('2023-08-15'),
       tags: ['React', 'JavaScript'],
       image: 'https://misc-assets.raycast.com/wallpapers/blossom-2.png',
       author: 'John Doe',
@@ -179,7 +179,7 @@ NewsletterWelcomeEmail.PreviewProps = {
       title: 'CSS Grid vs Flexbox: When to Use Each',
       description:
         'A comprehensive guide on when to use CSS Grid and when to use Flexbox for layout.',
-      date: '2023-07-20',
+      date: new Date('2023-07-20'),
       tags: ['CSS', 'Web Design'],
       image: 'https://misc-assets.raycast.com/wallpapers/blushing-fire.png',
       author: 'John Doe',
