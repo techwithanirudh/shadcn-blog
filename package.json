@@ -11,7 +11,7 @@
     "dev": "next dev --turbo",
     "start": "next start",
     "format": "biome format --write .",
-    "lint": "fumadocs-mdx && tsx ./scripts/lint.mts && biome lint .",
+    "lint": "tsx ./scripts/lint.mts && biome lint .",
     "lint:write": "biome lint --write .",
     "lint:unsafe": "biome lint --write --unsafe .",
     "check": "biome check .",
