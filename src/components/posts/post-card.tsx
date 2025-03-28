@@ -27,7 +27,7 @@ export const PostCard: React.FC<PostCardProps> = ({
           <h2 className='mt-2 font-medium text-lg md:text-xl lg:text-2xl'>
             {title}
           </h2>
-          <p className='line-clamp-2 overflow-hidden text-ellipsis text-fd-muted-foreground text-medium md:whitespace-nowrap'>
+          <p className='line-clamp-2 overflow-hidden text-ellipsis text-medium text-muted-foreground md:whitespace-nowrap'>
             {description}
           </p>
         </div>

@@ -1,11 +1,11 @@
-import fg from 'fast-glob';
-import { printErrors, scanURLs, validateFiles } from 'next-validate-link';
-import { createGetUrl, getSlugs, parseFilePath } from 'fumadocs-core/source';
-import { getTableOfContents } from 'fumadocs-core/server';
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import matter from 'gray-matter';
+import fg from 'fast-glob';
+import { getTableOfContents } from 'fumadocs-core/server';
+import { createGetUrl, getSlugs, parseFilePath } from 'fumadocs-core/source';
 import { remarkInclude } from 'fumadocs-mdx/config';
+import matter from 'gray-matter';
+import { printErrors, scanURLs, validateFiles } from 'next-validate-link';
 import remarkMdx from 'remark-mdx';
 
 async function readFromPath(file: string) {

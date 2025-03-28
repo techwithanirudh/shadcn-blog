@@ -22,12 +22,10 @@ export const TagCard = ({
         className,
       )}
     >
-      <Icons.tag size={18} className='my-auto text-fd-muted-foreground' />
-      <span className='text-fd-card-foreground'>{name}</span>
+      <Icons.tag size={18} className='my-auto text-muted-foreground' />
+      <span className='text-card-foreground'>{name}</span>
       {displayCount && (
-        <span className='ml-auto text-fd-muted-foreground'>
-          ({posts.length})
-        </span>
+        <span className='ml-auto text-muted-foreground'>({posts.length})</span>
       )}
     </Link>
   );

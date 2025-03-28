@@ -35,7 +35,6 @@ export const NewsletterForm = () => {
     execute(values);
   };
 
-  //   todo: check if hte user is authed if so send teir name aswell with email, if the email matches that is
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className='flex-1 space-y-4'>
