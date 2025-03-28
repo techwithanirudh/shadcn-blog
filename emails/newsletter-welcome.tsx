@@ -78,7 +78,7 @@ export default function NewsletterWelcomeEmail({
       <Head>
         <Font
           fontFamily='Alex Brush'
-          fallbackFontFamily='Verdana'
+          fallbackFontFamily='Georgia'
           webFont={{
             url: 'https://fonts.gstatic.com/s/alexbrush/v22/SZc83FzrJKuqFbwMKk6EhUXz7RlNiCY.woff2',
             format: 'woff2',
@@ -88,7 +88,7 @@ export default function NewsletterWelcomeEmail({
         />
         <Font
           fontFamily='Bricolage Grotesque'
-          fallbackFontFamily='Verdana'
+          fallbackFontFamily='Helvetica'
           webFont={{
             url: 'https://fonts.gstatic.com/s/bricolagegrotesque/v8/3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGIInHWVyNJ.woff2',
             format: 'woff2',
