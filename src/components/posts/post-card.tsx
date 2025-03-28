@@ -20,7 +20,7 @@ export const PostCard: React.FC<PostCardProps> = ({
   return (
     <Link
       href={url}
-      className='grid grid-cols-1 gap-4 md:grid-cols-[1fr_auto] rounded-lg bg-card/50 px-6 py-6 transition-colors hover:bg-card/80'
+      className='grid grid-cols-1 gap-4 rounded-lg bg-card/50 px-6 py-6 transition-colors hover:bg-card/80 md:grid-cols-[1fr_auto]'
     >
       <div className='order-2 flex h-full flex-col justify-between gap-2 md:order-1'>
         <div className='flex-1 gap-2'>
