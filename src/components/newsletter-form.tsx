@@ -52,7 +52,7 @@ export const NewsletterForm = () => {
                       disabled={status === 'executing'}
                       placeholder='Email address'
                       type='email'
-                      className='h-full rounded-md rounded-r-none border-none px-4 focus-visible:ring-0 focus-visible:ring-offset-0'
+                      className='h-full rounded-md rounded-r-none border-none px-4 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0'
                     />
                   </FormControl>
                   <FormMessage className='ml-4 pb-2 text-xs' />
@@ -65,7 +65,7 @@ export const NewsletterForm = () => {
             disabled={status === 'executing'}
             type='submit'
             size='icon'
-            className='size-auto rounded-md rounded-l-none px-3'
+            className='size-auto w-15 rounded-md rounded-l-none px-3'
           >
             {status === 'executing' ? (
               <Icons.spinner className='size-4 animate-spin' />
