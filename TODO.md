@@ -15,3 +15,4 @@
 - [ ] Use [pqoqubbw animated icons](https://icons.pqoqubbw.dev/).
 - [ ] Add a smooth dark/light mode view transition like [0.email](https://0.email).
 - So, when a user is re-putting their email it might mean they like to resubscribe, so update to unsubscribe: false
+- look at https://www.joshwcomeau.com/react/wonderful-emails-with-mjml-and-mdx/
