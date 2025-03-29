@@ -1,4 +1,4 @@
-import { baseUrl, createMetadata } from '@/lib/metadata';
+import { createMetadata } from '@/lib/metadata';
 import type { Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import type { ReactNode } from 'react';
@@ -7,6 +7,7 @@ import 'katex/dist/katex.css';
 import { Body } from './layout.client';
 import { description as homeDescription } from './layout.config';
 import { Provider } from './provider';
+import { baseUrl } from '@/lib/constants';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',

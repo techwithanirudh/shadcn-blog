@@ -1,5 +1,6 @@
 import { createEnv } from '@t3-oss/env-nextjs';
 import { z } from 'zod';
+import { isProduction } from '@/lib/constants';
 
 export const env = createEnv({
   /**
@@ -15,7 +16,7 @@ export const env = createEnv({
     EMAIL_FROM: z.string().email(),
     // Authentication
     BETTER_AUTH_SECRET:
-      process.env.NODE_ENV === 'production'
+      isProduction
         ? z.string().min(1)
         : z.string().min(1).optional(),
     BETTER_AUTH_URL: z.string().min(1).optional(),
@@ -24,7 +25,7 @@ export const env = createEnv({
     GOOGLE_CLIENT_SECRET: z.string().min(1),
     // Github
     GITHUB_CLIENT_ID: z.string().min(1),
-    GITHUB_CLIENT_SECRET: z.string().min(1),
+    GITHUB_CLIENT_SECRET: z.string().min(1),    
     NODE_ENV: z
       .enum(['development', 'test', 'production'])
       .default('development'),
@@ -36,7 +37,9 @@ export const env = createEnv({
    * `NEXT_PUBLIC_`.
    */
   client: {
-    // NEXT_PUBLIC_CLIENTVAR: z.string(),
+    // Analytics
+    NEXT_PUBLIC_UMAMI_URL: z.string().url().optional(),
+    NEXT_PUBLIC_UMAMI_WEBSITE_ID: z.string().uuid().optional(),
   },
 
   /**
@@ -45,7 +48,9 @@ export const env = createEnv({
    */
   experimental__runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
-    // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
+
+    NEXT_PUBLIC_UMAMI_URL: process.env.NEXT_PUBLIC_UMAMI_URL,
+    NEXT_PUBLIC_UMAMI_WEBSITE_ID: process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
