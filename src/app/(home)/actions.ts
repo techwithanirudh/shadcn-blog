@@ -61,7 +61,7 @@ export const subscribeUser = actionClient
       await sendWelcomeEmail({
         posts,
         to: email,
-        firstName: firstName ?? 'there',
+        firstName: firstName || 'there',
       });
 
       return {
