@@ -3,6 +3,14 @@ import { z } from 'zod';
 
 export const env = createEnv({
   /**
+   * Specify your shared environment variables schema here. This way you can ensure the app
+   * isn't built with invalid env vars.
+   */
+  shared: {
+    NODE_ENV: z.enum(['development', 'production', 'test']).default('development')
+  },
+
+  /**
    * Specify your server-side environment variables schema here. This way you can ensure the app
    * isn't built with invalid env vars.
    */
