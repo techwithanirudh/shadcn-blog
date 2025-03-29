@@ -15,13 +15,15 @@ export const subscribeUser = actionClient
   .action(async ({ parsedInput: { email } }) => {
     const session = await getSession();
     const fullName = session?.user.name || '';
-    const { firstName, lastName } = fullName ? {
-      firstName: fullName.split(' ')?.[0],
-      lastName: fullName.split(' ')?.[1]
-    } : {
-      firstName: '',
-      lastName: ''
-    };
+    const { firstName, lastName } = fullName
+      ? {
+          firstName: fullName.split(' ')?.[0],
+          lastName: fullName.split(' ')?.[1],
+        }
+      : {
+          firstName: '',
+          lastName: '',
+        };
 
     try {
       const contact = await getContact({ email, audienceId });
@@ -50,7 +52,9 @@ export const subscribeUser = actionClient
       });
 
       if (!data || error) {
-        throw new Error(`Failed to create contact: ${error?.message || 'Unknown error'}`);
+        throw new Error(
+          `Failed to create contact: ${error?.message || 'Unknown error'}`,
+        );
       }
 
       const posts = getSortedByDatePosts();

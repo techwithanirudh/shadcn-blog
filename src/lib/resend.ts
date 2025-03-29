@@ -1,8 +1,7 @@
 import { Resend, type UpdateContactOptions } from 'resend';
 import NewsletterWelcomeEmail from '../../emails/newsletter-welcome';
-import { ActionError } from './safe-action';
-import type { getPosts } from './source';
 import { baseUrl } from './metadata';
+import type { getPosts } from './source';
 
 const resend = new Resend(process.env.RESEND_API_KEY as string);
 
@@ -40,7 +39,9 @@ export async function getContact({
   const { data: contacts, error } = await resend.contacts.list({ audienceId });
 
   if (error || !contacts) {
-    throw new Error(`Failed to list contacts: ${error?.message || 'Unknown error'}`);
+    throw new Error(
+      `Failed to list contacts: ${error?.message || 'Unknown error'}`,
+    );
   }
 
   const contact = contacts.data.find((contact) => contact.email === email);
