@@ -38,14 +38,7 @@ export const linkItems: LinkItemType[] = [
     type: 'custom',
     children: <UserButton />,
     secondary: true,
-  },
-  {
-    type: 'icon',
-    label: 'rss',
-    icon: <Icons.rss />,
-    text: 'RSS',
-    url: '/api/rss.xml',
-  },
+  }
 ];
 
 export const postsPerPage = 5;
