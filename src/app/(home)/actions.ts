@@ -14,8 +14,14 @@ export const subscribeUser = actionClient
   .schema(NewsletterSchema)
   .action(async ({ parsedInput: { email } }) => {
     const session = await getSession();
-    const fullName = session?.user?.name || '';
-    const [firstName = '', lastName = ''] = fullName.split(' ');
+    const fullName = session?.user.name || '';
+    const { firstName, lastName } = fullName ? {
+      firstName: fullName.split(' ')?.[0],
+      lastName: fullName.split(' ')?.[1]
+    } : {
+      firstName: '',
+      lastName: ''
+    };
 
     try {
       const contact = await getContact({ email, audienceId });
@@ -44,14 +50,14 @@ export const subscribeUser = actionClient
       });
 
       if (!data || error) {
-        throw new Error(`Failed to create contact: ${error?.message}`);
+        throw new Error(`Failed to create contact: ${error?.message || 'Unknown error'}`);
       }
 
       const posts = getSortedByDatePosts();
       await sendWelcomeEmail({
         posts,
         to: email,
-        name: firstName ?? 'there',
+        firstName: firstName ?? 'there',
       });
 
       return {
@@ -60,9 +66,7 @@ export const subscribeUser = actionClient
       };
     } catch (error) {
       console.error('Failed to subscribe:', error);
-      if (error instanceof ActionError) {
-        throw error;
-      }
-      throw new ActionError('Oops, something went wrong');
+      if (error instanceof ActionError) throw error;
+      throw new ActionError('Oops, something went wrong while subscribing.');
     }
   });

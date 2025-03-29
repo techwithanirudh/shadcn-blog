@@ -1,3 +1,4 @@
+import { baseUrl } from '@/lib/metadata';
 import {
   Body,
   Button,
@@ -18,7 +19,7 @@ import {
 } from '@react-email/components';
 
 interface NewsletterWelcomeEmailProps {
-  name: string;
+  firstName: string;
   posts: {
     title: string;
     description?: string;
@@ -29,10 +30,6 @@ interface NewsletterWelcomeEmailProps {
     url: string;
   }[];
 }
-
-const baseUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
-  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-  : 'http://localhost:3000';
 
 function PostCard({
   title,
@@ -70,7 +67,7 @@ function PostCard({
 }
 
 export default function NewsletterWelcomeEmail({
-  name,
+  firstName,
   posts,
 }: NewsletterWelcomeEmailProps) {
   return (
@@ -110,7 +107,7 @@ export default function NewsletterWelcomeEmail({
               <Heading className='my-4 font-medium text-4xl leading-tight'>
                 Welcome!
               </Heading>
-              <Text className='text-lg leading-8'>Hey {name},</Text>
+              <Text className='text-lg leading-8'>Hey {firstName},</Text>
               <Text className='text-lg leading-8'>
                 Thanks for subscribing to my newsletter! I&apos;m excited to
                 share my thoughts and ideas with you. You can expect an email
@@ -157,7 +154,7 @@ export default function NewsletterWelcomeEmail({
 }
 
 NewsletterWelcomeEmail.PreviewProps = {
-  name: 'Jane',
+  firstName: 'Jane',
   posts: [
     {
       title: 'Next.js Pages',
