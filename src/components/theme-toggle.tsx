@@ -1,21 +1,46 @@
 'use client';
-
-import { MoonIcon, SunIcon } from '@radix-ui/react-icons';
+import { cva } from 'class-variance-authority';
+import { Moon, Sun, Airplay } from 'lucide-react';
 import { useTheme } from 'next-themes';
-import * as React from 'react';
+import { type HTMLAttributes, useLayoutEffect, useState } from 'react';
+import { cn } from '@/lib/utils';
 
-import { Button } from '@/components/ui/button';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+const itemVariants = cva(
+  'size-6.5 rounded-full p-1.5 text-fd-muted-foreground',
+  {
+    variants: {
+      active: {
+        true: 'bg-fd-accent text-fd-accent-foreground',
+        false: 'text-fd-muted-foreground',
+      },
+    },
+  },
+);
 
-type Theme = 'light' | 'dark' | 'system';
+const full = [
+  ['light', Sun] as const,
+  ['dark', Moon] as const,
+  ['system', Airplay] as const,
+];
 
-export function ThemeToggle({ className }: { className?: string }) {
-  const { setTheme, theme: currentTheme } = useTheme();
+export function ThemeToggle({
+  className,
+  mode = 'light-dark',
+  ...props
+}: HTMLAttributes<HTMLElement> & {
+  mode?: 'light-dark' | 'light-dark-system';
+}) {
+  const { setTheme, theme: currentTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useLayoutEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const container = cn(
+    'inline-flex items-center rounded-full border p-1',
+    className,
+  );
 
   const handleChangeTheme = (theme: Theme) => {
     if (theme === currentTheme) return;
@@ -24,26 +49,46 @@ export function ThemeToggle({ className }: { className?: string }) {
     document.startViewTransition(() => setTheme(theme));
   };
 
+  if (mode === 'light-dark') {
+    const value = mounted ? resolvedTheme : null;
+
+    return (
+      <button
+        className={container}
+        aria-label={`Toggle Theme`}
+        onClick={() => handleChangeTheme(value === 'light' ? 'dark' : 'light')}
+        data-theme-toggle=""
+        {...props}
+      >
+        {full.map(([key, Icon]) => {
+          if (key === 'system') return;
+
+          return (
+            <Icon
+              key={key}
+              fill="currentColor"
+              className={cn(itemVariants({ active: value === key }))}
+            />
+          );
+        })}
+      </button>
+    );
+  }
+
+  const value = mounted ? currentTheme : null;
+
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant='outline' size='icon' className={className}>
-          <SunIcon className='dark:-rotate-90 h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:scale-0' />
-          <MoonIcon className='absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100' />
-          <span className='sr-only'>Toggle theme</span>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align='end'>
-        <DropdownMenuItem onClick={() => handleChangeTheme('light')}>
-          Light
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => handleChangeTheme('dark')}>
-          Dark
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => handleChangeTheme('system')}>
-          System
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <div className={container} data-theme-toggle="" {...props}>
+      {full.map(([key, Icon]) => (
+        <button
+          key={key}
+          aria-label={key}
+          className={cn(itemVariants({ active: value === key }))}
+          onClick={() => handleChangeTheme(key)}
+        >
+          <Icon className="size-full" fill="currentColor" />
+        </button>
+      ))}
+    </div>
   );
 }
