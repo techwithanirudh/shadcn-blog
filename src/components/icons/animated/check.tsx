@@ -82,6 +82,7 @@ const CheckIcon = forwardRef<CheckIconHandle, CheckIconProps>(
         onMouseLeave={handleMouseLeave}
         {...props}
       >
+        {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width={size}
