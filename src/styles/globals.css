@@ -128,8 +128,6 @@
   animation-name: reveal-dark;
 }
 
-
-
 @keyframes reveal-dark {
   from {
     clip-path: polygon(50% -71%, -50% 71%, -50% 71%, 50% -71%);

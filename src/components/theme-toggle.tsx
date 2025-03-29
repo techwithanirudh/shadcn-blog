@@ -1,12 +1,16 @@
 'use client';
+
+import { cn } from '@/lib/utils';
 import { cva } from 'class-variance-authority';
-import { Moon, Sun, Airplay } from 'lucide-react';
+import { Airplay, Moon, Sun } from 'lucide-react';
+import { motion } from 'motion/react';
 import { useTheme } from 'next-themes';
 import { type HTMLAttributes, useLayoutEffect, useState } from 'react';
-import { cn } from '@/lib/utils';
+
+type Theme = 'light' | 'dark' | 'system';
 
 const itemVariants = cva(
-  'size-6.5 rounded-full p-1.5 text-fd-muted-foreground',
+  'relative m-auto size-6.5 rounded-full p-1.5 text-fd-muted-foreground',
   {
     variants: {
       active: {
@@ -17,10 +21,22 @@ const itemVariants = cva(
   },
 );
 
-const full = [
-  ['light', Sun] as const,
-  ['dark', Moon] as const,
-  ['system', Airplay] as const,
+const themes = [
+  {
+    key: 'light',
+    icon: Sun,
+    label: 'Light theme',
+  },
+  {
+    key: 'dark',
+    icon: Moon,
+    label: 'Dark theme',
+  },
+  {
+    key: 'system',
+    icon: Airplay,
+    label: 'System theme',
+  },
 ];
 
 export function ThemeToggle({
@@ -55,20 +71,29 @@ export function ThemeToggle({
     return (
       <button
         className={container}
-        aria-label={`Toggle Theme`}
+        aria-label={'Toggle Theme'}
         onClick={() => handleChangeTheme(value === 'light' ? 'dark' : 'light')}
-        data-theme-toggle=""
+        data-theme-toggle=''
         {...props}
       >
-        {full.map(([key, Icon]) => {
+        {themes.map(({ key, icon: Icon, label }) => {
+          const isActive = value === key;
           if (key === 'system') return;
 
           return (
-            <Icon
-              key={key}
-              fill="currentColor"
-              className={cn(itemVariants({ active: value === key }))}
-            />
+            <div className='relative' key={key}>
+              {isActive && (
+                <motion.div
+                  layoutId='activeTheme'
+                  className='absolute inset-0 rounded-full bg-muted'
+                  transition={{ type: 'spring', duration: 0.5 }}
+                />
+              )}
+              <Icon
+                fill='currentColor'
+                className={cn(itemVariants({ active: isActive }))}
+              />
+            </div>
           );
         })}
       </button>
@@ -78,17 +103,37 @@ export function ThemeToggle({
   const value = mounted ? currentTheme : null;
 
   return (
-    <div className={container} data-theme-toggle="" {...props}>
-      {full.map(([key, Icon]) => (
-        <button
-          key={key}
-          aria-label={key}
-          className={cn(itemVariants({ active: value === key }))}
-          onClick={() => handleChangeTheme(key)}
-        >
-          <Icon className="size-full" fill="currentColor" />
-        </button>
-      ))}
+    <div className={container} data-theme-toggle='' {...props}>
+      {themes.map(({ key, icon: Icon, label }) => {
+        const isActive = value === key;
+
+        return (
+          <button
+            type='button'
+            key={key}
+            aria-label={label}
+            className={cn(itemVariants({ active: value === key }))}
+            onClick={() => handleChangeTheme(key as Theme)}
+          >
+            {isActive && (
+              <motion.div
+                layoutId='activeTheme'
+                className='absolute inset-0 rounded-full bg-muted'
+                transition={{ type: 'spring', duration: 0.5 }}
+              />
+            )}
+            <Icon
+              className={cn(
+                'relative m-auto size-full',
+                isActive
+                  ? 'text-fd-accent-foreground'
+                  : 'text-fd-muted-foreground',
+              )}
+              fill='currentColor'
+            />
+          </button>
+        );
+      })}
     </div>
   );
 }
