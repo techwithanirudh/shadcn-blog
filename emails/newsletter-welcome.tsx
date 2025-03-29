@@ -156,34 +156,34 @@ NewsletterWelcomeEmail.PreviewProps = {
   name: 'Jane',
   posts: [
     {
-      title: 'How to build a website with Next.js',
-      description:
-        'Learn how to build a website using Next.js, a popular React framework.',
-      date: new Date('2023-09-01'),
-      tags: ['Next.js', 'React', 'Web Development'],
-      image: 'https://misc-assets.raycast.com/wallpapers/autumnal-peach.png',
-      author: 'John Doe',
-      url: 'https://example.com/how-to-build-a-website-with-nextjs',
+      title: 'Next.js Pages',
+      description:  
+        'Dive into the details of Next.js Pages with examples, dynamic routing, pre-rendering strategies like Static Generation and SSR, and pro tips for building fast, SEO-friendly web apps. Packed with insights and tricks from my latest project!',
+      date: new Date('2025-03-21'),
+      tags: ['Next.js', 'Pages', 'Routing'],
+      image: 'http://localhost:3000/images/blog/pages.png',
+      author: 'You',
+      url: 'http://localhost:3000/posts/pages',
     },
     {
-      title: 'Understanding React Hooks',
+      title: 'Markdown Examples',
       description:
-        'A deep dive into React Hooks and how to use them effectively in your projects.',
-      date: new Date('2023-08-15'),
-      tags: ['React', 'JavaScript'],
-      image: 'https://misc-assets.raycast.com/wallpapers/blossom-2.png',
-      author: 'John Doe',
-      url: 'https://example.com/understanding-react-hooks',
+        'Learn to use Markdown for clean, structured formatting in blogs, docs, and notes. Explore examples, pro tips, and practical use cases to level up your writing and make your content easier to read, share, and maintain across platforms.',
+      date: new Date('2025-03-22'),
+      tags: ['Markdown', 'Docs', 'Writing'],
+      image: 'http://localhost:3000/images/blog/markdown-examples.png',
+      author: 'You',
+      url: 'http://localhost:3000/posts/markdown-examples',
     },
     {
-      title: 'CSS Grid vs Flexbox: When to Use Each',
+      title: 'Using MDX',
       description:
-        'A comprehensive guide on when to use CSS Grid and when to use Flexbox for layout.',
-      date: new Date('2023-07-20'),
-      tags: ['CSS', 'Web Design'],
-      image: 'https://misc-assets.raycast.com/wallpapers/blushing-fire.png',
-      author: 'John Doe',
-      url: 'https://example.com/css-grid-vs-flexbox-when-to-use-each',
+        'Learn MDX in Next.js to mix Markdown with React. This guide shows setup with @next/mdx, usage tips, and examples to embed JSX in posts—ideal for blogs, docs, and interactive tutorials.',
+      date: new Date('2025-03-23'),
+      tags: ['MDX', 'Next.js', 'React'],
+      image: 'http://localhost:3000/images/blog/using-mdx.png',
+      author: 'You',
+      url: 'http://localhost:3000/posts/using-mdx',
     },
-  ],
+  ]  
 } satisfies NewsletterWelcomeEmailProps;
