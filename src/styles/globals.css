@@ -145,3 +145,5 @@
     clip-path: polygon(171% 50%, 50% 171%, -50% 71%, 50% -71%);
   }
 }
+
+/* todo:  fix on view transition rerender of animation */
