@@ -7,7 +7,9 @@ export const env = createEnv({
    * isn't built with invalid env vars.
    */
   shared: {
-    NODE_ENV: z.enum(['development', 'production', 'test']).default('development')
+    NODE_ENV: z
+      .enum(['development', 'production', 'test'])
+      .default('development'),
   },
 
   /**
