@@ -14,16 +14,18 @@ const splitName = (name = '') => {
   const [firstName, ...lastName] = name.split(' ').filter(Boolean);
   return {
     firstName: firstName,
-    lastName: lastName.join(' ')
-  }
-}
+    lastName: lastName.join(' '),
+  };
+};
 
 export const subscribeUser = actionClient
   .schema(NewsletterSchema)
   .action(async ({ parsedInput: { email } }) => {
     const session = await getSession();
     const fullName = session?.user.name || '';
-    const { firstName, lastName } = fullName ? splitName(fullName) : { firstName: '', lastName: '' };
+    const { firstName, lastName } = fullName
+      ? splitName(fullName)
+      : { firstName: '', lastName: '' };
 
     try {
       const contact = await getContact({ email, audienceId });

@@ -38,7 +38,7 @@ export const linkItems: LinkItemType[] = [
     type: 'custom',
     children: <UserButton />,
     secondary: true,
-  }
+  },
 ];
 
 export const postsPerPage = 5;

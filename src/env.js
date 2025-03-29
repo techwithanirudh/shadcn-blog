@@ -1,6 +1,5 @@
 import { createEnv } from '@t3-oss/env-nextjs';
 import { z } from 'zod';
-import { isProduction } from '@/lib/constants';
 
 export const env = createEnv({
   /**
@@ -16,7 +15,7 @@ export const env = createEnv({
     EMAIL_FROM: z.string().email(),
     // Authentication
     BETTER_AUTH_SECRET:
-      isProduction
+      process.env.NODE_ENV === 'production'
         ? z.string().min(1)
         : z.string().min(1).optional(),
     BETTER_AUTH_URL: z.string().min(1).optional(),
@@ -25,7 +24,7 @@ export const env = createEnv({
     GOOGLE_CLIENT_SECRET: z.string().min(1),
     // Github
     GITHUB_CLIENT_ID: z.string().min(1),
-    GITHUB_CLIENT_SECRET: z.string().min(1),    
+    GITHUB_CLIENT_SECRET: z.string().min(1),
     NODE_ENV: z
       .enum(['development', 'test', 'production'])
       .default('development'),

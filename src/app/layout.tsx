@@ -4,10 +4,10 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import type { ReactNode } from 'react';
 import '@/styles/globals.css';
 import 'katex/dist/katex.css';
+import { baseUrl } from '@/lib/constants';
 import { Body } from './layout.client';
 import { description as homeDescription } from './layout.config';
 import { Provider } from './provider';
-import { baseUrl } from '@/lib/constants';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',

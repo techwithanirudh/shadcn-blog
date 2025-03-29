@@ -28,4 +28,3 @@ export function createMetadata(override: Metadata): Metadata {
     },
   };
 }
-

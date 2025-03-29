@@ -16,7 +16,7 @@ export function Provider({
       <TooltipProvider>
         <ViewTransition>{children}</ViewTransition>
       </TooltipProvider>
-      <Analytics /> 
+      <Analytics />
     </RootProvider>
   );
 }
