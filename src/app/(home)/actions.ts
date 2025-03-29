@@ -30,7 +30,7 @@ export const subscribeUser = actionClient
       });
 
       if (!data || error) {
-        throw new ActionError("Oops, we couldn't add you to our newsletter");
+        throw new Error(`Failed to create contact: ${error?.message}`);
       }
 
       const posts = getSortedByDatePosts();

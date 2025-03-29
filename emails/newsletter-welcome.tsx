@@ -126,9 +126,13 @@ export default function NewsletterWelcomeEmail({
             <Hr className='my-4' />
 
             <Section className='my-[16px]'>
-              {posts.map((post) => (
-                <PostCard key={post.url} {...post} />
-              ))}
+              {posts.length > 0 ? (
+                posts.map((post) => <PostCard key={post.url} {...post} />)
+              ) : (
+                <Text className='text-[16px] text-zinc-500 leading-[24px]'>
+                  Stay tuned for upcoming content!
+                </Text>
+              )}
             </Section>
 
             <Hr className='my-4' />
