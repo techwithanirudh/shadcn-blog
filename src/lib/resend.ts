@@ -1,37 +1,39 @@
-import { Resend } from 'resend';
+import { Resend, type UpdateContactOptions } from 'resend';
 import NewsletterWelcomeEmail from '../../emails/newsletter-welcome';
 import { ActionError } from './safe-action';
 import type { getPosts } from './source';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-// export async function getContact({
-//   email,
-//   audienceId,
-// }: {
-//   email: string;
-//   audienceId: string;
-// }) {
-//   try {
-//     const { data, error } = await resend.contacts.update({
-//       email: email,
-//       audienceId: audienceId,
-//     });
+export async function updateContact({
+  email,
+  audienceId,
+  ...props
+}: {
+  email: string;
+  audienceId: string;
+} & Omit<UpdateContactOptions, 'email' | 'audienceId'>) {
+  try {
+    const { data, error } = await resend.contacts.update({
+      email: email,
+      audienceId: audienceId,
+      ...props,
+    });
 
-//     if (!data || error) {
-//       if (error?.name === 'not_found') {
-//         return null;
-//       }
+    if (!data || error) {
+      if (error?.name === 'not_found') {
+        return null;
+      }
 
-//       throw new Error(`Failed to get contact: ${error?.message}`);
-//     }
+      throw new Error(`Failed to get contact: ${error?.message}`);
+    }
 
-//     return data;
-//   } catch (error) {
-//     console.error('Error fetching contact:', error);
-//     throw new ActionError('Failed to validate contact');
-//   }
-// }
+    return data;
+  } catch (error) {
+    console.error('Error fetching contact:', error);
+    throw new ActionError('Failed to validate contact');
+  }
+}
 
 export async function getContact({
   email,
