@@ -145,3 +145,5 @@
     clip-path: inset(0 0 0 0);
   }
 }
+
+/* todo: fix global view transistion trigger on load: NOT FIXED */
