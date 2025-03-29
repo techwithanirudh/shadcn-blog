@@ -157,7 +157,7 @@ NewsletterWelcomeEmail.PreviewProps = {
   posts: [
     {
       title: 'Next.js Pages',
-      description:  
+      description:
         'Dive into the details of Next.js Pages with examples, dynamic routing, pre-rendering strategies like Static Generation and SSR, and pro tips for building fast, SEO-friendly web apps. Packed with insights and tricks from my latest project!',
       date: new Date('2025-03-21'),
       tags: ['Next.js', 'Pages', 'Routing'],
@@ -185,5 +185,5 @@ NewsletterWelcomeEmail.PreviewProps = {
       author: 'You',
       url: 'http://localhost:3000/posts/using-mdx',
     },
-  ]  
+  ],
 } satisfies NewsletterWelcomeEmailProps;
