@@ -100,7 +100,10 @@ export function ThemeToggle({
               <motion.div
                 layoutId='activeTheme'
                 className='absolute inset-0 rounded-full bg-accent'
-                transition={{ type: 'spring', duration: mode === 'light-dark' ? 1.5 : 1 }}
+                transition={{
+                  type: 'spring',
+                  duration: mode === 'light-dark' ? 1.5 : 1,
+                }}
               />
             )}
             <Icon
