@@ -8,7 +8,7 @@
     "build": "next build",
     "preview": "next build && next start",
     "postbuild": "next-sitemap",
-    "dev": "next dev --turbo",
+    "dev": "next dev",
     "start": "next start",
     "format": "biome format --write .",
     "lint": "tsx ./scripts/lint.mts && biome lint .",

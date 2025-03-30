@@ -4,6 +4,7 @@ import { Section } from '@/components/section';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { getLinks } from 'fumadocs-ui/layouts/shared';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function HeroSection() {
@@ -13,7 +14,15 @@ export default function HeroSection() {
   );
 
   return (
-    <Section className='relative overflow-hidden bg-dashed px-4 py-20 sm:py-32 md:px-6'>
+    <Section className='relative overflow-hidden overflow-hidden bg-dashed px-4 py-20 sm:py-32 md:px-6'>
+      <Image
+        src='/images/hero-gradient.png'
+        alt='Hero Background'
+        height={600}
+        width={704}
+        className='absolute right-0 bottom-0 h-[900px] w-[1004px] max-w-[1004px] translate-x-1/2 translate-y-1/2 opacity-80 dark:opacity-100'
+        priority
+      />
       <div className='relative z-10 mx-auto max-w-4xl text-center'>
         <div className='mb-6 flex items-center justify-center space-x-2'>
           <Icons.code className='h-6 w-6 text-primary transition-transform hover:scale-125' />
