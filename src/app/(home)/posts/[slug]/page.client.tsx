@@ -16,7 +16,6 @@ export function Share({ url }: { url: string }): React.ReactElement {
   const iconRef = useRef<ShareIconHandle>(null);
   const [_, copyToClipboard] = useCopyToClipboard();
 
-
   const onClick = async (): Promise<void> => {
     await copyToClipboard(`${window.location.origin}${url}`);
     toast.success('Copied to clipboard!', {
@@ -33,7 +32,7 @@ export function Share({ url }: { url: string }): React.ReactElement {
       onMouseEnter={() => iconRef.current?.startAnimation?.()}
       onMouseLeave={() => iconRef.current?.stopAnimation?.()}
     >
-      <ShareIcon className='size-4' ref={iconRef} />
+      <ShareIcon className='size-4 hover:bg-transparent' ref={iconRef} />
       Share Post
     </Button>
   );
