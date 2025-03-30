@@ -43,7 +43,7 @@ const Pagination = ({ pageIndex }: { pageIndex: number }) => {
         paginationItemsToDisplay={5}
         onPageChange={handlePageChange}
       />
-    </Section >
+    </Section>
   );
 };
 

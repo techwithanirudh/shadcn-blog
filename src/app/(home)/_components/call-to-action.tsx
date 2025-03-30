@@ -1,8 +1,8 @@
 import { NewsletterForm } from '@/components/newsletter-form';
+import { Section } from '@/components/section';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
-import { Section } from '@/components/section';
 import type React from 'react';
 
 export function CTA(): React.ReactElement {
@@ -13,8 +13,8 @@ export function CTA(): React.ReactElement {
           Subscribe to the Newsletter
         </h2>
         <p className='text-muted-foreground text-sm md:text-base'>
-          Get the latest articles and updates delivered straight to your
-          inbox. No spam, unsubscribe anytime.
+          Get the latest articles and updates delivered straight to your inbox.
+          No spam, unsubscribe anytime.
         </p>
       </div>
 

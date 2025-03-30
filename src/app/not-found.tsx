@@ -1,10 +1,10 @@
 import { Header } from '@/components/header';
+import { Section } from '@/components/section';
 import { createMetadata } from '@/lib/metadata';
 import { HomeLayout } from 'fumadocs-ui/layouts/home';
 import { getLinks } from 'fumadocs-ui/layouts/shared';
 import type { Metadata } from 'next';
 import { baseOptions, linkItems } from './layout.config';
-import { Section } from '@/components/section';
 
 export default function NotFound() {
   return (

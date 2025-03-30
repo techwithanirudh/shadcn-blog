@@ -13,7 +13,7 @@ export function Footer() {
   );
 
   return (
-    <Section className="px-4 py-6">
+    <Section className='px-4 py-6'>
       <div className='flex flex-col items-center justify-between gap-8 md:flex-row'>
         <div className='flex items-center gap-2'>
           <span className='font-bold text-2xl'>{title}</span>
