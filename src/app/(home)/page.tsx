@@ -2,7 +2,6 @@ import Hero from '@/app/(home)/_components/hero';
 import Posts from '@/app/(home)/_components/posts';
 import { Icons } from '@/components/icons/icons';
 import { Section } from '@/components/section';
-import Separator from '@/components/separator';
 import { getSortedByDatePosts } from '@/lib/source';
 import { CTA } from './_components/call-to-action';
 
@@ -20,9 +19,9 @@ export default function Home() {
           </span>
         </h2>
       </Section>
-      <Separator />
+      {/* <Separator /> */}
       <Posts posts={posts} />
-      <Separator />
+      {/* <Separator /> */}
       <CTA />
     </>
   );

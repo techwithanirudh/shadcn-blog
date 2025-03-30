@@ -26,12 +26,12 @@ export const Section = ({ children, className, ...props }: SectionProps) => (
       >
         {children}
       </div>
-      {/* <div className='-bottom-3 -left-3 absolute z-10 hidden h-6 sm:block'>
+      <div className='-bottom-3 -left-3 absolute z-10 hidden h-6 sm:block'>
         <Cross />
       </div>
       <div className='-bottom-3 -right-3 -translate-x-px absolute z-10 hidden h-6 sm:block'>
         <Cross />
-      </div> */}
+      </div>
     </div>
   </section>
 );
