@@ -111,6 +111,7 @@ export default async function Page(props: {
               <PostCard
                 title={post.data.title}
                 description={post.data.description ?? ''}
+                image={post.data.image}
                 url={post.url}
                 date={date}
                 key={post.url}
