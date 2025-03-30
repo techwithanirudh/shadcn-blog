@@ -2,8 +2,8 @@ import { postsPerPage } from '@/app/layout.config';
 import { Icons } from '@/components/icons/icons';
 import { TagJsonLd } from '@/components/json-ld';
 import { NumberedPagination } from '@/components/numbered-pagination';
-import PageHeader from '@/components/page-header';
 import { PostCard } from '@/components/posts/post-card';
+import { Section } from '@/components/section';
 import { createMetadata } from '@/lib/metadata';
 import { getPostsByTag, getTags } from '@/lib/source';
 import type { Metadata, ResolvingMetadata } from 'next';
@@ -44,7 +44,7 @@ const Header = ({
   startIndex: number;
   endIndex: number;
 }) => (
-  <PageHeader>
+  <Section className='px-4 py-6'>
     <div className='flex items-center gap-2'>
       <Icons.tag
         size={20}
@@ -59,7 +59,7 @@ const Header = ({
         />
       </h1>
     </div>
-  </PageHeader>
+  </Section>
 );
 
 const Pagination = ({ pageIndex, tag }: { pageIndex: number; tag: string }) => {

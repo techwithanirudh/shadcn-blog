@@ -4,6 +4,7 @@ import { HomeLayout } from 'fumadocs-ui/layouts/home';
 import { getLinks } from 'fumadocs-ui/layouts/shared';
 import type { Metadata } from 'next';
 import { baseOptions, linkItems } from './layout.config';
+import { Section } from '@/components/section';
 
 export default function NotFound() {
   return (
@@ -20,7 +21,7 @@ export default function NotFound() {
       }}
       className='pt-0'
     >
-      <div className='container-wrapper flex flex-1'>
+      <Section className='flex flex-1'>
         <div className='flex flex-auto flex-col items-center justify-center px-4 text-center sm:flex-row'>
           <h1 className='border-border font-extrabold text-2xl text-foreground tracking-tight sm:mr-6 sm:border-r sm:pr-6 sm:text-3xl'>
             404
@@ -29,7 +30,7 @@ export default function NotFound() {
             This page could not be found.
           </h2>
         </div>
-      </div>
+      </Section>
     </HomeLayout>
   );
 }
