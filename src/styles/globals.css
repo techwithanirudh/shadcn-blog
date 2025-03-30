@@ -56,6 +56,11 @@
   a {
     @apply [overflow-wrap:anywhere];
   }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
 }
 
 @layer base {
