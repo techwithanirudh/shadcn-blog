@@ -1,10 +1,10 @@
 import { baseOptions, linkItems, title } from '@/app/layout.config';
 import { owner } from '@/app/layout.config';
+import { cn } from '@/lib/utils';
 import { getLinks } from 'fumadocs-ui/layouts/shared';
 import Link from 'next/link';
 import React from 'react';
 import { InlineLink } from './inline-link';
-import { cn } from '@/lib/utils';
 
 export function Footer() {
   const links = getLinks(linkItems, baseOptions.githubUrl);
@@ -13,10 +13,12 @@ export function Footer() {
   );
 
   return (
-    <footer className={cn(
-      'container mx-auto flex flex-col gap-4 px-4 py-8',
-      'sm:gap-16 sm:px-8 sm:py-16'
-    )}>
+    <footer
+      className={cn(
+        'container mx-auto flex flex-col gap-4 p-4 lg:p-6',
+        'border-border/70 border-dashed sm:border-x dark:border-border',
+      )}
+    >
       <div className='flex flex-col items-center justify-between gap-8 md:flex-row'>
         <div className='flex items-center gap-2'>
           <span className='font-bold text-2xl'>{title}</span>

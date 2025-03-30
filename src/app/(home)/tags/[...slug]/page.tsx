@@ -44,7 +44,7 @@ const Header = ({
   startIndex: number;
   endIndex: number;
 }) => (
-  <Section className='px-4 py-6'>
+  <Section className='p-4 lg:p-6'>
     <div className='flex items-center gap-2'>
       <Icons.tag
         size={20}
@@ -105,24 +105,22 @@ export default async function Page(props: {
   return (
     <>
       <Header tag={tag} startIndex={startIndex} endIndex={endIndex} />
-      <div className='container-wrapper flex-1'>
-        <div>
-          <div className='grid divide-y divide-dashed divide-border/70 text-left dark:divide-border'>
-            {posts.map((post) => {
-              const date = new Date(post.data.date).toDateString();
-              return (
-                <PostCard
-                  title={post.data.title}
-                  description={post.data.description ?? ''}
-                  url={post.url}
-                  date={date}
-                  key={post.url}
-                />
-              );
-            })}
-          </div>
+      <Section>
+        <div className='grid divide-y divide-dashed divide-border/70 text-left dark:divide-border'>
+          {posts.map((post) => {
+            const date = new Date(post.data.date).toDateString();
+            return (
+              <PostCard
+                title={post.data.title}
+                description={post.data.description ?? ''}
+                url={post.url}
+                date={date}
+                key={post.url}
+              />
+            );
+          })}
         </div>
-      </div>
+      </Section>
       {pageCount(tag) > 1 && <Pagination pageIndex={pageIndex} tag={tag} />}
       <TagJsonLd tag={tag} />
     </>

@@ -62,7 +62,7 @@ export default async function Page(props: {
 
   return (
     <>
-      <Section className='px-4 py-6'>
+      <Section className='p-4 lg:p-6'>
         <h1 className='font-bold text-3xl leading-tight tracking-tighter md:text-4xl'>
           All {totalPosts} Posts{' '}
           <CurrentPostsCount startIndex={startIndex} endIndex={endIndex} />

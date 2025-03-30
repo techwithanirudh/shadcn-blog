@@ -18,7 +18,7 @@ function Header(props: { page: MDXPage; tags?: string[] }) {
   const { page, tags } = props;
 
   return (
-    <Section className='px-4 py-6'>
+    <Section className='p-4 lg:p-6'>
       <div
         className={cn(
           'flex flex-col items-start justify-center gap-4 py-8 md:gap-6',

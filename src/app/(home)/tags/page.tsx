@@ -10,13 +10,13 @@ export default function Page() {
   const tags = getTags();
 
   return (
-    <div className='flex flex-1 flex-col'>
-      <Section className='px-4 py-6'>
+    <>
+      <Section className='p-4 lg:p-6'>
         <h1 className='font-bold text-3xl leading-tight tracking-tighter md:text-4xl'>
           Tags
         </h1>
       </Section>
-      <Section className='flex-1'>
+      <Section>
         <div className='grid grid-cols-1 divide-y divide-dashed divide-border/70 sm:grid-cols-2 lg:grid-cols-4 dark:divide-border'>
           {tags.map((tag, index) => (
             <TagCard
@@ -34,7 +34,7 @@ export default function Page() {
           )}
         </div>
       </Section>
-    </div>
+    </>
   );
 }
 
