@@ -13,7 +13,7 @@ export default function HeroSection() {
   );
 
   return (
-    <Section className='relative overflow-hidden bg-dashed px-6 py-20 sm:py-32'>
+    <Section className='relative overflow-hidden bg-dashed px-4 py-20 sm:py-32 md:px-6'>
       <div className='relative z-10 mx-auto max-w-4xl text-center'>
         <div className='mb-6 flex items-center justify-center space-x-2'>
           <Icons.code className='h-6 w-6 text-primary transition-transform hover:scale-125' />

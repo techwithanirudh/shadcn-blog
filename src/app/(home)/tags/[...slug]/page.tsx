@@ -69,16 +69,14 @@ const Pagination = ({ pageIndex, tag }: { pageIndex: number; tag: string }) => {
   };
 
   return (
-    <div className='border-grid border-t'>
-      <div className='container-wrapper bg-dashed'>
-        <NumberedPagination
-          currentPage={pageIndex + 1}
-          totalPages={pageCount(tag)}
-          paginationItemsToDisplay={5}
-          onPageChange={handlePageChange}
-        />
-      </div>
-    </div>
+    <Section className='bg-dashed'>
+      <NumberedPagination
+        currentPage={pageIndex + 1}
+        totalPages={pageCount(tag)}
+        paginationItemsToDisplay={5}
+        onPageChange={handlePageChange}
+      />
+    </Section>
   );
 };
 

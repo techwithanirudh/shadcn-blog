@@ -26,7 +26,7 @@ export const Navbar = (props: HTMLAttributes<HTMLElement>) => {
       >
         <div
           className={cn(
-            'container mx-auto flex size-full h-14 flex-row items-center px-4 md:gap-1.5 lg:px-8',
+            'container mx-auto flex size-full h-14 flex-row items-center px-4 md:gap-1.5 lg:px-6',
             'border-border/70 border-dashed sm:border-x dark:border-border',
           )}
         >

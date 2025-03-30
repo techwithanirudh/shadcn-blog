@@ -16,3 +16,4 @@
 - So, when a user is re-putting their email it might mean they like to resubscribe, so update to unsubscribe: false
 - look at https://www.joshwcomeau.com/react/wonderful-emails-with-mjml-and-mdx/
 - Marquee footer like https://21st.dev/serafimcloud/marquee/default
+- fix flex-1 not as it is grid
