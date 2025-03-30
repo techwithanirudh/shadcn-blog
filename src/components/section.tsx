@@ -10,7 +10,7 @@ const Cross = () => (
     <div className='absolute top-3 h-px w-6 bg-background' />
 
     <div className='-translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2'>
-      <PlusIcon size={20} className='text-border' />
+      <PlusIcon size={20} className='text-border/70 dark:text-border' />
     </div>
   </div>
 );
@@ -26,12 +26,12 @@ export const Section = ({ children, className, ...props }: SectionProps) => (
       >
         {children}
       </div>
-      <div className='-bottom-3 -left-3 absolute z-10 hidden h-6 sm:block'>
+      {/* <div className='-bottom-3 -left-3 absolute z-10 hidden h-6 sm:block'>
         <Cross />
       </div>
       <div className='-bottom-3 -right-3 -translate-x-px absolute z-10 hidden h-6 sm:block'>
         <Cross />
-      </div>
+      </div> */}
     </div>
   </section>
 );
