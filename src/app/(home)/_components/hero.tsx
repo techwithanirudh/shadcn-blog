@@ -17,7 +17,7 @@ export default function HeroSection() {
         <div className='container relative overflow-hidden bg-dashed px-6 py-20 sm:py-32'>
           <div className='relative z-10 mx-auto max-w-4xl text-center'>
             <div className='mb-6 flex items-center justify-center space-x-2'>
-              <Icons.code className='h-6 w-6 text-primary' />
+              <Icons.code className='h-6 w-6 text-primary transition-transform hover:scale-125' />
               <span className='font-medium text-muted-foreground text-sm'>
                 Full-Stack Developer & Tech Writer
               </span>

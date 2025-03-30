@@ -46,7 +46,10 @@ const Header = ({
 }) => (
   <PageHeader>
     <div className='flex items-center gap-2'>
-      <Icons.tag size={20} className='text-muted-foreground' />
+      <Icons.tag
+        size={20}
+        className='text-muted-foreground transition-transform hover:rotate-12 hover:scale-125'
+      />
       <h1 className='font-bold text-3xl leading-tight tracking-tighter md:text-4xl'>
         {tag} <span className='text-muted-foreground'>Posts</span>{' '}
         <CurrentPostsCount
