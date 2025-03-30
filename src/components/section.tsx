@@ -2,7 +2,9 @@ import { cn } from '@/lib/utils';
 import { PlusIcon } from 'lucide-react';
 import type { HTMLAttributes } from 'react';
 
-type SectionProps = HTMLAttributes<HTMLDivElement>;
+type SectionProps = {
+  sectionClassName?: string;
+} & HTMLAttributes<HTMLDivElement>;
 
 const Cross = () => (
   <div className='relative h-6 w-6'>
@@ -15,8 +17,13 @@ const Cross = () => (
   </div>
 );
 
-export const Section = ({ children, className, ...props }: SectionProps) => (
-  <section {...props}>
+export const Section = ({
+  children,
+  sectionClassName,
+  className,
+  ...props
+}: SectionProps) => (
+  <section className={sectionClassName} {...props}>
     <div className='container relative mx-auto'>
       <div
         className={cn(

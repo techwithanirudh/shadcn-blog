@@ -19,9 +19,7 @@ export default function Home() {
           </span>
         </h2>
       </Section>
-      {/* <Separator /> */}
       <Posts posts={posts} />
-      {/* <Separator /> */}
       <CTA />
     </>
   );

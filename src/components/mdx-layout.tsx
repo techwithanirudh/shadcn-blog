@@ -27,7 +27,7 @@ export default function MdxLayout({
         </h1>
       </Section>
 
-      <Section>
+      <Section className='h-full' sectionClassName='flex flex-1'>
         <article className='flex min-h-full flex-col lg:flex-row'>
           <div className='flex flex-1 flex-col gap-4'>
             {toc?.length ? (
