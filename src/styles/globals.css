@@ -75,7 +75,7 @@
 
 @layer utilities {
   .container {
-    @apply px-4 xl:px-6;
+    padding-inline: 0rem;
   }
 
   .bg-dashed {
