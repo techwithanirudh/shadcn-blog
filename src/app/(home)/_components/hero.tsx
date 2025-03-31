@@ -14,7 +14,7 @@ export default function HeroSection() {
   );
 
   return (
-    <Section className='relative overflow-hidden overflow-hidden bg-dashed px-4 py-20 sm:py-32 md:px-6'>
+    <Section className='relative overflow-hidden bg-dashed px-4 py-20 sm:py-32 md:px-6'>
       <Image
         src='/images/hero-gradient.png'
         alt='Hero Background'
