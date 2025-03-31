@@ -2,8 +2,6 @@ import { baseOptions, linkItems, title } from '@/app/layout.config';
 import { owner } from '@/app/layout.config';
 import { cn } from '@/lib/utils';
 import { getLinks } from 'fumadocs-ui/layouts/shared';
-import Link from 'next/link';
-import React from 'react';
 import { InlineLink } from './inline-link';
 
 export function Footer() {
