@@ -7,7 +7,7 @@ import {
   LargeSearchToggle,
   SearchToggle,
 } from 'fumadocs-ui/components/layout/search-toggle';
-import { ThemeToggle } from '../theme-toggle';
+import { ThemeToggle } from '../../theme-toggle';
 import { NavigationMenuList } from 'fumadocs-ui/components/ui/navigation-menu';
 import type { HomeLayoutProps } from 'fumadocs-ui/layouts/home';
 import {

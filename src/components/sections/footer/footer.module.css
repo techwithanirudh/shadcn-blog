@@ -1,0 +1,41 @@
+.footer {
+    --footer-text-size: clamp(3rem, 14rem, 14vw);
+
+    display: flex;
+    justify-content: center;
+    color: var(--color-neutral-500);
+    position: relative;
+    overflow: clip;
+    min-height: var(--footer-text-size);
+}
+
+.footer-text {
+    text-rendering: geometricPrecision;
+    font-weight: 900;
+    font-size: var(--footer-text-size);
+    letter-spacing: 0;
+    opacity: 0.3;
+    position: absolute;
+    bottom: calc(-1 * var(--footer-text-size) / 1.6);
+}
+
+.footer-grid {
+    background-color: transparent;
+    background-image: radial-gradient(transparent 1px, rgb(0, 0, 0) 1px);
+    background-size: 4px 4px;
+    backdrop-filter: blur(3px);
+    mask: linear-gradient(rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0, 0.6) 100%);
+    opacity: 1;
+    position: absolute;
+    inset: 0;
+    overflow: visible;
+    z-index: 1;
+    flex: none;
+}
+
+.footer-gradient {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(0, 0, 0, 0) 0% 50%,
+            rgba(0, 0, 0, 0.5) 100%);
+}

@@ -1,7 +1,7 @@
 'use client';
 
 import { baseOptions, linkItems } from '@/app/layout.config';
-import { Header } from '@/components/header';
+import { Header } from '@/components/sections/header';
 import { Icons } from '@/components/icons/icons';
 import { Button } from '@/components/ui/button';
 import {
