@@ -4,6 +4,7 @@ import { Icons } from '@/components/icons/icons';
 import { Section } from '@/components/section';
 import { getSortedByDatePosts } from '@/lib/source';
 import { CTA } from './_components/call-to-action';
+import Separator from '@/components/separator';
 
 export default function Home() {
   const posts = getSortedByDatePosts().slice(0, 3);
@@ -19,7 +20,9 @@ export default function Home() {
           </span>
         </h2>
       </Section>
+      <Separator />
       <Posts posts={posts} />
+      <Separator />
       <CTA />
     </>
   );
