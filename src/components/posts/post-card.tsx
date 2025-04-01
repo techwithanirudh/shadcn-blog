@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type React from 'react';
 import Balancer from 'react-wrap-balancer';
+import { BlurImage } from '@/components/blur-image';
 
 interface PostCardProps {
   title: string;
@@ -40,13 +41,14 @@ export const PostCard: React.FC<PostCardProps> = ({
       </div>
 
       {image && (
-        <div className='relative order-1 aspect-video min-h-[170px] w-full max-w-full md:order-2 md:w-auto md:max-w-[250px] lg:max-w-[300px]'>
-          <Image
+        <div className='relative order-1 aspect-video min-h-[170px] w-full max-w-full md:order-2 md:w-auto md:max-w-[250px] lg:max-w-[300px] group'>
+          <BlurImage
             src={image}
             alt={title}
             fill
             sizes='(max-width: 768px) 100vw, (max-width: 1024px) 300px, 350px'
-            className='rounded-lg object-cover transition-transform duration-200 hover:scale-105'
+            imageClassName='object-cover transition-transform duration-200 group-hover:scale-105 rounded-lg'
+            className='rounded-lg'
           />
         </div>
       )}
