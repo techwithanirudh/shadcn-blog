@@ -7,7 +7,7 @@ import { getLinks } from 'fumadocs-ui/layouts/shared';
 import Image from 'next/image';
 import Link from 'next/link';
 import Balancer from 'react-wrap-balancer';
-import heroImage from '../../../../public/images/hero-gradient.png'
+import heroImage from '../../../../public/images/hero-gradient.png';
 
 const Hero = () => {
   const links = getLinks(linkItems, baseOptions.githubUrl);
@@ -16,7 +16,7 @@ const Hero = () => {
   );
 
   return (
-    <Section className='relative overflow-hidden flex flex-col items-center justify-center gap-6 bg-dashed px-4 py-16 sm:px-16 sm:py-24 md:py-32'>
+    <Section className='relative flex flex-col items-center justify-center gap-6 overflow-hidden bg-dashed px-4 py-16 sm:px-16 sm:py-24 md:py-32'>
       <Image
         src={heroImage}
         alt='Hero Background'

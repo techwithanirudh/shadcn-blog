@@ -1,9 +1,8 @@
+import { BlurImage } from '@/components/blur-image';
 import { CalendarIcon } from 'lucide-react';
-import Image from 'next/image';
 import Link from 'next/link';
 import type React from 'react';
 import Balancer from 'react-wrap-balancer';
-import { BlurImage } from '@/components/blur-image';
 
 interface PostCardProps {
   title: string;
@@ -41,7 +40,7 @@ export const PostCard: React.FC<PostCardProps> = ({
       </div>
 
       {image && (
-        <div className='relative order-1 aspect-video min-h-[170px] w-full max-w-full md:order-2 md:w-auto md:max-w-[250px] lg:max-w-[300px] group'>
+        <div className='group relative order-1 aspect-video min-h-[170px] w-full max-w-full md:order-2 md:w-auto md:max-w-[250px] lg:max-w-[300px]'>
           <BlurImage
             src={image}
             alt={title}
