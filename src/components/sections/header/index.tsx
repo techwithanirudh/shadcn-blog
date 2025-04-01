@@ -7,7 +7,6 @@ import {
   LargeSearchToggle,
   SearchToggle,
 } from 'fumadocs-ui/components/layout/search-toggle';
-import { ThemeToggle } from '../../theme-toggle';
 import { NavigationMenuList } from 'fumadocs-ui/components/ui/navigation-menu';
 import type { HomeLayoutProps } from 'fumadocs-ui/layouts/home';
 import {
@@ -19,6 +18,7 @@ import {
 import type { LinkItemType } from 'fumadocs-ui/layouts/links';
 import { SearchOnly } from 'fumadocs-ui/provider';
 import { ChevronDown, Languages } from 'lucide-react';
+import { ThemeToggle } from '../../theme-toggle';
 import { Menu, MenuContent, MenuLinkItem, MenuTrigger } from './menu';
 import { Navbar, NavbarMenuLink } from './navbar';
 
