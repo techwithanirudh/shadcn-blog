@@ -5,7 +5,6 @@ import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { getLinks } from 'fumadocs-ui/layouts/shared';
 import Link from 'next/link';
-import Balancer from 'react-wrap-balancer';
 
 export default function HeroSection() {
   const links = getLinks(linkItems, baseOptions.githubUrl);
@@ -36,11 +35,9 @@ export default function HeroSection() {
         </h1>
 
         <p className='mx-auto mb-10 max-w-2xl text-lg text-muted-foreground'>
-          <Balancer>
-            I write about web development, software engineering, and the latest
-            technologies. Join me as I share insights, tutorials, and thoughts
-            on building modern applications.
-          </Balancer>
+          I write about web development, software engineering, and the latest
+          technologies. Join me as I share insights, tutorials, and thoughts on
+          building modern applications.
         </p>
 
         <div className='flex flex-wrap items-center justify-center gap-4'>
