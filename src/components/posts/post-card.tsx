@@ -47,7 +47,6 @@ export const PostCard: React.FC<PostCardProps> = ({
             src={image}
             alt={title}
             className='relative rounded-lg'
-            lazy={false}
           />
         </div>
       )}
