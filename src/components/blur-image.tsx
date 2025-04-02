@@ -22,7 +22,7 @@ const BlurImage = (props: ImageProps) => {
     >
       <NextImage
         className={cn(
-          isLoading && 'scale-[1.02] blur-xl grayscale',
+          isLoading && 'blur-xl grayscale',
           imageClassName,
         )}
         style={{
