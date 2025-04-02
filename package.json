@@ -7,7 +7,7 @@
     "postinstall": "fumadocs-mdx",
     "build": "next build",
     "preview": "next build && next start",
-    "postbuild": "next-sitemap",
+    "postbuild": "next-sitemap --config next-sitemap.config.cjs",
     "dev": "next dev",
     "start": "next start",
     "format": "biome format --write .",
