@@ -46,7 +46,7 @@ export const PostCard: React.FC<PostCardProps> = ({
             height={554}
             src={image}
             alt={title}
-            className='overflow-hidden rounded-lg'
+            className='relative rounded-lg'
           />
         </div>
       )}
