@@ -40,7 +40,7 @@ export const PostCard: React.FC<PostCardProps> = ({
       </div>
 
       {image && (
-        <div className='group relative order-1 md:order-2 hover:scale-105 transition-transform col-span-1 inline-flex items-center justify-center'>
+        <div className='group relative order-1 col-span-1 inline-flex items-center justify-center transition-transform hover:scale-105 md:order-2'>
           <BlurImage
             width={853}
             height={554}
