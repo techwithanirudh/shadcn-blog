@@ -26,7 +26,8 @@ export function Footer() {
       <div
         className={cn(
           "grid gap-8 text-muted-foreground text-sm sm:grid-cols-4",
-          "container mx-auto sm:gap-16 sm:px-8 sm:py-16"
+          "container mx-auto sm:gap-16 sm:px-8 sm:py-16",
+          "border-border/70 border-dashed border-b dark:border-border",
         )}
       >
         <div className="flex flex-col gap-6">
@@ -102,7 +103,7 @@ export function Footer() {
           </ul>
         </div>
       </div>
-      <Design />
+      {/* <Design /> */}
     </footer>
   );
 }
