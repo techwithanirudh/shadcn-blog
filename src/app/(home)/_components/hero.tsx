@@ -4,11 +4,11 @@ import { Section } from '@/components/section';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { getLinks } from 'fumadocs-ui/layouts/shared';
+import * as motion from 'motion/react-client';
 import Image from 'next/image';
 import Link from 'next/link';
 import Balancer from 'react-wrap-balancer';
 import heroImage from '../../../../public/images/gradient-noise-purple-azure-light.png';
-import * as motion from 'motion/react-client';
 
 const Hero = () => {
   const links = getLinks(linkItems, baseOptions.githubUrl);
@@ -23,9 +23,11 @@ const Hero = () => {
         animate={{ opacity: 1 }}
         transition={{
           duration: 0.4,
-          scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
+          scale: { type: 'spring', visualDuration: 0.4, bounce: 0.5 },
         }}
-        className='absolute inset-0 -z-10 h-full w-full'
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        className='-z-10 absolute inset-0 h-full w-full'
       >
         <Image
           src={heroImage}

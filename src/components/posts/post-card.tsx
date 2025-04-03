@@ -3,7 +3,6 @@ import { CalendarIcon, UserIcon } from 'lucide-react';
 import Link from 'next/link';
 import type React from 'react';
 import Balancer from 'react-wrap-balancer';
-import { TagCard } from '../tags/tag-card';
 
 interface PostCardProps {
   title: string;
@@ -38,22 +37,22 @@ export const PostCard: React.FC<PostCardProps> = ({
             <Balancer>{description}</Balancer>
           </p>
         </div>
-        <div className='flex flex-col gap-4 justify-center'>
+        <div className='flex flex-col justify-center gap-4'>
           {/* <div className='flex flex-wrap gap-2'>
             {tags?.map((tag) => (
               <>
                 <TagCard name={tag} key={tag} className='p-0 [&_svg]:size-4 [&_span]:text-muted-foreground gap-1' />
-                {tag !== tags.at(-1) && <span className='text-muted-foreground'>•</span>}
+                {index < tags.length - 1 && <span className='text-muted-foreground'>•</span>}
               </>
             ))}
           </div> */}
-          <div className='group inline-flex gap-2 items-center text-sm text-muted-foreground'>
-            <span className="inline-flex items-center gap-1 capitalize">
+          <div className='group inline-flex items-center gap-2 text-muted-foreground text-sm'>
+            <span className='inline-flex items-center gap-1 capitalize'>
               <UserIcon className='size-4 transition-transform hover:scale-125' />
               {author}
             </span>
             <span>•</span>
-            <span className="inline-flex items-center gap-1">
+            <span className='inline-flex items-center gap-1'>
               <CalendarIcon className='size-4 transition-transform hover:scale-125' />
               {date}
             </span>

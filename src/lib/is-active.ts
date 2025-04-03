@@ -1,10 +1,15 @@
 export function isActive(
-    url: string,
-    pathname: string,
-    nested = true,
+  url: string,
+  pathname: string,
+  nested = true,
 ): boolean {
-    if (url.endsWith('/')) url = url.slice(0, -1);
-    if (pathname.endsWith('/')) pathname = pathname.slice(0, -1);
+  const normalizedUrl = url.endsWith('/') ? url.slice(0, -1) : url;
+  const normalizedPathname = pathname.endsWith('/')
+    ? pathname.slice(0, -1)
+    : pathname;
 
-    return url === pathname || (nested && pathname.startsWith(`${url}/`));
+  return (
+    normalizedUrl === normalizedPathname ||
+    (nested && normalizedPathname.startsWith(`${normalizedUrl}/`))
+  );
 }
