@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Balancer from 'react-wrap-balancer';
 import heroImage from '../../../../public/images/gradient-noise-purple-azure-light.png';
+import * as motion from 'motion/react-client';
 
 const Hero = () => {
   const links = getLinks(linkItems, baseOptions.githubUrl);
@@ -17,14 +18,24 @@ const Hero = () => {
 
   return (
     <Section className='relative flex flex-col items-center justify-center gap-6 overflow-hidden bg-dashed px-4 py-16 sm:px-16 sm:py-24 md:py-32'>
-      <Image
-        src={heroImage}
-        alt='Hero Background'
-        height={600}
-        width={704}
-        className='pointer-events-none absolute right-0 bottom-0 h-[900px] w-[1004px] max-w-[1004px] translate-x-1/2 translate-y-1/2 select-none opacity-80 dark:opacity-100'
-        priority
-      />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          duration: 0.4,
+          scale: { type: "spring", visualDuration: 0.4, bounce: 0.5 },
+        }}
+        className='absolute inset-0 -z-10 h-full w-full'
+      >
+        <Image
+          src={heroImage}
+          alt='Hero Background'
+          height={600}
+          width={704}
+          className='pointer-events-none absolute right-0 bottom-0 h-[900px] w-[1004px] max-w-[1004px] translate-x-1/2 translate-y-1/2 select-none opacity-80 dark:opacity-100'
+          priority
+        />
+      </motion.div>
       <div className='flex items-center justify-center space-x-2'>
         <Icons.code className='h-6 w-6 text-primary transition-transform hover:scale-125' />
         <span className='font-medium text-muted-foreground text-sm'>
