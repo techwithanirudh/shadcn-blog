@@ -5,7 +5,11 @@ import { cn } from '@/lib/utils';
 import { getLinks } from 'fumadocs-ui/layouts/shared';
 import { ActiveLink } from '../active-link';
 
-export function Footer() {
+export function Footer({
+  className,
+}: {
+  className?: string;
+}) {
   const links = getLinks(linkItems, baseOptions.githubUrl);
   const navItems = links.filter((item) =>
     ['nav', 'all'].includes(item.on ?? 'all'),
@@ -21,6 +25,7 @@ export function Footer() {
           'grid gap-8 text-muted-foreground text-sm sm:grid-cols-4',
           'container mx-auto sm:gap-16 sm:px-8 sm:py-16',
           'border-border/70 border-b border-dashed dark:border-border',
+          className
         )}
       >
         <div className='flex flex-col gap-6'>
