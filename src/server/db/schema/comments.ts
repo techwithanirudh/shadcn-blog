@@ -8,9 +8,7 @@ import {
   timestamp,
   varchar,
 } from 'drizzle-orm/pg-core';
-import { pgTableCreator } from 'drizzle-orm/pg-core';
-
-const createTable = pgTableCreator((name) => `blog_${name}`);
+import { createTable } from '../utils';
 
 export const roles = createTable('roles', {
   userId: varchar('userId', { length: 256 }).primaryKey(),

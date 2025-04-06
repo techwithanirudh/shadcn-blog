@@ -1,8 +1,6 @@
-import { integer, text, uniqueIndex, timestamp } from 'drizzle-orm/pg-core';
-import { relations, sql } from 'drizzle-orm';
-import { pgTableCreator } from 'drizzle-orm/pg-core';
-
-const createTable = pgTableCreator((name) => `blog_${name}`);
+import { integer, text, timestamp } from 'drizzle-orm/pg-core';
+import { sql } from 'drizzle-orm';
+import { createTable } from '../utils';
 
 export const posts = createTable('post', {
     createdAt: timestamp('created_at')

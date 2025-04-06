@@ -1,7 +1,5 @@
 import { boolean, text, timestamp } from 'drizzle-orm/pg-core';
-import { pgTableCreator } from 'drizzle-orm/pg-core';
-
-const createTable = pgTableCreator((name) => `blog_${name}`);
+import { createTable } from '../utils';
 
 export const users = createTable('users', {
   id: text('id').primaryKey(),
