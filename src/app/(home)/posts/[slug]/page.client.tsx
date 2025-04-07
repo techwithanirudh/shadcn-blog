@@ -8,12 +8,12 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Comments } from '@fuma-comment/react';
 import { redirect } from 'next/navigation';
-import { useRef, useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { toast } from 'sonner';
 import { useCopyToClipboard } from 'usehooks-ts';
 
-import { incrementPostViews } from "@/app/actions/views"
-import { useAction } from "next-safe-action/hooks"
+import { incrementPostViews } from '@/app/actions/views';
+import { useAction } from 'next-safe-action/hooks';
 
 export function Share({ url }: { url: string }): React.ReactElement {
   const iconRef = useRef<ShareIconHandle>(null);
@@ -60,15 +60,15 @@ export function PostComments({
 }
 
 export function ViewTracker({ slug }: { slug: string }) {
-  const incrementAction = useAction(incrementPostViews)
-  const incremented = useRef(false)
+  const incrementAction = useAction(incrementPostViews);
+  const incremented = useRef(false);
 
   useEffect(() => {
     if (!incremented.current) {
-      incrementAction.execute({ slug })
-      incremented.current = true
+      incrementAction.execute({ slug });
+      incremented.current = true;
     }
-  }, [incrementAction, slug])
+  }, [incrementAction, slug]);
 
-  return null
+  return null;
 }

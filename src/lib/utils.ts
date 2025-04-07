@@ -6,5 +6,5 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const getIp = (headers: Headers) => {
-  return headers.get('x-forwarded-for') ?? '0.0.0.0'
-}
+  return headers.get('x-forwarded-for') ?? '0.0.0.0';
+};

@@ -31,13 +31,13 @@ export const PostCard: React.FC<PostCardProps> = ({
 }) => {
   const viewsAction = useAction(getPostViews);
 
-  const fetchedViews = useRef(false)
+  const fetchedViews = useRef(false);
   useEffect(() => {
     if (!fetchedViews.current) {
-      viewsAction.execute({ slug: slugs.join('/') })
-      fetchedViews.current = true
+      viewsAction.execute({ slug: slugs.join('/') });
+      fetchedViews.current = true;
     }
-  }, [viewsAction, slugs])
+  }, [viewsAction, slugs]);
 
   return (
     <Link
@@ -66,8 +66,8 @@ export const PostCard: React.FC<PostCardProps> = ({
             <span className='inline-flex items-center gap-1 capitalize'>
               <EyeIcon className='size-4 transition-transform hover:scale-125' />
               {viewsAction?.status === 'hasSucceeded'
-              ? viewsAction?.result?.data?.views.toString()
-              : '--'}
+                ? viewsAction?.result?.data?.views.toString()
+                : '--'}
             </span>
             <span>•</span>
             <span className='inline-flex items-center gap-1'>

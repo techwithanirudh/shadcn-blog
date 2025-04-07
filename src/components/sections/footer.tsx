@@ -25,7 +25,7 @@ export function Footer({
           'grid gap-8 text-muted-foreground text-sm sm:grid-cols-4',
           'container mx-auto sm:gap-16 sm:px-8 sm:py-16',
           'border-border/70 border-b border-dashed dark:border-border',
-          className
+          className,
         )}
       >
         <div className='flex flex-col gap-6'>

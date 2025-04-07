@@ -1,22 +1,21 @@
 'use client';
+import { Icons } from '@/components/icons/icons';
+import { Section } from '@/components/section';
+import { Footer } from '@/components/sections/footer';
 import { Header } from '@/components/sections/header';
+import { buttonVariants } from '@/components/ui/button';
+import { getSortedByDatePosts } from '@/lib/source';
+import { cn } from '@/lib/utils';
 import { HomeLayout } from 'fumadocs-ui/layouts/home';
 import { getLinks } from 'fumadocs-ui/layouts/shared';
-import { baseOptions, linkItems } from './layout.config';
-import { usePathname } from 'next/navigation';
-import { Section } from '@/components/section';
-import { buttonVariants } from '@/components/ui/button';
-import Link from 'next/link';
-import { cn } from '@/lib/utils';
-import { getSortedByDatePosts } from '@/lib/source';
-import { PostCard } from '@/components/posts/post-card';
-import { Icons } from '@/components/icons/icons';
-import Balancer from 'react-wrap-balancer';
 import * as motion from 'motion/react-client';
 import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import Balancer from 'react-wrap-balancer';
 import heroImage from '../../public/images/gradient-noise-purple-azure-light.png';
 import Posts from './(home)/_components/posts';
-import { Footer } from '@/components/sections/footer';
+import { baseOptions, linkItems } from './layout.config';
 
 export default function NotFound() {
   const pathname = usePathname();
@@ -37,8 +36,8 @@ export default function NotFound() {
       className='pt-0'
     >
       <main className='flex flex-1 flex-col divide-y divide-dashed divide-border/70 border-border/70 border-dashed sm:border-b dark:divide-border dark:border-border'>
-        <Section className='flex flex-col gap-6 overflow-hidden px-6 py-12 bg-dashed relative overflow-hidden'>
-          <h1 className='text-4xl font-medium max-w-2xl'>
+        <Section className='relative flex flex-col gap-6 overflow-hidden overflow-hidden bg-dashed px-6 py-12'>
+          <h1 className='max-w-2xl font-medium text-4xl'>
             The page "{pathname}" could not be found.
           </h1>
           <p className='text-muted-foreground'>
@@ -48,10 +47,13 @@ export default function NotFound() {
             </Balancer>
           </p>
           <Link
-            className={cn(buttonVariants({
-              variant: 'default',
-              size: 'lg'
-            }), 'w-min rounded-full group')}
+            className={cn(
+              buttonVariants({
+                variant: 'default',
+                size: 'lg',
+              }),
+              'group w-min rounded-full',
+            )}
             href='/'
           >
             <Icons.back className='group-hover:-rotate-12 size-4 transition-transform' />
@@ -78,8 +80,8 @@ export default function NotFound() {
             />
           </motion.div>
         </Section>
-        <Section className="p-6">
-          <h2 className='text-2xl font-medium max-w-xl'>
+        <Section className='p-6'>
+          <h2 className='max-w-xl font-medium text-2xl'>
             Or check out some of our latest posts
           </h2>
         </Section>

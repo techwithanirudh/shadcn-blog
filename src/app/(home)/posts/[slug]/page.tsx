@@ -1,4 +1,9 @@
-import { PostComments, Share, ViewTracker } from '@/app/(home)/posts/[slug]/page.client';
+import {
+  PostComments,
+  Share,
+  ViewTracker,
+} from '@/app/(home)/posts/[slug]/page.client';
+import { getPostViews } from '@/app/actions/views';
 import { PostJsonLd } from '@/components/json-ld';
 import { Section } from '@/components/section';
 import { TagCard } from '@/components/tags/tag-card';
@@ -6,25 +11,24 @@ import { createMetadata } from '@/lib/metadata';
 import { metadataImage } from '@/lib/metadata-image';
 import { type Page as MDXPage, getPost, getPosts } from '@/lib/source';
 import { cn } from '@/lib/utils';
+import { Callout } from 'fumadocs-ui/components/callout';
+import { Card } from 'fumadocs-ui/components/card';
 import { File, Files, Folder } from 'fumadocs-ui/components/files';
 import { InlineTOC } from 'fumadocs-ui/components/inline-toc';
+import { Step, Steps } from 'fumadocs-ui/components/steps';
 import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
-import { Steps, Step } from 'fumadocs-ui/components/steps';
-import { Card } from 'fumadocs-ui/components/card';
-import { Callout } from 'fumadocs-ui/components/callout';
 import defaultMdxComponents from 'fumadocs-ui/mdx';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Balancer from 'react-wrap-balancer';
 import { description as homeDescription } from 'src/app/layout.config';
-import { getPostViews } from '@/app/actions/views';
 
 async function Header(props: { page: MDXPage; tags?: string[] }) {
   const { page, tags } = props;
   const viewsAction = await getPostViews({
     slug: page.slugs.join('/'),
   });
-  
+
   return (
     <Section className='p-4 lg:p-6'>
       <div
@@ -88,7 +92,7 @@ export default async function Page(props: {
                   Steps,
                   Step,
                   Card,
-                  Callout
+                  Callout,
                 }}
               />
             </div>
