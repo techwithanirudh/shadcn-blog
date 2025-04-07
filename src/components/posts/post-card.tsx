@@ -1,7 +1,11 @@
+'use client';
+import { getPostViews } from '@/app/actions/views';
 import { BlurImage } from '@/components/blur-image';
-import { CalendarIcon, UserIcon } from 'lucide-react';
+import { CalendarIcon, EyeIcon } from 'lucide-react';
+import { useAction } from 'next-safe-action/hooks';
 import Link from 'next/link';
 import type React from 'react';
+import { useEffect, useRef } from 'react';
 import Balancer from 'react-wrap-balancer';
 
 interface PostCardProps {
@@ -9,6 +13,7 @@ interface PostCardProps {
   description: string;
   image?: string | null;
   url: string;
+  slugs: string[];
   date: string;
   author: string;
   tags?: string[];
@@ -19,10 +24,21 @@ export const PostCard: React.FC<PostCardProps> = ({
   description,
   image,
   url,
+  slugs,
   date,
   author,
   tags,
 }) => {
+  const viewsAction = useAction(getPostViews);
+
+  const fetchedViews = useRef(false)
+  useEffect(() => {
+    if (!fetchedViews.current) {
+      viewsAction.execute({ slug: slugs.join('/') })
+      fetchedViews.current = true
+    }
+  }, [viewsAction, slugs])
+
   return (
     <Link
       href={url}
@@ -48,8 +64,10 @@ export const PostCard: React.FC<PostCardProps> = ({
           </div> */}
           <div className='group inline-flex items-center gap-2 text-muted-foreground text-sm'>
             <span className='inline-flex items-center gap-1 capitalize'>
-              <UserIcon className='size-4 transition-transform hover:scale-125' />
-              {author}
+              <EyeIcon className='size-4 transition-transform hover:scale-125' />
+              {viewsAction?.status === 'hasSucceeded'
+              ? viewsAction?.result?.data?.views.toString()
+              : '--'}
             </span>
             <span>•</span>
             <span className='inline-flex items-center gap-1'>

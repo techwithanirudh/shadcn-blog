@@ -17,6 +17,7 @@ export default function Posts({ posts }: { posts: Page[] }) {
               description={post.data.description ?? ''}
               image={post.data.image}
               url={post.url}
+              slugs={post.slugs}
               date={date}
               key={post.url}
               author={post.data.author}
