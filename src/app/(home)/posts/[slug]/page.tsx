@@ -17,10 +17,16 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Balancer from 'react-wrap-balancer';
 import { description as homeDescription } from 'src/app/layout.config';
+import { getPostViews } from '@/app/actions/views';
+// import { useAction } from 'next-safe-action/hooks';
 
-function Header(props: { page: MDXPage; tags?: string[] }) {
+async function Header(props: { page: MDXPage; tags?: string[] }) {
   const { page, tags } = props;
-
+  // const incrementAction = useAction(incrementPostViews);
+  const viewsAction = await getPostViews({
+    slug: page.slugs.join('/'),
+  });
+  
   return (
     <Section className='p-4 lg:p-6'>
       <div
@@ -35,6 +41,9 @@ function Header(props: { page: MDXPage; tags?: string[] }) {
           </h1>
           <p className='mx-auto max-w-4xl'>
             <Balancer>{page.data.description}</Balancer>
+          </p>
+          <p className='text-muted-foreground text-sm'>
+            {viewsAction?.data?.views} views
           </p>
         </div>
         <div className='flex flex-wrap gap-2'>

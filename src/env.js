@@ -35,6 +35,9 @@ export const env = createEnv({
     // Github
     GITHUB_CLIENT_ID: z.string().min(1),
     GITHUB_CLIENT_SECRET: z.string().min(1),
+    // Redis
+    UPSTASH_REDIS_REST_URL: z.string().url(),
+    UPSTASH_REDIS_REST_TOKEN: z.string().min(1),
     NODE_ENV: z
       .enum(['development', 'test', 'production'])
       .default('development'),

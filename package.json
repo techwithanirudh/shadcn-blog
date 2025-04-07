@@ -18,12 +18,14 @@
     "check:unsafe": "biome check --write --unsafe .",
     "check:write": "biome check --write .",
     "db:generate": "drizzle-kit generate",
-    "db:migrate": "drizzle-kit migrate",
+    "db:seed": "pnpm with-env tsx ./src/server/db/seed.ts",
+    "db:migrate": "pnpm with-env drizzle-kit migrate",
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
     "email:build": "email build",
     "email:dev": "email dev -p 3001",
-    "email:export": "email export"
+    "email:export": "email export",
+    "with-env": "dotenv -e ./.env --"
   },
   "dependencies": {
     "@fuma-comment/react": "^1.2.1",
@@ -40,6 +42,7 @@
     "@react-email/components": "^0.0.34",
     "@shikijs/transformers": "^3.2.1",
     "@t3-oss/env-nextjs": "^0.12.0",
+    "@upstash/ratelimit": "^2.0.5",
     "@upstash/redis": "^1.34.6",
     "better-auth": "^1.2.5",
     "class-variance-authority": "^0.7.1",
@@ -84,6 +87,7 @@
     "@types/react": "19.0.8",
     "@types/react-dom": "19.0.3",
     "@types/rss": "^0.0.32",
+    "dotenv-cli": "^8.0.0",
     "drizzle-kit": "^0.30.6",
     "fast-glob": "^3.3.3",
     "gray-matter": "^4.0.3",

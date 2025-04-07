@@ -12,7 +12,7 @@ import { z } from 'zod';
 
 export const blog = defineCollections({
   type: 'doc',
-  dir: 'content',
+  dir: './src/content',
   schema: frontmatterSchema.extend({
     date: z
       .string()

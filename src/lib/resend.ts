@@ -1,6 +1,6 @@
 import { baseUrl } from '@/lib/constants';
 import { Resend, type UpdateContactOptions } from 'resend';
-import NewsletterWelcomeEmail from '../../emails/newsletter-welcome';
+import NewsletterWelcomeEmail from '../emails/newsletter-welcome';
 import type { getPosts } from './source';
 
 const resend = new Resend(process.env.RESEND_API_KEY as string);
