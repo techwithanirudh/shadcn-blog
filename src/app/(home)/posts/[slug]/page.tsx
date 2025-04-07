@@ -1,11 +1,9 @@
 import { PostComments, Share } from '@/app/(home)/posts/[slug]/page.client';
 import { PostJsonLd } from '@/components/json-ld';
 import { Section } from '@/components/section';
-import { TagCard } from '@/components/tags/tag-card';
 import { createMetadata } from '@/lib/metadata';
 import { metadataImage } from '@/lib/metadata-image';
-import { type Page as MDXPage, getPost, getPosts } from '@/lib/source';
-import { cn } from '@/lib/utils';
+import { getPost, getPosts } from '@/lib/source';
 import { File, Files, Folder } from 'fumadocs-ui/components/files';
 import { InlineTOC } from 'fumadocs-ui/components/inline-toc';
 import { Tab, Tabs } from 'fumadocs-ui/components/tabs';
@@ -15,46 +13,8 @@ import { Callout } from 'fumadocs-ui/components/callout';
 import defaultMdxComponents from 'fumadocs-ui/mdx';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import Balancer from 'react-wrap-balancer';
 import { description as homeDescription } from 'src/app/layout.config';
-import { getPostViews } from '@/app/actions/views';
-// import { useAction } from 'next-safe-action/hooks';
-
-async function Header(props: { page: MDXPage; tags?: string[] }) {
-  const { page, tags } = props;
-  // const incrementAction = useAction(incrementPostViews);
-  const viewsAction = await getPostViews({
-    slug: page.slugs.join('/'),
-  });
-  
-  return (
-    <Section className='p-4 lg:p-6'>
-      <div
-        className={cn(
-          'flex flex-col items-start justify-center gap-4 py-8 md:gap-6',
-          'sm:items-center sm:rounded-lg sm:border sm:bg-muted/70 sm:px-8 sm:py-20 sm:shadow-xs sm:dark:bg-muted',
-        )}
-      >
-        <div className='flex flex-col gap-2 sm:text-center md:gap-4'>
-          <h1 className='max-w-4xl font-bold text-3xl leading-tight tracking-tight sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight'>
-            <Balancer>{page.data.title}</Balancer>
-          </h1>
-          <p className='mx-auto max-w-4xl'>
-            <Balancer>{page.data.description}</Balancer>
-          </p>
-          <p className='text-muted-foreground text-sm'>
-            {viewsAction?.data?.views} views
-          </p>
-        </div>
-        <div className='flex flex-wrap gap-2'>
-          {tags?.map((tag) => (
-            <TagCard name={tag} key={tag} className=' border border-border ' />
-          ))}
-        </div>
-      </div>
-    </Section>
-  );
-}
+import { Header } from './_components/header';
 
 export default async function Page(props: {
   params: Promise<{ slug: string }>;
@@ -69,7 +29,7 @@ export default async function Page(props: {
 
   return (
     <>
-      <Header page={page} tags={tags} />
+      <Header title={page.data.title} description={page.data.description} slugs={page.slugs} tags={tags} />
 
       <Section className='h-full' sectionClassName='flex flex-1'>
         <article className='flex min-h-full flex-col lg:flex-row'>
