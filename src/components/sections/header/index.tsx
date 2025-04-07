@@ -124,7 +124,7 @@ const NavbarLinkItem = ({
       if (child.type === 'custom')
         return <div key={j.toString()}>{child.children}</div>;
 
-      const { banner, footer, ...rest } = child.menu ?? {};
+      const { banner, ...rest } = child.menu ?? {};
 
       return (
         <NavbarMenuLink key={j.toString()} href={child.url} {...rest}>
@@ -140,7 +140,6 @@ const NavbarLinkItem = ({
               {child.description}
             </p>
           ) : null}
-          {footer}
         </NavbarMenuLink>
       );
     });
