@@ -1,7 +1,7 @@
+import type React from 'react'
 import { NewsletterForm } from '@/app/(home)/(blog)/newsletter/components/newsletter-form'
 import { Section } from '@/components/section'
 import { ViewAnimation } from '@/components/view-animation'
-import type React from 'react'
 
 export function CTA(): React.ReactElement {
   return (
@@ -16,8 +16,8 @@ export function CTA(): React.ReactElement {
             Subscribe to the Newsletter
           </h2>
           <p className='text-muted-foreground text-sm md:text-base'>
-            Get the latest articles and updates delivered straight to your inbox.
-            No spam, unsubscribe anytime.
+            Get the latest articles and updates delivered straight to your
+            inbox. No spam, unsubscribe anytime.
           </p>
         </div>
       </ViewAnimation>

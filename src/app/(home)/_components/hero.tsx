@@ -1,11 +1,11 @@
+import Link from 'next/link'
+import Balancer from 'react-wrap-balancer'
 import { Icons } from '@/components/icons/icons'
 import { Section } from '@/components/section'
 import { buttonVariants } from '@/components/ui/button'
 import { ViewAnimation } from '@/components/view-animation'
-import { cn } from '@/lib/utils'
-import Link from 'next/link'
-import Balancer from 'react-wrap-balancer'
 import { owner } from '@/constants/site'
+import { cn } from '@/lib/utils'
 
 const Hero = () => {
   return (
@@ -64,7 +64,7 @@ const Hero = () => {
             href='/blog'
           >
             Browse Posts
-            <Icons.arrowRight className='group-hover:-rotate-45 ml-2 size-5 transition-transform' />
+            <Icons.arrowRight className='ml-2 size-5 transition-transform group-hover:-rotate-45' />
           </Link>
         </div>
       </ViewAnimation>

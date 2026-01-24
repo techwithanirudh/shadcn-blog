@@ -3,10 +3,10 @@ import Link from 'next/link'
 import type { ReactNode } from 'react'
 import { ActiveLink } from '@/components/active-link'
 import { ViewAnimation } from '@/components/view-animation'
+import { postsPerPage } from '@/constants/config'
 import { linkItems, socials } from '@/constants/navigation'
 import { baseOptions } from '@/constants/site'
 import { getSortedByDatePosts, getTags } from '@/lib/source'
-import { postsPerPage } from '@/constants/config'
 
 interface ListItem {
   title: string
@@ -27,9 +27,8 @@ export const Links = () => {
     ['nav', 'all'].includes(item.on ?? 'all')
   )
 
-
-  const posts = getSortedByDatePosts();
-  const tags = getTags();
+  const posts = getSortedByDatePosts()
+  const tags = getTags()
 
   const lists: ListItem[] = [
     {
@@ -51,7 +50,7 @@ export const Links = () => {
     },
     {
       title: 'Posts',
-      items: posts.slice(0, postsPerPage).map((post, i) => ({
+      items: posts.slice(0, postsPerPage).map((post, _i) => ({
         href: post.url,
         children: post.data.title,
       })),

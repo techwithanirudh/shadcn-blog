@@ -7,8 +7,5 @@
   "import": ["@cspell/dict-bash/cspell-ext.json"],
   "useGitignore": true,
   "version": "0.2",
-  "words": [
-    "anirudh",
-    "techwithanirudh",
-  ]
+  "words": ["anirudh", "techwithanirudh"]
 }

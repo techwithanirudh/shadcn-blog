@@ -26,12 +26,11 @@ export const PostJsonLd = ({ page }: { page: BlogPage }) => {
     author: {
       '@type': 'Person',
       name: page.data.author,
-      // url: 'https://techwithanirudh.com/',
     },
     publisher: {
       '@type': 'Person',
       name: owner,
-      url: 'https://techwithanirudh.com/',
+      url: baseUrl.href,
     },
   }
 

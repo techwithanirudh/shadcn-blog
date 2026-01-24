@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { owner, repo } from '@/constants/config'
 import { cn } from '@/lib/utils'
 
 const ErrorPage = ({ error }: { error: Error }) => {

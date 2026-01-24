@@ -1,10 +1,10 @@
-import { Icons } from '@/components/icons/icons'
+import Link from 'next/link'
 import { PostCard } from '@/components/blog/post-card'
+import { Icons } from '@/components/icons/icons'
 import { Section } from '@/components/section'
 import { buttonVariants } from '@/components/ui/button'
 import { ViewAnimation } from '@/components/view-animation'
 import type { BlogPage } from '@/lib/source'
-import Link from 'next/link'
 
 export default function Posts({ posts }: { posts: BlogPage[] }) {
   return (
@@ -20,12 +20,12 @@ export default function Posts({ posts }: { posts: BlogPage[] }) {
               whileInView={{ opacity: 1, translateY: 0 }}
             >
               <PostCard
-                title={post.data.title}
-                description={post.data.description ?? ''}
-                url={post.url}
-                date={date}
                 author={post.data.author}
+                date={date}
+                description={post.data.description ?? ''}
                 slugs={post.slugs}
+                title={post.data.title}
+                url={post.url}
               />
             </ViewAnimation>
           )
@@ -36,14 +36,14 @@ export default function Posts({ posts }: { posts: BlogPage[] }) {
           whileInView={{ opacity: 1, translateY: 0 }}
         >
           <Link
-            href='/blog'
             className={buttonVariants({
               variant: 'default',
-              className: 'group rounded-none py-4 sm:py-8 min-w-full',
+              className: 'group min-w-full rounded-none py-4 sm:py-8',
             })}
+            href='/blog'
           >
             View More
-            <Icons.arrowRight className='group-hover:-rotate-45 ml-2 size-5 transition-transform' />
+            <Icons.arrowRight className='ml-2 size-5 transition-transform group-hover:-rotate-45' />
           </Link>
         </ViewAnimation>
       </div>

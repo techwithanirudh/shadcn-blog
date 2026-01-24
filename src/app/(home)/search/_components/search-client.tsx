@@ -1,6 +1,5 @@
 'use client'
 
-import type { HighlightedText } from 'fumadocs-core/search'
 import { useDocsSearch } from 'fumadocs-core/search/client'
 import {
   SearchDialog,
@@ -9,8 +8,8 @@ import {
 } from 'fumadocs-ui/components/dialog/search'
 import { useI18n } from 'fumadocs-ui/contexts/i18n'
 import { Search } from 'lucide-react'
-import { parseAsString, parseAsStringLiteral, useQueryState } from 'nuqs'
-import { Fragment, type ReactNode, useEffect } from 'react'
+import { parseAsString, useQueryState } from 'nuqs'
+import { useEffect } from 'react'
 import { Section } from '@/components/section'
 import {
   InputGroup,
@@ -55,7 +54,10 @@ export function SearchClient() {
       open
       search={search}
     >
-      <Section className='flex flex-1 flex-col divide-y divide-border divide-dashed' sectionClassName='h-full'>
+      <Section
+        className='flex flex-1 flex-col divide-y divide-dashed divide-border'
+        sectionClassName='h-full'
+      >
         <div className='flex flex-col'>
           <ViewAnimation
             initial={{ opacity: 0, translateY: -6 }}

@@ -13,7 +13,6 @@ import {
   type SharedProps,
 } from 'fumadocs-ui/components/dialog/search'
 import { useI18n } from 'fumadocs-ui/contexts/i18n'
-import { useState } from 'react'
 
 export default function CustomSearchDialog(props: SharedProps) {
   const { locale } = useI18n()
