@@ -4,7 +4,7 @@ import { generate, getImageResponseOptions } from '@/app/banner.png/og'
 export const GET = async (): Promise<ImageResponse> => {
   return new ImageResponse(
     generate({
-      title: 'My Blog',
+      title: 'Blog',
       subtitle: 'A modern blog built with Next.js',
     }),
     await getImageResponseOptions()
