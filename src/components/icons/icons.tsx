@@ -46,43 +46,11 @@ import {
   X,
 } from 'lucide-react'
 import type { ComponentProps, JSX } from 'react'
-import { CssOld } from '@/components/icons/brands/css-old'
-import { DrizzleOrmDark } from '@/components/icons/brands/drizzle-orm-dark'
-import { DrizzleOrmLight } from '@/components/icons/brands/drizzle-orm-light'
-import { Expressjs } from '@/components/icons/brands/expressjs'
-import { ExpressjsDark } from '@/components/icons/brands/expressjs-dark'
-import { Git } from '@/components/icons/brands/git'
-import { Hono } from '@/components/icons/brands/hono'
-import { Html5 } from '@/components/icons/brands/html5'
-import { Javascript } from '@/components/icons/brands/javascript'
-import { NextjsLogoDark } from '@/components/icons/brands/nextjs-logo-dark'
-import { NextjsLogoLight } from '@/components/icons/brands/nextjs-logo-light'
-import { Nodejs } from '@/components/icons/brands/nodejs'
-import { ReactDark } from '@/components/icons/brands/react-dark'
-import { ReactLight } from '@/components/icons/brands/react-light'
-import { ShadcnUi } from '@/components/icons/brands/shadcn-ui'
-import { ShadcnUiDark } from '@/components/icons/brands/shadcn-ui-dark'
-import { Tailwindcss } from '@/components/icons/brands/tailwindcss'
-import { Typescript } from '@/components/icons/brands/typescript'
 import { cn } from '@/lib/utils'
 
 export type Icon = typeof LucideIcon
 
 type SvgIcon = (props: ComponentProps<'svg'>) => JSX.Element
-
-const themedIcon = (LightIcon: SvgIcon, DarkIcon: SvgIcon): SvgIcon => {
-  const Themed = ({ className, ...props }: ComponentProps<'svg'>) => (
-    <span className='inline-flex'>
-      <LightIcon {...props} className={cn('dark:hidden', className)} />
-      <DarkIcon
-        {...props}
-        className={cn('hidden dark:inline-flex', className)}
-      />
-    </span>
-  )
-
-  return Themed
-}
 
 export const Icons = {
   logo: Code,
@@ -212,17 +180,4 @@ export const Icons = {
       <path d='M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z' />
     </svg>
   ),
-  typescript: Typescript,
-  javascript: Javascript,
-  react: themedIcon(ReactLight, ReactDark),
-  nextjs: themedIcon(NextjsLogoLight, NextjsLogoDark),
-  tailwind: Tailwindcss,
-  html5: Html5,
-  css3: CssOld,
-  nodejs: Nodejs,
-  express: themedIcon(Expressjs, ExpressjsDark),
-  git: Git,
-  shadcn: themedIcon(ShadcnUi, ShadcnUiDark),
-  hono: Hono,
-  drizzleOrm: themedIcon(DrizzleOrmLight, DrizzleOrmDark),
 }
