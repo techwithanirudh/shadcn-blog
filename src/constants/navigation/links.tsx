@@ -3,9 +3,9 @@ import { Icons } from '@/components/icons/icons'
 
 export const linkItems: LinkItemType[] = [
   {
-    text: 'Blog',
+    text: 'Posts',
     icon: <Icons.posts />,
-    url: '/blog',
+    url: '/posts',
     active: 'nested-url',
   },
   {

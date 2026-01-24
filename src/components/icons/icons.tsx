@@ -45,7 +45,6 @@ import {
   User,
   X,
 } from 'lucide-react'
-import type { ComponentProps, JSX } from 'react'
 
 export type Icon = typeof LucideIcon
 

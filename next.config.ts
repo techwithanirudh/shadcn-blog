@@ -34,18 +34,6 @@ async function createNextConfig(): Promise<NextConfig> {
         },
         {
           protocol: 'https',
-          hostname: 'raw.githubusercontent.com',
-          port: '',
-          pathname: '/techwithanirudh/**',
-        },
-        {
-          protocol: 'https',
-          hostname: 'raw.githubusercontent.com',
-          port: '',
-          pathname: '/Meeting-BaaS/**',
-        },
-        {
-          protocol: 'https',
           hostname: 'fumadocs.dev',
           port: '',
         },
@@ -66,13 +54,9 @@ async function createNextConfig(): Promise<NextConfig> {
     async rewrites() {
       return [
         {
-          source: '/blog/:path*.mdx',
+          source: '/posts/:path*.mdx',
           destination: '/blog.mdx/:path*',
-        },
-        {
-          source: '/rss.xml',
-          destination: '/blog/rss.xml',
-        },
+        }
       ]
     },
   }

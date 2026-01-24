@@ -2,7 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useHookFormAction } from '@next-safe-action/adapter-react-hook-form/hooks'
-import { subscribe } from '@/app/(home)/(blog)/newsletter/actions/newsletter'
+import { subscribe } from '@/app/(home)/newsletter/actions/newsletter'
 import { Icons } from '@/components/icons/icons'
 import { Alert, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'

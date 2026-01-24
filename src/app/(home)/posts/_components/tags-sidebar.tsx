@@ -41,7 +41,7 @@ export function TagsAccordion({ tags }: TagsSidebarProps) {
               >
                 <Link
                   className='flex items-center justify-between bg-background p-3 text-muted-foreground text-sm transition-colors hover:bg-card/80'
-                  href={`/blog/tags/${tag.name}`}
+                  href={`/tags/${tag.name}`}
                 >
                   <span>{tag.name}</span>
                   <span className='text-xs'>({tag.count})</span>
@@ -51,7 +51,7 @@ export function TagsAccordion({ tags }: TagsSidebarProps) {
           </div>
           <Link
             className='group mt-3 flex items-center gap-2 text-muted-foreground text-sm transition-colors hover:text-foreground'
-            href='/blog/tags'
+            href='/tags'
           >
             {hasMoreTags ? `View all ${tags.length} tags` : 'View all tags'}
             <Icons.arrowRight className='size-4 transition-transform group-hover:-rotate-45' />
@@ -87,7 +87,7 @@ export function TagsSidebar({ tags }: TagsSidebarProps) {
                 'group flex items-center justify-between px-4 py-2 text-sm transition-colors',
                 'text-muted-foreground hover:bg-card/80'
               )}
-              href={`/blog/tags/${tag.name}`}
+              href={`/tags/${tag.name}`}
             >
               <span className='transition-transform group-hover:translate-x-0.5'>
                 {tag.name}
@@ -103,7 +103,7 @@ export function TagsSidebar({ tags }: TagsSidebarProps) {
         >
           <Link
             className='group flex items-center gap-2 px-4 py-2 text-muted-foreground text-sm transition-colors hover:bg-card/80 hover:text-foreground'
-            href='/blog/tags'
+            href='/tags'
           >
             {hasMoreTags ? `View all ${tags.length} tags` : 'View all tags'}
             <Icons.arrowRight className='size-4 transition-transform group-hover:-rotate-45' />

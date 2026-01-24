@@ -27,7 +27,7 @@ const getTagsWithCount = () => {
 const Pagination = ({ pageIndex }: { pageIndex: number }) => {
   const handlePageChange = async (page: number) => {
     'use server'
-    redirect(`/blog?page=${page}`)
+    redirect(`/posts?page=${page}`)
   }
 
   return (

@@ -40,7 +40,7 @@ export default function Posts({ posts }: { posts: BlogPage[] }) {
               variant: 'default',
               className: 'group min-w-full rounded-none py-4 sm:py-8',
             })}
-            href='/blog'
+            href='/posts'
           >
             View More
             <Icons.arrowRight className='ml-2 size-5 transition-transform group-hover:-rotate-45' />

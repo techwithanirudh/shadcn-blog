@@ -1,5 +1,5 @@
 import type React from 'react'
-import { NewsletterForm } from '@/app/(home)/(blog)/newsletter/components/newsletter-form'
+import { NewsletterForm } from '@/app/(home)/newsletter/components/newsletter-form'
 import { Section } from '@/components/section'
 import { ViewAnimation } from '@/components/view-animation'
 

@@ -46,7 +46,7 @@ export function getBlogPageImage(page: BlogPage) {
   const segments = [...page.slugs, 'image.webp']
   return {
     segments,
-    url: `/og/blog/${segments.join('/')}`,
+    url: `/og/${segments.join('/')}`,
   }
 }
 

@@ -7,7 +7,7 @@ import { notFound } from 'next/navigation'
 import {
   PostComments,
   Share,
-} from '@/app/(home)/(blog)/blog/[slug]/page.client'
+} from './page.client'
 import BlogProgressBar from '@/components/blog/progress-bar'
 import { PostJsonLd } from '@/components/json-ld'
 import { Section } from '@/components/section'
@@ -111,7 +111,7 @@ export async function generateMetadata(props: {
     title,
     description,
     openGraph: {
-      url: `/blog/${page.slugs.join('/')}`,
+      url: `/posts/${page.slugs.join('/')}`,
       images: image.url,
     },
     twitter: {

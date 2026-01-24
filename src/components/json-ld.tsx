@@ -86,13 +86,13 @@ export const TagJsonLd = ({ tag }: { tag: string }) => {
         '@type': 'ListItem',
         position: 2,
         name: `${homeTitle} | Tags`,
-        item: new URL('/blog/tags', baseUrl.href).href,
+        item: new URL('/tags', baseUrl.href).href,
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: `${homeTitle} | Posts tagged with ${tag}`,
-        item: new URL(`/blog/tags/${tag}`, baseUrl.href).href,
+        item: new URL(`/tags/${tag}`, baseUrl.href).href,
       },
     ],
   }

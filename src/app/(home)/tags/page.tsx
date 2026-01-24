@@ -59,10 +59,10 @@ export async function generateMetadata(props: {
     title: 'Tags',
     description,
     openGraph: {
-      url: '/blog/tags',
+      url: '/tags',
     },
     alternates: {
-      canonical: '/blog/tags',
+      canonical: '/tags',
     },
   })
 }

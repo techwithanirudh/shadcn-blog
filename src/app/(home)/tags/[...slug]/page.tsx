@@ -72,7 +72,7 @@ const Header = ({
 const Pagination = ({ pageIndex, tag }: { pageIndex: number; tag: string }) => {
   const handlePageChange = async (page: number) => {
     'use server'
-    redirect(`/blog/tags/${tag}?page=${page}`)
+    redirect(`/tags/${tag}?page=${page}`)
   }
 
   return (
@@ -178,8 +178,8 @@ export async function generateMetadata(
     ? `${tag} Posts`
     : `${tag} Posts - Page ${pageIndex}`
   const canonicalUrl = isFirstPage
-    ? `/blog/tags/${tag}`
-    : `/blog/tags/${tag}?page=${pageIndex}`
+    ? `/tags/${tag}`
+    : `/tags/${tag}?page=${pageIndex}`
 
   return createMetadata({
     title: pageTitle,
