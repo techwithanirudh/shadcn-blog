@@ -39,7 +39,7 @@ export default function Page() {
 export async function generateMetadata(): Promise<Metadata> {
   return createMetadata({
     title: 'Search',
-    description: `Search posts and projects on ${homeTitle}.`,
+    description: `Search posts on ${homeTitle}.`,
     openGraph: {
       url: '/search',
     },
