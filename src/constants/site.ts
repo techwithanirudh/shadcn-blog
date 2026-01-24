@@ -1,13 +1,13 @@
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared'
 
-export const title = 'Anirudh Sriram'
+export const title = 'My Blog'
 export const description =
-  'Design engineer and full-stack developer who blends design and code to build beautiful, functional websites.'
-export const owner = 'Anirudh Sriram'
+  'A modern blog built with Next.js, featuring articles about web development, technology, and more.'
+export const owner = 'Blog Author'
 
 export const baseOptions: BaseLayoutProps = {
   nav: {
     title,
   },
-  githubUrl: 'https://github.com/techwithanirudh',
+  githubUrl: 'https://github.com/yourusername/your-repo',
 }

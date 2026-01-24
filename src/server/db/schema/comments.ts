@@ -10,7 +10,7 @@ import {
   varchar,
 } from 'drizzle-orm/pg-core'
 
-const createTable = pgTableCreator((name) => `portfolio_${name}`)
+const createTable = pgTableCreator((name) => `blog_${name}`)
 
 export const roles = createTable('roles', {
   userId: varchar('userId', { length: 256 }).primaryKey(),
