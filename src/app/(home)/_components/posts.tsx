@@ -39,11 +39,11 @@ export default function Posts({ posts }: { posts: BlogPage[] }) {
             href='/blog'
             className={buttonVariants({
               variant: 'default',
-              className: 'group rounded-none py-4 sm:py-8',
+              className: 'group rounded-none py-4 sm:py-8 min-w-full',
             })}
           >
             View More
-            <Icons.arrowUpRight className='group-hover:-rotate-12 ml-2 size-5 transition-transform' />
+            <Icons.arrowRight className='group-hover:-rotate-45 ml-2 size-5 transition-transform' />
           </Link>
         </ViewAnimation>
       </div>

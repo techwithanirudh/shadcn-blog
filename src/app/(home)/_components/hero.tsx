@@ -5,6 +5,7 @@ import { ViewAnimation } from '@/components/view-animation'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import Balancer from 'react-wrap-balancer'
+import { owner } from '@/constants/site'
 
 const Hero = () => {
   return (
@@ -28,7 +29,7 @@ const Hero = () => {
         whileInView={{ opacity: 1, translateY: 0 }}
       >
         <h1 className='max-w-3xl text-center font-bold text-4xl leading-tight tracking-tighter sm:text-5xl md:max-w-4xl md:text-6xl lg:leading-[1.1]'>
-          <Balancer>{"I'm John Doe, a Full-Stack Developer."}</Balancer>
+          <Balancer>{`I'm ${owner}, a Full-Stack Developer.`}</Balancer>
         </h1>
       </ViewAnimation>
 
@@ -63,7 +64,7 @@ const Hero = () => {
             href='/blog'
           >
             Browse Posts
-            <Icons.arrowUpRight className='group-hover:-rotate-12 ml-2 size-5 transition-transform' />
+            <Icons.arrowRight className='group-hover:-rotate-45 ml-2 size-5 transition-transform' />
           </Link>
         </div>
       </ViewAnimation>

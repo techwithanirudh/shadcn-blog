@@ -58,7 +58,7 @@ export const Links = () => {
     },
     {
       title: 'Tags',
-      items: tags.map((tag) => ({
+      items: tags.slice(0, postsPerPage).map((tag) => ({
         href: `/tags/${tag}`,
         children: <span className='capitalize'>{tag}</span>,
       })),

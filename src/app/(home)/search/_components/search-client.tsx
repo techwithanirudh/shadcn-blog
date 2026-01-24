@@ -55,7 +55,7 @@ export function SearchClient() {
       open
       search={search}
     >
-      <Section className='flex flex-1 flex-col' sectionClassName='h-full'>
+      <Section className='flex flex-1 flex-col divide-y divide-border divide-dashed' sectionClassName='h-full'>
         <div className='flex flex-col'>
           <ViewAnimation
             initial={{ opacity: 0, translateY: -6 }}
