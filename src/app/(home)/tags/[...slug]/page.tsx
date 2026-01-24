@@ -126,11 +126,14 @@ export default async function Page(props: {
                 whileInView={{ opacity: 1, translateY: 0 }}
               >
                 <PostCard
-                  author={post.data.author ?? 'Unknown'}
+                  author={post.data.author}
                   date={date}
                   description={post.data.description ?? ''}
+                  image={post.data.image}
+                  index={index}
                   slugs={post.slugs}
-                  title={post.data.title ?? 'Untitled'}
+                  tags={post.data.tags}
+                  title={post.data.title}
                   url={post.url}
                 />
               </ViewAnimation>

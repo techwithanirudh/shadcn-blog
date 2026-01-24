@@ -1,3 +1,5 @@
+import * as motion from 'motion/react-client'
+import Image from 'next/image'
 import Link from 'next/link'
 import Balancer from 'react-wrap-balancer'
 import { Icons } from '@/components/icons/icons'
@@ -6,10 +8,32 @@ import { buttonVariants } from '@/components/ui/button'
 import { ViewAnimation } from '@/components/view-animation'
 import { owner } from '@/constants/site'
 import { cn } from '@/lib/utils'
+import heroImage from '../../../../public/images/gradient-noise-purple-azure-light.png'
 
 const Hero = () => {
   return (
-    <Section className='relative flex flex-col items-center justify-center gap-6 overflow-hidden px-4 py-16 sm:px-16 sm:py-24 md:py-32'>
+    <Section className='relative flex flex-col items-center justify-center gap-6 overflow-hidden bg-dashed px-4 py-16 sm:px-16 sm:py-24 md:py-32'>
+      <motion.div
+        animate={{ opacity: 1 }}
+        className='absolute inset-0 -z-10 h-full w-full'
+        initial={{ opacity: 0 }}
+        transition={{
+          duration: 0.4,
+          scale: { type: 'spring', visualDuration: 0.4, bounce: 0.5 },
+        }}
+        viewport={{ once: true }}
+        whileInView={{ opacity: 1 }}
+      >
+        <Image
+          alt='Hero Background'
+          className='pointer-events-none absolute right-0 bottom-0 h-[900px] w-[1004px] max-w-[1004px] translate-x-1/2 translate-y-1/2 select-none opacity-80 dark:opacity-100'
+          height={600}
+          priority
+          src={heroImage}
+          width={704}
+        />
+      </motion.div>
+
       <ViewAnimation
         delay={0.05}
         initial={{ opacity: 0, translateY: -6 }}

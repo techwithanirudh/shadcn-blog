@@ -23,7 +23,10 @@ export default function Posts({ posts }: { posts: BlogPage[] }) {
                 author={post.data.author}
                 date={date}
                 description={post.data.description ?? ''}
+                image={post.data.image}
+                index={index}
                 slugs={post.slugs}
+                tags={post.data.tags}
                 title={post.data.title}
                 url={post.url}
               />
