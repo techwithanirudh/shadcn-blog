@@ -5,8 +5,6 @@ import { Button } from '@/components/ui/button'
 import { owner, repo } from '@/constants/config'
 import { cn } from '@/lib/utils'
 
-const ISSUE_URL = `https://github.com/${owner}/${repo}/issues/new`
-
 const ErrorPage = ({ error }: { error: Error }) => {
   // biome-ignore lint/performance/useTopLevelRegex: small stack parsing on render
   const errorStack = error.stack?.split(/\r?\n/).slice(1) ?? []
@@ -21,18 +19,6 @@ const ErrorPage = ({ error }: { error: Error }) => {
           <p className='text-muted-foreground'>
             <span className='font-medium text-foreground'>Whoops!</span>{' '}
             Unfortunately an unexpected error occurred.
-          </p>
-          <p className='-mt-2 text-muted-foreground'>
-            Please{' '}
-            <Link
-              className='text-primary underline-offset-4 hover:underline'
-              href={ISSUE_URL}
-              rel='noopener noreferrer'
-              target='_blank'
-            >
-              share the details
-            </Link>{' '}
-            of this issue, so I can fix it for you.
           </p>
           <details className='rounded-md border border-border'>
             <summary className='select-none px-3 py-2 font-medium'>

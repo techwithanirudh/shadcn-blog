@@ -13,7 +13,7 @@ import { z } from 'zod'
 
 export const blog = defineCollections({
   type: 'doc',
-  dir: 'content/blog',
+  dir: 'content',
   schema: frontmatterSchema.extend({
     date: z
       .string()

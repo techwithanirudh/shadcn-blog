@@ -5,6 +5,8 @@ import { ActiveLink } from '@/components/active-link'
 import { ViewAnimation } from '@/components/view-animation'
 import { linkItems, socials } from '@/constants/navigation'
 import { baseOptions } from '@/constants/site'
+import { getSortedByDatePosts, getTags } from '@/lib/source'
+import { postsPerPage } from '@/constants/config'
 
 interface ListItem {
   title: string
@@ -25,6 +27,10 @@ export const Links = () => {
     ['nav', 'all'].includes(item.on ?? 'all')
   )
 
+
+  const posts = getSortedByDatePosts();
+  const tags = getTags();
+
   const lists: ListItem[] = [
     {
       title: 'Navigate',
@@ -44,11 +50,18 @@ export const Links = () => {
       ],
     },
     {
-      title: 'More',
-      items: [
-        { href: '/rss.xml', children: 'RSS Feed' },
-        { href: '/sitemap.xml', children: 'Sitemap' },
-      ],
+      title: 'Posts',
+      items: posts.slice(0, postsPerPage).map((post, i) => ({
+        href: post.url,
+        children: post.data.title,
+      })),
+    },
+    {
+      title: 'Tags',
+      items: tags.map((tag) => ({
+        href: `/tags/${tag}`,
+        children: <span className='capitalize'>{tag}</span>,
+      })),
     },
     {
       title: 'Socials',
