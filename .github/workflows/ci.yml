@@ -17,7 +17,7 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Run type check
-        run: pnpm typecheck
+        run: bun typecheck
 
   lint:
     name: Lint
@@ -30,7 +30,7 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Run lint
-        run: pnpm check
+        run: bun check
 
   links:
     name: Links
@@ -43,7 +43,7 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Run links check
-        run: pnpm check:links
+        run: bun check:links
 
   spelling:
     name: Spelling
@@ -56,4 +56,4 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Run spelling check
-        run: pnpm check:spelling
+        run: bun check:spelling

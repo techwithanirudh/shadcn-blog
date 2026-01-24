@@ -13,7 +13,7 @@
     "check": "ultracite check .",
     "check:unsafe": "ultracite fix --unsafe true .",
     "check:write": "ultracite fix .",
-    "check:links": "tsx ./scripts/lint.mts",
+    "check:links": "bun run ./scripts/lint.ts",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",
@@ -23,7 +23,7 @@
     "email:export": "email export",
     "check:spelling": "cspell -c .cspell.jsonc --no-progress --no-summary --no-must-find-files --unique --cache",
     "typegen": "fumadocs-mdx && next typegen",
-    "typecheck": "pnpm run typegen && tsc --noEmit",
+    "typecheck": "bun run typegen && tsc --noEmit",
     "prepare": "lefthook install"
   },
   "dependencies": {
@@ -135,5 +135,5 @@
   "ct3aMetadata": {
     "initVersion": "7.39.0"
   },
-  "packageManager": "pnpm@10.7.0"
+  "packageManager": "bun@1.2.4"
 }

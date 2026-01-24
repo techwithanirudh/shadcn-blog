@@ -4,16 +4,13 @@ description: "Common setup steps for Actions"
 runs:
   using: composite
   steps:
-    - uses: pnpm/action-setup@v4
-    - uses: actions/setup-node@v6
-      with:
-        node-version-file: ".nvmrc"
+    - uses: oven-sh/setup-bun@v2
 
     - shell: bash
-      run: pnpm add -g turbo
+      run: bun add -g turbo
 
     - shell: bash
-      run: pnpm install
+      run: bun install
 
     - name: Create environment variables file
       shell: bash
@@ -28,6 +25,8 @@ runs:
         BETTER_AUTH_SECRET="dummy_secret"
         GOOGLE_CLIENT_ID="dummy_client_id"
         GOOGLE_CLIENT_SECRET="dummy_client_secret"
+        GITHUB_CLIENT_ID="dummy_client_id"
+        GITHUB_CLIENT_SECRET="dummy_client_secret"
         NEXT_PUBLIC_UMAMI_URL="https://umami.example.com"
         NEXT_PUBLIC_UMAMI_WEBSITE_ID="00000000-0000-0000-0000-000000000000"
         NEXT_PUBLIC_BASE_URL="http://localhost:3000"
