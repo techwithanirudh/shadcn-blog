@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { owner, title } from '@/constants/site'
 import { env } from '@/env'
 import type { BlogPage } from './source/blog'
-import type { WorkPage } from './source/work'
 
 export function createMetadata(override: Metadata): Metadata {
   return {
@@ -27,7 +26,7 @@ export function createMetadata(override: Metadata): Metadata {
     },
     twitter: {
       card: 'summary_large_image',
-      creator: '@AnirudhWith',
+      creator: '@yourusername',
       title: override.title ?? undefined,
       description: override.description ?? undefined,
       images: '/banner.png',
@@ -48,14 +47,6 @@ export function getBlogPageImage(page: BlogPage) {
   return {
     segments,
     url: `/og/blog/${segments.join('/')}`,
-  }
-}
-
-export function getWorkPageImage(page: WorkPage) {
-  const segments = [...page.slugs, 'image.webp']
-  return {
-    segments,
-    url: `/og/work/${segments.join('/')}`,
   }
 }
 

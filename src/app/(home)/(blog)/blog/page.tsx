@@ -6,9 +6,9 @@ import { Wrapper } from '@/components/wrapper'
 import { postsPerPage } from '@/constants/config'
 import { createMetadata } from '@/lib/metadata'
 import { getPostsByTag, getSortedByDatePosts, getTags } from '@/lib/source'
-import Posts from './_components/posts'
 import { Hero } from './_components/hero'
 import { NewsletterSection } from './_components/newsletter-section'
+import Posts from './_components/posts'
 import { TagsAccordion, TagsSidebar } from './_components/tags-sidebar'
 
 export const dynamicParams = false

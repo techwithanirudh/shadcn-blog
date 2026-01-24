@@ -112,7 +112,7 @@ export function SearchClient() {
             initial={{ opacity: 0, translateY: -6 }}
             whileInView={{ opacity: 1, translateY: 0 }}
           >
-            <InputGroup className='!bg-background rounded-none border-0 shadow-none h-10'>
+            <InputGroup className='!bg-background h-10 rounded-none border-0 shadow-none'>
               <InputGroupAddon className='border-0 text-muted-foreground'>
                 <Search className='size-4' />
               </InputGroupAddon>

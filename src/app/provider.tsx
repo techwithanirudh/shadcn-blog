@@ -30,6 +30,9 @@ export function Provider({
     >
       <NuqsAdapter>
         <AuthUIProvider
+          account={{
+            basePath: '/account',
+          }}
           authClient={authClient}
           credentials={false}
           Link={Link}
@@ -50,9 +53,6 @@ export function Provider({
             FORGOT_PASSWORD: 'forgot-password',
             RESET_PASSWORD: 'reset-password',
             MAGIC_LINK: 'magic',
-          }}
-          account={{
-            basePath: '/account',
           }}
         >
           <ProgressProvider
