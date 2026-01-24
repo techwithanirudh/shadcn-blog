@@ -56,7 +56,7 @@ async function createNextConfig(): Promise<NextConfig> {
         {
           source: '/posts/:path*.mdx',
           destination: '/blog.mdx/:path*',
-        }
+        },
       ]
     },
   }

@@ -4,10 +4,6 @@ import { Tab, Tabs } from 'fumadocs-ui/components/tabs'
 import defaultMdxComponents from 'fumadocs-ui/mdx'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import {
-  PostComments,
-  Share,
-} from './page.client'
 import BlogProgressBar from '@/components/blog/progress-bar'
 import { PostJsonLd } from '@/components/json-ld'
 import { Section } from '@/components/section'
@@ -15,6 +11,7 @@ import { description as homeDescription } from '@/constants/site'
 import { createMetadata, getBlogPageImage } from '@/lib/metadata'
 import { getPost, getPosts } from '@/lib/source'
 import { Header } from './_components/header'
+import { PostComments, Share } from './page.client'
 
 export default async function Page(props: {
   params: Promise<{ slug: string }>

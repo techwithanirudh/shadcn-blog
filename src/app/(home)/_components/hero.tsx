@@ -61,7 +61,7 @@ const Hero = () => {
               }),
               'group rounded-full bg-primary hover:bg-primary/90'
             )}
-            href='/blog'
+            href='/posts'
           >
             Browse Posts
             <Icons.arrowRight className='ml-2 size-5 transition-transform group-hover:-rotate-45' />
