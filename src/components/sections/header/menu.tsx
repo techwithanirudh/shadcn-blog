@@ -1,17 +1,25 @@
-'use client';
+'use client'
 
-import { cva } from 'class-variance-authority';
-import Link from 'fumadocs-core/link';
-import { cn } from 'fumadocs-ui/components/api';
-import { buttonVariants } from 'fumadocs-ui/components/ui/button';
+import { cva } from 'class-variance-authority'
+import { usePathname } from 'fumadocs-core/framework'
+import Link from 'fumadocs-core/link'
+import {
+  type ButtonProps,
+  buttonVariants,
+} from 'fumadocs-ui/components/ui/button'
 import {
   NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuTrigger,
-} from 'fumadocs-ui/components/ui/navigation-menu';
-import { BaseLinkItem, type LinkItemType } from 'fumadocs-ui/layouts/links';
-import type { ComponentPropsWithoutRef } from 'react';
+} from 'fumadocs-ui/components/ui/navigation-menu'
+import { useI18n } from 'fumadocs-ui/contexts/i18n'
+import { useSearchContext } from 'fumadocs-ui/contexts/search'
+import type { LinkItemType } from 'fumadocs-ui/layouts/shared'
+import { Search } from 'lucide-react'
+import type { ComponentProps, ComponentPropsWithoutRef } from 'react'
+import { isActive } from '@/lib/is-active'
+import { cn } from '@/lib/utils'
 
 const menuItemVariants = cva('', {
   variants: {
@@ -30,17 +38,46 @@ const menuItemVariants = cva('', {
   defaultVariants: {
     variant: 'main',
   },
-});
+})
+
+const LinkItem = ({
+  item,
+  ...props
+}: ComponentPropsWithoutRef<'a'> & { item: LinkItemType }) => {
+  const pathname = usePathname()
+  const activeType = 'active' in item ? (item.active ?? 'url') : 'url'
+  const url = 'url' in item ? item.url : undefined
+  const active =
+    activeType !== 'none' && url
+      ? isActive(url, pathname, activeType === 'nested-url')
+      : false
+
+  if (!url) {
+    return null
+  }
+
+  return (
+    <Link
+      {...props}
+      data-active={active}
+      external={'external' in item ? item.external : undefined}
+      href={url}
+    >
+      {props.children}
+    </Link>
+  )
+}
 
 export const MenuLinkItem = ({
   item,
   ...props
 }: {
-  item: LinkItemType;
-  className?: string;
+  item: LinkItemType
+  className?: string
 }) => {
-  if (item.type === 'custom')
-    return <div className={cn('grid', props.className)}>{item.children}</div>;
+  if (item.type === 'custom') {
+    return <div className={cn('grid', props.className)}>{item.children}</div>
+  }
 
   if (item.type === 'menu') {
     const header = (
@@ -48,12 +85,12 @@ export const MenuLinkItem = ({
         {item.icon}
         {item.text}
       </>
-    );
+    )
 
     return (
       <div className={cn('mb-4 flex flex-col', props.className)}>
         <p className='mb-1 text-fd-muted-foreground text-sm'>
-          {item.url ? (
+          {'url' in item && item.url ? (
             <NavigationMenuLink asChild>
               <Link href={item.url}>{header}</Link>
             </NavigationMenuLink>
@@ -62,30 +99,30 @@ export const MenuLinkItem = ({
           )}
         </p>
         {item.items.map((child, i) => (
-          <MenuLinkItem key={i.toString()} item={child} />
+          <MenuLinkItem item={child} key={i.toString()} />
         ))}
       </div>
-    );
+    )
   }
 
   return (
     <NavigationMenuLink asChild>
-      <BaseLinkItem
-        item={item}
+      <LinkItem
+        aria-label={item.type === 'icon' ? item.label : undefined}
         className={cn(
           menuItemVariants({ variant: item.type }),
-          props.className,
+          props.className
         )}
-        aria-label={item.type === 'icon' ? item.label : undefined}
+        item={item}
       >
         {item.icon}
         {item.type === 'icon' ? undefined : item.text}
-      </BaseLinkItem>
+      </LinkItem>
     </NavigationMenuLink>
-  );
-};
+  )
+}
 
-export const Menu = NavigationMenuItem;
+export const Menu = NavigationMenuItem
 
 export const MenuTrigger = ({
   ...props
@@ -98,16 +135,16 @@ export const MenuTrigger = ({
           size: 'icon',
           color: 'ghost',
         }),
-        props.className,
+        props.className
       )}
     >
       {props.children}
     </NavigationMenuTrigger>
-  );
-};
+  )
+}
 
 export const MenuContent = (
-  props: ComponentPropsWithoutRef<typeof NavigationMenuContent>,
+  props: ComponentPropsWithoutRef<typeof NavigationMenuContent>
 ) => {
   return (
     <NavigationMenuContent
@@ -116,5 +153,84 @@ export const MenuContent = (
     >
       {props.children}
     </NavigationMenuContent>
-  );
-};
+  )
+}
+
+interface SearchToggleProps
+  extends Omit<ComponentProps<'button'>, 'color'>,
+    ButtonProps {
+  hideIfDisabled?: boolean
+}
+
+export const SearchToggle = ({
+  hideIfDisabled,
+  size = 'icon-sm',
+  color = 'ghost',
+  ...props
+}: SearchToggleProps) => {
+  const { setOpenSearch, enabled } = useSearchContext()
+  if (hideIfDisabled && !enabled) {
+    return null
+  }
+
+  return (
+    <button
+      aria-label='Open Search'
+      className={cn(
+        buttonVariants({
+          size,
+          color,
+        }),
+        props.className
+      )}
+      data-search=''
+      onClick={() => {
+        setOpenSearch(true)
+      }}
+      type='button'
+    >
+      <Search />
+    </button>
+  )
+}
+
+export const LargeSearchToggle = ({
+  hideIfDisabled,
+  ...props
+}: Omit<ComponentProps<'button'>, 'ref'> & {
+  hideIfDisabled?: boolean
+}) => {
+  const { enabled, hotKey, setOpenSearch } = useSearchContext()
+  const { text } = useI18n()
+  if (hideIfDisabled && !enabled) {
+    return null
+  }
+
+  return (
+    <button
+      data-search-full=''
+      type='button'
+      {...props}
+      className={cn(
+        'inline-flex items-center gap-2 rounded-lg border bg-fd-secondary/50 p-1.5 ps-2 text-fd-muted-foreground text-sm transition-colors hover:bg-fd-accent hover:text-fd-accent-foreground',
+        props.className
+      )}
+      onClick={() => {
+        setOpenSearch(true)
+      }}
+    >
+      <Search className='size-4' />
+      {text.search}
+      <div className='ms-auto inline-flex gap-0.5'>
+        {hotKey.map((key, i) => (
+          <kbd
+            className='rounded-md border bg-fd-background px-1.5'
+            key={i.toString()}
+          >
+            {key.display}
+          </kbd>
+        ))}
+      </div>
+    </button>
+  )
+}

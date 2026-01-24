@@ -1,15 +1,14 @@
-import { PostComments } from '@/app/(home)/posts/[slug]/page.client';
-import type { TOCItemType } from 'fumadocs-core/server';
-import { InlineTOC } from 'fumadocs-ui/components/inline-toc';
-import type { ReactNode } from 'react';
-import { Section } from './section';
+import { InlineTOC } from 'fumadocs-ui/components/inline-toc'
+import type { ComponentProps, ReactNode } from 'react'
+import { PostComments } from '@/app/(home)/(blog)/blog/[slug]/page.client'
+import { Section } from './section'
 
 interface MdxLayoutProps {
-  children: ReactNode;
-  title: string;
-  toc?: TOCItemType[] | null;
-  comments?: boolean;
-  slug: string;
+  children: ReactNode
+  title: string
+  toc?: ComponentProps<typeof InlineTOC>['items']
+  comments?: boolean
+  slug: string
 }
 
 export default function MdxLayout({
@@ -22,7 +21,7 @@ export default function MdxLayout({
   return (
     <>
       <Section className='p-4 lg:p-6'>
-        <h1 className='text-center font-bold text-3xl leading-tight tracking-tighter md:text-4xl'>
+        <h1 className='typography-hero mx-auto text-center font-normal text-3xl leading-tight tracking-tighter md:text-5xl'>
           {title}
         </h1>
       </Section>
@@ -32,20 +31,24 @@ export default function MdxLayout({
           <div className='flex flex-1 flex-col gap-4'>
             {toc?.length ? (
               <InlineTOC
+                className='rounded-none border-0 border-border border-b border-dashed'
                 items={toc}
-                className='rounded-none border-0 border-border/70 border-b border-dashed dark:border-border'
               />
-            ) : null}
+            ) : (
+              <div className='py-2' />
+            )}
             <div className='prose min-w-0 flex-1 px-4'>{children}</div>
             {comments ? (
               <PostComments
+                className='[&_form>div]:!rounded-none rounded-none border-0 border-border border-t border-dashed'
                 slug={slug}
-                className='[&_form>div]:!rounded-none rounded-none border-0 border-border/70 border-t border-dashed dark:border-border'
               />
-            ) : null}
+            ) : (
+              <div className='py-2' />
+            )}
           </div>
         </article>
       </Section>
     </>
-  );
+  )
 }

@@ -1,21 +1,22 @@
-'use client';
+'use client'
 
-import { cn } from '@/lib/utils';
-import type { Variants } from 'motion/react';
-import { motion, useAnimation } from 'motion/react';
-import type { HTMLAttributes } from 'react';
-import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react';
+import type { Variants } from 'motion/react'
+import { motion, useAnimation } from 'motion/react'
+import type { ButtonHTMLAttributes } from 'react'
+import { forwardRef, useCallback, useImperativeHandle, useRef } from 'react'
+
+import { cn } from '@/lib/utils'
 
 export interface UploadIconHandle {
-  startAnimation: () => void;
-  stopAnimation: () => void;
+  startAnimation: () => void
+  stopAnimation: () => void
 }
 
-interface UploadIconProps extends HTMLAttributes<HTMLDivElement> {
-  size?: number;
+interface UploadIconProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  size?: number
 }
 
-const arrowVariants: Variants = {
+const ARROW_VARIANTS: Variants = {
   normal: { y: 0 },
   animate: {
     y: -2,
@@ -26,77 +27,110 @@ const arrowVariants: Variants = {
       mass: 1,
     },
   },
-};
+}
 
 const UploadIcon = forwardRef<UploadIconHandle, UploadIconProps>(
-  ({ onMouseEnter, onMouseLeave, className, size = 28, ...props }, ref) => {
-    const controls = useAnimation();
-    const isControlledRef = useRef(false);
+  (
+    {
+      onMouseEnter,
+      onMouseLeave,
+      onFocus,
+      onBlur,
+      className,
+      size = 28,
+      ...props
+    },
+    ref
+  ) => {
+    const controls = useAnimation()
+    const isControlledRef = useRef(false)
 
     useImperativeHandle(ref, () => {
-      isControlledRef.current = true;
+      isControlledRef.current = true
 
       return {
         startAnimation: () => controls.start('animate'),
         stopAnimation: () => controls.start('normal'),
-      };
-    });
+      }
+    })
 
     const handleMouseEnter = useCallback(
-      (e: React.MouseEvent<HTMLDivElement>) => {
-        if (!isControlledRef.current) {
-          controls.start('animate');
+      (e: React.MouseEvent<HTMLButtonElement>) => {
+        if (isControlledRef.current) {
+          onMouseEnter?.(e)
         } else {
-          onMouseEnter?.(e);
+          controls.start('animate')
         }
       },
-      [controls, onMouseEnter],
-    );
+      [controls, onMouseEnter]
+    )
 
     const handleMouseLeave = useCallback(
-      (e: React.MouseEvent<HTMLDivElement>) => {
-        if (!isControlledRef.current) {
-          controls.start('normal');
+      (e: React.MouseEvent<HTMLButtonElement>) => {
+        if (isControlledRef.current) {
+          onMouseLeave?.(e)
         } else {
-          onMouseLeave?.(e);
+          controls.start('normal')
         }
       },
-      [controls, onMouseLeave],
-    );
+      [controls, onMouseLeave]
+    )
+
+    const handleFocus = useCallback(
+      (event: React.FocusEvent<HTMLButtonElement>) => {
+        if (isControlledRef.current) {
+          onFocus?.(event)
+        } else {
+          controls.start('animate')
+        }
+      },
+      [controls, onFocus]
+    )
+
+    const handleBlur = useCallback(
+      (event: React.FocusEvent<HTMLButtonElement>) => {
+        if (isControlledRef.current) {
+          onBlur?.(event)
+        } else {
+          controls.start('normal')
+        }
+      },
+      [controls, onBlur]
+    )
 
     return (
-      <div
-        className={cn(
-          'flex cursor-pointer select-none items-center justify-center rounded-md p-2 transition-colors duration-200 hover:bg-accent',
-          className,
-        )}
+      <button
+        aria-label='Animated upload icon'
+        className={cn(className)}
+        onBlur={handleBlur}
+        onFocus={handleFocus}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        type='button'
         {...props}
       >
-        {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
         <svg
-          xmlns='http://www.w3.org/2000/svg'
-          width={size}
-          height={size}
-          viewBox='0 0 24 24'
           fill='none'
+          height={size}
           stroke='currentColor'
-          strokeWidth='2'
           strokeLinecap='round'
           strokeLinejoin='round'
+          strokeWidth='2'
+          viewBox='0 0 24 24'
+          width={size}
+          xmlns='http://www.w3.org/2000/svg'
         >
           <path d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4' />
-          <motion.g variants={arrowVariants} animate={controls}>
+          <motion.g animate={controls} variants={ARROW_VARIANTS}>
             <polyline points='17 8 12 3 7 8' />
             <line x1='12' x2='12' y1='3' y2='15' />
           </motion.g>
         </svg>
-      </div>
-    );
-  },
-);
+      </button>
+    )
+  }
+)
 
-UploadIcon.displayName = 'UploadIcon';
+UploadIcon.displayName = 'UploadIcon'
 
-export { UploadIcon };
+export { UploadIcon }

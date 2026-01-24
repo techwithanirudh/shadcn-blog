@@ -1,28 +1,15 @@
-import { Header } from '@/components/sections/header';
-import { createMetadata } from '@/lib/metadata';
-import { HomeLayout } from 'fumadocs-ui/layouts/home';
-import { getLinks } from 'fumadocs-ui/layouts/shared';
-import type { Metadata } from 'next';
-import { baseOptions, linkItems } from './layout.config';
+import type { Metadata } from 'next'
+import Link from 'next/link'
+import { Icons } from '@/components/icons/icons'
+import { buttonVariants } from '@/components/ui/button'
+import { createMetadata } from '@/lib/metadata'
 
 export default function NotFound() {
   return (
-    <HomeLayout
-      {...baseOptions}
-      links={linkItems}
-      nav={{
-        component: (
-          <Header
-            finalLinks={getLinks(linkItems, baseOptions.githubUrl)}
-            {...baseOptions}
-          />
-        ),
-      }}
-      className='pt-0'
-    >
-      <main className='flex flex-1 px-4 sm:px-8 md:px-12 lg:px-16 2xl:px-24'>
-        <div className='container flex min-h-full flex-1 items-center justify-center border-border/70 border-x border-b border-dashed dark:border-border'>
-          <div className='flex flex-auto flex-col items-center justify-center px-4 text-center sm:flex-row'>
+    <main className='flex flex-1'>
+      <div className='container relative mx-auto flex min-h-full flex-1 items-center justify-center border-border border-x border-dashed'>
+        <div className='flex w-fit flex-col items-center justify-center gap-4 px-4'>
+          <div className='flex flex-col items-center text-center sm:flex-row'>
             <h1 className='border-border font-extrabold text-2xl text-foreground tracking-tight sm:mr-6 sm:border-r sm:pr-6 sm:text-3xl'>
               404
             </h1>
@@ -30,20 +17,29 @@ export default function NotFound() {
               This page could not be found.
             </h2>
           </div>
+          <Link
+            className={buttonVariants({
+              className: 'group/button w-full',
+            })}
+            href='/'
+          >
+            Go Home
+            <Icons.arrowRight className='size-4 transition-transform group-hover/button:-rotate-45' />
+          </Link>
         </div>
-      </main>
-    </HomeLayout>
-  );
+      </div>
+    </main>
+  )
 }
 
 export async function generateMetadata(props: {
-  params: Promise<{ slug?: string[] }>;
+  params: Promise<{ slug?: string[] }>
 }): Promise<Metadata> {
-  const params = await props.params;
-  const description = 'The page you are looking for could not be found.';
+  const _params = await props.params
+  const description = 'The page you are looking for could not be found.'
 
   return createMetadata({
     title: 'Not Found',
     description,
-  });
+  })
 }

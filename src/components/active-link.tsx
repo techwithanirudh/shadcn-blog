@@ -1,19 +1,19 @@
-'use client';
+'use client'
 
-import { isActive } from '@/lib/is-active';
-import { cn } from '@/lib/utils';
-import Link, { type LinkProps } from 'next/link';
-import { usePathname } from 'next/navigation';
-import type { ReactNode } from 'react';
+import Link, { type LinkProps } from 'next/link'
+import { usePathname } from 'next/navigation'
+import type { ReactNode } from 'react'
+import { isActive } from '@/lib/is-active'
+import { cn } from '@/lib/utils'
 
 type ActiveLinkProps = LinkProps & {
-  children: ReactNode;
-  href: string;
-  target?: string;
-  rel?: string;
-  className?: string;
-  nested?: boolean;
-};
+  children: ReactNode
+  href: string
+  target?: string
+  rel?: string
+  className?: string
+  nested?: boolean
+}
 
 export const ActiveLink = ({
   href,
@@ -22,23 +22,23 @@ export const ActiveLink = ({
   nested = false,
   ...props
 }: ActiveLinkProps) => {
-  const pathname = usePathname();
-  const active = isActive(href, pathname, nested);
+  const pathname = usePathname()
+  const active = isActive(href, pathname, nested)
 
   return (
     <Link
-      href={href}
-      target={props.target}
-      rel={props.rel}
       className={cn(
         'text-muted-foreground text-sm transition-colors',
         'hover:text-foreground',
         active && 'font-medium text-foreground',
-        className,
+        className
       )}
+      href={href}
+      rel={props.rel}
+      target={props.target}
       {...props}
     >
       {children}
     </Link>
-  );
-};
+  )
+}

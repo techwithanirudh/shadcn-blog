@@ -1,15 +1,16 @@
 @import "tailwindcss";
-@import "fumadocs-ui/css/vitepress.css";
 @import "fumadocs-ui/css/preset.css";
+@import "fumadocs-ui/css/neutral.css";
 @import "@fuma-comment/react/preset.css";
+@import "@daveyplate/better-auth-ui/css";
 
 @plugin "tailwindcss-animate";
-@plugin 'tailwind-scrollbar';
+@plugin "tailwind-scrollbar";
 
 @custom-variant dark (&:is(.dark *));
 
-@source '../../node_modules/fumadocs-ui/dist/**/*.js';
-@source '../../node_modules/@fuma-comment/react/dist/**/*.js';
+@source "../../node_modules/fumadocs-ui/dist/**/*.js";
+@source "../../node_modules/@fuma-comment/react/dist/**/*.js";
 
 @theme {
   --color-background: var(--color-fd-background);
@@ -39,7 +40,7 @@
   --color-destructive-foreground: hsl(0 0% 98%);
 
   --color-border: var(--color-fd-border);
-  --color-input: var(--color-fd-input);
+  --color-input: var(--color-fd-border);
   --color-ring: var(--color-fd-ring);
 
   --radius-lg: var(--radius);
@@ -49,11 +50,38 @@
   /* fonts */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* accordion */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+
+    to {
+      height: 0;
+    }
+  }
 }
 
 @layer base {
   :root {
     --radius: 0.5rem;
+    --typography-hero-width: 56rem;
+    --typography-title-width: 40rem;
+    --typography-body-width: 60ch;
   }
 }
 
@@ -71,9 +99,21 @@
   }
 }
 
+@theme {
+  --color-fd-primary-foreground: hsl(0, 0%, 98%);
+  --color-fd-primary: hsl(226, 55%, 45%);
+  --color-fd-ring: hsl(0, 0%, 63.9%);
+}
+
+.dark {
+  --color-fd-ring: hsl(234, 100%, 83%);
+  --color-fd-primary: hsl(234, 100%, 83%);
+  --color-fd-primary-foreground: hsl(240, 7%, 11%);
+}
+
 @layer base {
   a {
-    @apply [overflow-wrap:anywhere];
+    @apply [overflow-wrap:anywhere] decoration-wavy;
   }
 
   button:not(:disabled),
@@ -86,7 +126,7 @@
   margin-inline: auto;
   padding-inline: 0rem;
 
-  @apply 2xl:max-w-[1536px];
+  @apply 2xl:max-w-[1400px];
 }
 
 @layer utilities {
@@ -102,6 +142,26 @@
       transparent 100%
     );
     background-size: 0.25rem 0.25rem;
+  }
+
+  .border-border {
+    @apply border-border/70 dark:border-border;
+  }
+
+  .divide-border {
+    @apply divide-border/70 dark:divide-border;
+  }
+
+  .typography-hero {
+    max-width: var(--typography-hero-width);
+  }
+
+  .typography-title {
+    max-width: var(--typography-title-width);
+  }
+
+  .typography-body {
+    max-width: var(--typography-body-width);
   }
 }
 
@@ -195,5 +255,60 @@
     to {
       clip-path: inset(0 0 0 0);
     }
+  }
+
+  @keyframes reveal {
+    0% {
+      scale: 0.8;
+      opacity: 0;
+      translate: 0 4lh;
+      filter: blur(20px);
+    }
+  }
+
+  ::view-transition-new(.page-enter):only-child {
+    animation-name: reveal;
+  }
+
+  ::view-transition-old(.page-exit):only-child {
+    animation-name: reveal;
+    animation-direction: reverse;
+  }
+
+  /* util for faster than default (250ms) transitions. Typically used to make exits faster so they don't visually overlap with enters */
+  ::view-transition-group(.duration-100) {
+    animation-duration: 100ms;
+  }
+
+  @keyframes via-blur {
+    30% {
+      filter: blur(8px);
+    }
+  }
+
+  ::view-transition-image-pair(.via-blur) {
+    animation-name: via-blur;
+  }
+
+  ::view-transition-old(.via-blur) {
+    animation-duration: 180ms;
+    animation-timing-function: cubic-bezier(0.4, 0, 1, 1);
+  }
+
+  ::view-transition-new(.via-blur) {
+    animation-duration: 350ms;
+    animation-delay: 100ms;
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+
+  ::view-transition-group(.via-blur) {
+    animation-duration: 450ms;
+  }
+
+  /* Prevent background color flash during transition */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
   }
 }

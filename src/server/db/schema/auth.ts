@@ -1,7 +1,6 @@
-import { boolean, text, timestamp } from 'drizzle-orm/pg-core';
-import { pgTableCreator } from 'drizzle-orm/pg-core';
+import { boolean, pgTableCreator, text, timestamp } from 'drizzle-orm/pg-core'
 
-const createTable = pgTableCreator((name) => `blog_${name}`);
+const createTable = pgTableCreator((name) => `portfolio_${name}`)
 
 export const users = createTable('users', {
   id: text('id').primaryKey(),
@@ -12,7 +11,7 @@ export const users = createTable('users', {
   createdAt: timestamp('created_at').notNull(),
   updatedAt: timestamp('updated_at').notNull(),
   role: text('role').notNull(),
-});
+})
 
 export const sessions = createTable('sessions', {
   id: text('id').primaryKey(),
@@ -25,7 +24,7 @@ export const sessions = createTable('sessions', {
   userId: text('user_id')
     .notNull()
     .references(() => users.id, { onDelete: 'cascade' }),
-});
+})
 
 export const accounts = createTable('accounts', {
   id: text('id').primaryKey(),
@@ -43,7 +42,7 @@ export const accounts = createTable('accounts', {
   password: text('password'),
   createdAt: timestamp('created_at').notNull(),
   updatedAt: timestamp('updated_at').notNull(),
-});
+})
 
 export const verifications = createTable('verifications', {
   id: text('id').primaryKey(),
@@ -52,4 +51,4 @@ export const verifications = createTable('verifications', {
   expiresAt: timestamp('expires_at').notNull(),
   createdAt: timestamp('created_at'),
   updatedAt: timestamp('updated_at'),
-});
+})

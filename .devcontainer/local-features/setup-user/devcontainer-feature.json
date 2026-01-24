@@ -1,0 +1,13 @@
+{
+  "id": "setup-user",
+  "name": "Setup user configs",
+  "containerEnv": {
+    "NODE_ROOT": "/home/coder/nvm",
+    "NPM_GLOBAL": "/home/coder/.npm-global",
+    "PATH": "/home/coder/nvm/current/bin:/home/coder/.local/bin:${PATH}"
+  },
+  "install": {
+    "app": "",
+    "file": "install.sh"
+  }
+}

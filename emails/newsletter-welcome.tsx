@@ -1,4 +1,3 @@
-import { baseUrl } from '@/lib/constants';
 import {
   Body,
   Container,
@@ -13,28 +12,27 @@ import {
   Section,
   Tailwind,
   Text,
-} from '@react-email/components';
+} from '@react-email/components'
+import { baseUrl } from '@/constants'
+import { title } from '@/constants/site'
 
 interface NewsletterWelcomeEmailProps {
-  firstName: string;
+  firstName: string
   posts: {
-    title: string;
-    description?: string;
-    date: Date;
-    tags?: string[];
-    image?: string;
-    author: string;
-    url: string;
-  }[];
+    title: string
+    description?: string
+    date: Date
+    tags?: string[]
+    image?: string
+    author: string
+    url: string
+  }[]
 }
 
 function PostCard({
   title,
   description,
-  date,
-  tags,
   image,
-  author,
   url,
 }: NewsletterWelcomeEmailProps['posts'][0]) {
   return (
@@ -49,8 +47,8 @@ function PostCard({
       </Link>
       <Section className='mt-[24px]'>
         <Link
-          href={url}
           className='m-0 mt-[8px] font-semibold text-[32px] text-zinc-900 leading-[36px]'
+          href={url}
         >
           {title}
         </Link>
@@ -60,7 +58,7 @@ function PostCard({
         </Text>
       </Section>
     </Section>
-  );
+  )
 }
 
 export default function NewsletterWelcomeEmail({
@@ -71,24 +69,24 @@ export default function NewsletterWelcomeEmail({
     <Html>
       <Head>
         <Font
-          fontFamily='Alex Brush'
           fallbackFontFamily='Georgia'
+          fontFamily='Alex Brush'
+          fontStyle='normal'
+          fontWeight={400}
           webFont={{
             url: 'https://fonts.gstatic.com/s/alexbrush/v22/SZc83FzrJKuqFbwMKk6EhUXz7RlNiCY.woff2',
             format: 'woff2',
           }}
-          fontWeight={400}
-          fontStyle='normal'
         />
         <Font
-          fontFamily='Bricolage Grotesque'
           fallbackFontFamily='Helvetica'
+          fontFamily='Bricolage Grotesque'
+          fontStyle='normal'
+          fontWeight={400}
           webFont={{
             url: 'https://fonts.gstatic.com/s/bricolagegrotesque/v8/3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGIInHWVyNJ.woff2',
             format: 'woff2',
           }}
-          fontWeight={400}
-          fontStyle='normal'
         />
       </Head>
       <Preview>
@@ -99,7 +97,7 @@ export default function NewsletterWelcomeEmail({
           <Container className='mx-auto w-full max-w-[600px] p-8'>
             <Section>
               <Text className='mx-0 mt-4 mb-8 p-0 text-center font-normal text-2xl'>
-                <span className='font-bold tracking-tighter'>Blog</span>
+                <span className='font-bold tracking-tighter'>{title}</span>
               </Text>
               <Heading className='my-4 font-medium text-4xl leading-tight'>
                 Welcome!
@@ -140,14 +138,14 @@ export default function NewsletterWelcomeEmail({
                 className='select-none text-4xl text-zinc-900 leading-8'
                 style={{ fontFamily: 'Alex Brush' }}
               >
-                John Doe
+                {title}
               </Text>
             </Section>
           </Container>
         </Body>
       </Tailwind>
     </Html>
-  );
+  )
 }
 
 NewsletterWelcomeEmail.PreviewProps = {
@@ -184,4 +182,4 @@ NewsletterWelcomeEmail.PreviewProps = {
       url: `${baseUrl}/posts/using-mdx`,
     },
   ],
-} satisfies NewsletterWelcomeEmailProps;
+} satisfies NewsletterWelcomeEmailProps

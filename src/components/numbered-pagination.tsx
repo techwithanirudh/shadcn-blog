@@ -1,21 +1,21 @@
-'use client';
-import { Icons } from '@/components/icons/icons';
-import { buttonVariants } from '@/components/ui/button';
+'use client'
+import { Icons } from '@/components/icons/icons'
+import { buttonVariants } from '@/components/ui/button'
 import {
   Pagination,
   PaginationContent,
   PaginationItem,
   PaginationLink,
-} from '@/components/ui/pagination';
-import { usePagination } from '@/hooks/use-pagination';
-import { cn } from '@/lib/utils';
+} from '@/components/ui/pagination'
+import { usePagination } from '@/hooks/use-pagination'
+import { cn } from '@/lib/utils'
 
-type NumberedPaginationProps = {
-  currentPage: number;
-  totalPages: number;
-  paginationItemsToDisplay?: number;
-  onPageChange: (page: number) => void;
-};
+interface NumberedPaginationProps {
+  currentPage: number
+  totalPages: number
+  paginationItemsToDisplay?: number
+  onPageChange: (page: number) => void
+}
 
 function NumberedPagination({
   currentPage,
@@ -27,36 +27,37 @@ function NumberedPagination({
     currentPage,
     totalPages,
     paginationItemsToDisplay,
-  });
+  })
 
   const handlePageChange = (page: number) => (e: React.MouseEvent) => {
-    e.preventDefault();
+    e.preventDefault()
     if (page >= 1 && page <= totalPages) {
-      onPageChange(page);
+      onPageChange(page)
     }
-  };
+  }
 
   return (
     <Pagination>
-      <PaginationContent className='-space-x-px inline-flex w-full gap-0 rtl:space-x-reverse'>
-        <PaginationItem>
-          <PaginationLink
-            className={cn(
-              buttonVariants({
-                variant: 'ghost',
-              }),
-              'rounded-none shadow-none focus-visible:z-10 aria-disabled:pointer-events-none [&[aria-disabled]>svg]:opacity-50',
-            )}
-            href='#'
-            onClick={handlePageChange(currentPage - 1)}
-            aria-label='Go to previous page'
-            aria-disabled={currentPage === 1}
-          >
-            <Icons.chevronLeft size={16} strokeWidth={2} aria-hidden='true' />
-          </PaginationLink>
-        </PaginationItem>
+      <PaginationContent className='inline-flex w-full gap-0 -space-x-px rtl:space-x-reverse'>
+        {currentPage > 1 && (
+          <PaginationItem>
+            <PaginationLink
+              aria-label='Go to previous page'
+              className={cn(
+                buttonVariants({
+                  variant: 'ghost',
+                }),
+                'rounded-none shadow-none focus-visible:z-10'
+              )}
+              href='#'
+              onClick={handlePageChange(currentPage - 1)}
+            >
+              <Icons.chevronLeft aria-hidden='true' size={16} strokeWidth={2} />
+            </PaginationLink>
+          </PaginationItem>
+        )}
 
-        <div className='inline-flex w-full justify-center '>
+        <div className='inline-flex w-full justify-center'>
           {showLeftEllipsis && (
             <PaginationItem>
               <PaginationLink
@@ -64,7 +65,7 @@ function NumberedPagination({
                   buttonVariants({
                     variant: 'ghost',
                   }),
-                  'pointer-events-none rounded-none shadow-none',
+                  'pointer-events-none rounded-none shadow-none'
                 )}
               >
                 ...
@@ -73,7 +74,7 @@ function NumberedPagination({
           )}
 
           {pages.map((page) => (
-            <PaginationItem key={page} className='w-max'>
+            <PaginationItem className='w-max' key={page}>
               <PaginationLink
                 className={cn(
                   buttonVariants({
@@ -81,11 +82,11 @@ function NumberedPagination({
                   }),
                   'rounded-none border-0 shadow-none focus-visible:z-10',
                   page === currentPage &&
-                    'min-w-full dark:bg-primary dark:hover:bg-primary/90',
+                    'min-w-full dark:bg-primary dark:hover:bg-primary/90'
                 )}
                 href='#'
-                onClick={handlePageChange(page)}
                 isActive={page === currentPage}
+                onClick={handlePageChange(page)}
               >
                 {page}
               </PaginationLink>
@@ -99,7 +100,7 @@ function NumberedPagination({
                   buttonVariants({
                     variant: 'ghost',
                   }),
-                  'pointer-events-none rounded-none shadow-none',
+                  'pointer-events-none rounded-none shadow-none'
                 )}
               >
                 ...
@@ -107,25 +108,30 @@ function NumberedPagination({
             </PaginationItem>
           )}
         </div>
-        <PaginationItem>
-          <PaginationLink
-            className={cn(
-              buttonVariants({
-                variant: 'ghost',
-              }),
-              'rounded-none shadow-none focus-visible:z-10 aria-disabled:pointer-events-none [&[aria-disabled]>svg]:opacity-50',
-            )}
-            href='#'
-            onClick={handlePageChange(currentPage + 1)}
-            aria-label='Go to next page'
-            aria-disabled={currentPage === totalPages}
-          >
-            <Icons.chevronRight size={16} strokeWidth={2} aria-hidden='true' />
-          </PaginationLink>
-        </PaginationItem>
+        {currentPage < totalPages && (
+          <PaginationItem>
+            <PaginationLink
+              aria-label='Go to next page'
+              className={cn(
+                buttonVariants({
+                  variant: 'ghost',
+                }),
+                'rounded-none shadow-none focus-visible:z-10'
+              )}
+              href='#'
+              onClick={handlePageChange(currentPage + 1)}
+            >
+              <Icons.chevronRight
+                aria-hidden='true'
+                size={16}
+                strokeWidth={2}
+              />
+            </PaginationLink>
+          </PaginationItem>
+        )}
       </PaginationContent>
     </Pagination>
-  );
+  )
 }
 
-export { NumberedPagination };
+export { NumberedPagination }

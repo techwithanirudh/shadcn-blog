@@ -1,6 +1,6 @@
-import { cn } from '@/lib/utils';
-import Link from 'next/link';
-import type { ReactNode } from 'react';
+import Link from 'next/link'
+import type { ReactNode } from 'react'
+import { cn } from '@/lib/utils'
 
 export const InlineLink = ({
   href,
@@ -8,21 +8,21 @@ export const InlineLink = ({
   blank = false,
   className,
 }: {
-  href: string;
-  children: ReactNode;
-  blank?: boolean;
-  className?: string;
+  href: string
+  children: ReactNode
+  blank?: boolean
+  className?: string
 }) => {
   return (
     <Link
-      href={href}
       className={cn(
         'text-fd-primary underline duration-300 hover:text-fd-primary/70',
-        className,
+        className
       )}
+      href={href}
       target={blank ? '_blank' : undefined}
     >
       {children}
     </Link>
-  );
-};
+  )
+}

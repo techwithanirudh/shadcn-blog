@@ -1,21 +1,20 @@
-import { title as homeTitle } from '@/app/layout.config';
-import { owner } from '@/app/layout.config';
-import { baseUrl } from '@/lib/constants';
-import type { Post } from '@/lib/source';
-import type { BlogPosting, BreadcrumbList, Graph } from 'schema-dts';
+import type { BlogPosting, BreadcrumbList, Graph } from 'schema-dts'
+import { baseUrl } from '@/constants'
+import { title as homeTitle, owner } from '@/constants/site'
+import type { BlogPage } from '@/lib/source'
 
-export const PostJsonLd = ({ page }: { page: Post }) => {
+export const PostJsonLd = ({ page }: { page: BlogPage }) => {
   if (!page) {
-    return null;
+    return null
   }
 
-  const url = new URL(page.url, baseUrl.href).href;
+  const url = new URL(page.url, baseUrl.href).href
 
   const post: BlogPosting = {
     '@type': 'BlogPosting',
     headline: page.data.title,
     description: page.data.description,
-    image: new URL(`/og/${page.slugs.join('/')}/image.png`, baseUrl.href).href,
+    image: new URL(`/og/${page.slugs.join('/')}/image.webp`, baseUrl.href).href,
     datePublished: new Date(page.data.date).toISOString(),
     dateModified: page.data.lastModified
       ? new Date(page.data.lastModified).toISOString()
@@ -34,7 +33,7 @@ export const PostJsonLd = ({ page }: { page: Post }) => {
       name: owner,
       url: 'https://techwithanirudh.com/',
     },
-  };
+  }
 
   const breadcrumbList: BreadcrumbList = {
     '@type': 'BreadcrumbList',
@@ -49,7 +48,7 @@ export const PostJsonLd = ({ page }: { page: Post }) => {
         '@type': 'ListItem',
         position: 2,
         name: `${homeTitle} | Posts`,
-        item: new URL('/posts', baseUrl.href).href,
+        item: new URL('/blog', baseUrl.href).href,
       },
       {
         '@type': 'ListItem',
@@ -58,21 +57,21 @@ export const PostJsonLd = ({ page }: { page: Post }) => {
         item: url,
       },
     ],
-  };
+  }
 
   const graph: Graph = {
     '@context': 'https://schema.org',
     '@graph': [post, breadcrumbList],
-  };
+  }
 
   return (
     <script
-      type='application/ld+json'
-      // biome-ignore lint/security/noDangerouslySetInnerHtml:
+      // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD requires inline script content
       dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
+      type='application/ld+json'
     />
-  );
-};
+  )
+}
 
 export const TagJsonLd = ({ tag }: { tag: string }) => {
   const breadcrumbList: BreadcrumbList = {
@@ -88,27 +87,27 @@ export const TagJsonLd = ({ tag }: { tag: string }) => {
         '@type': 'ListItem',
         position: 2,
         name: `${homeTitle} | Tags`,
-        item: new URL('/tags', baseUrl.href).href,
+        item: new URL('/blog/tags', baseUrl.href).href,
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: `${homeTitle} | Posts tagged with ${tag}`,
-        item: new URL(`/tags/${tag}`, baseUrl.href).href,
+        item: new URL(`/blog/tags/${tag}`, baseUrl.href).href,
       },
     ],
-  };
+  }
 
   const graph: Graph = {
     '@context': 'https://schema.org',
     '@graph': [breadcrumbList],
-  };
+  }
 
   return (
     <script
-      type='application/ld+json'
-      // biome-ignore lint/security/noDangerouslySetInnerHtml:
+      // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD requires inline script content
       dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
+      type='application/ld+json'
     />
-  );
-};
+  )
+}

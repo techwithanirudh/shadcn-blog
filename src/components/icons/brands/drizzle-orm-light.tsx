@@ -1,0 +1,36 @@
+import type { SVGProps } from 'react'
+
+const DrizzleOrmLight = (props: SVGProps<SVGSVGElement>) => (
+  <svg {...props} fill='none' viewBox='0 0 160 160'>
+    <rect
+      fill='#121212'
+      height='40.852'
+      rx='4.816'
+      transform='matrix(.87303 .48767 -.49721 .86763 43.48 67.304)'
+      width='9.631'
+    />
+    <rect
+      fill='#121212'
+      height='40.852'
+      rx='4.816'
+      transform='matrix(.87303 .48767 -.49721 .86763 76.94 46.534)'
+      width='9.631'
+    />
+    <rect
+      fill='#121212'
+      height='40.852'
+      rx='4.816'
+      transform='matrix(.87303 .48767 -.49721 .86763 128.424 46.535)'
+      width='9.631'
+    />
+    <rect
+      fill='#121212'
+      height='40.852'
+      rx='4.816'
+      transform='matrix(.87303 .48767 -.49721 .86763 94.957 67.304)'
+      width='9.631'
+    />
+  </svg>
+)
+
+export { DrizzleOrmLight }
