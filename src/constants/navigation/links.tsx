@@ -8,4 +8,9 @@ export const linkItems: LinkItemType[] = [
     url: '/blog',
     active: 'nested-url',
   },
+  {
+    text: 'About',
+    icon: <Icons.user />,
+    url: '/about',
+  },
 ]
