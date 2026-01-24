@@ -13,7 +13,7 @@ export default function Page() {
     <Wrapper>
       <HeroSection
         align='center'
-        description='Search across blog posts and work.'
+        description='Search posts.'
         title='Search'
       >
         <BackButton />
