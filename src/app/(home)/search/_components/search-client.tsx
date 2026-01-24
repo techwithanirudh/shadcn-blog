@@ -72,7 +72,7 @@ export function SearchClient() {
                 onChange={(event) => {
                   handleSearchChange(event.target.value)
                 }}
-                placeholder='Search posts and work...'
+                placeholder='Search...'
                 value={search}
               />
               {search.length > 0 && (

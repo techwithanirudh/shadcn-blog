@@ -29,7 +29,7 @@ const Hero = () => {
         whileInView={{ opacity: 1, translateY: 0 }}
       >
         <h1 className='max-w-3xl text-center font-bold text-4xl leading-tight tracking-tighter sm:text-5xl md:max-w-4xl md:text-6xl lg:leading-[1.1]'>
-          <Balancer>{`I'm ${owner}, a Full-Stack Developer.`}</Balancer>
+          <Balancer>I'm {owner}!</Balancer>
         </h1>
       </ViewAnimation>
 
