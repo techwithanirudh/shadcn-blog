@@ -46,11 +46,8 @@ import {
   X,
 } from 'lucide-react'
 import type { ComponentProps, JSX } from 'react'
-import { cn } from '@/lib/utils'
 
 export type Icon = typeof LucideIcon
-
-type SvgIcon = (props: ComponentProps<'svg'>) => JSX.Element
 
 export const Icons = {
   logo: Code,
