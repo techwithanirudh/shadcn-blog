@@ -1,5 +1,4 @@
 import { UserButton } from '@daveyplate/better-auth-ui'
-import { Clock } from '@/components/clock'
 import { ThemeToggle } from '@/components/theme-toggle'
 import { ViewAnimation } from '@/components/view-animation'
 import { owner } from '@/constants/site'
@@ -46,7 +45,6 @@ export const Footer = () => (
         initial={{ opacity: 0, translateY: -6 }}
         whileInView={{ opacity: 1, translateY: 0 }}
       >
-        <Clock />
         <ThemeToggle mode='light-dark-system' />
       </ViewAnimation>
     </div>
